@@ -364,9 +364,11 @@ def phase1_deduplicate_ctas(html):
 							<h4 class="txt_red">Your Price: Only $47.00</h4>
 							<h4 class="black">List Price $297</h4>
 							<h4 class="small">You\'re Saving $250.00 Today</h4>
-							<p class="savetoday fsize15">Download The Install Pack and 7 Bonuses For Just $47.00!</p>
-							<p class="avail_dwld"><img style="display: inline-block;" alt="download icon" src="images/65638ce89762af2a5cc83b76.png" loading="lazy"> Now available for instant download</p>
+							<p class="savetoday fsize15">Download The Install Pack For Just $47.00!</p>
 							<p class="fsize15 mb15">Delivered instantly. Start installing the pack in the next 2 minutes.</p>
+							<p class="avail_dwld"><img style="display: inline-block;" alt="download icon" src="images/65638ce89762af2a5cc83b76.png" loading="lazy"> Now available for instant download</p>
+							<iframe src="https://api.leadconnectorhq.com/widget/form/JfoVUQbTOONUDr9Jraq7" style="width:100%;border:none;border-radius:3px;overflow:visible;height:188px;" id="inline-JfoVUQbTOONUDr9Jraq7" data-layout="{\'id\':\'INLINE\'}" data-trigger-type="alwaysShow" data-trigger-value="" data-activation-type="alwaysActivated" data-activation-value="" data-deactivation-type="neverDeactivate" data-deactivation-value="" data-form-name="Email-Opt In 1CCO Funnel" data-height="432" data-layout-iframe-id="inline-JfoVUQbTOONUDr9Jraq7" data-form-id="JfoVUQbTOONUDr9Jraq7" title="Email-Opt In 1CCO Funnel" scrolling="no">
+							</iframe>
 							<div class="text-center mt10">
 								<p style="margin:0px auto 10px;text-align:center; color: #061130;width: 100%; max-width: 290px;">We securely process payments with 256-bit security encryption</p>
 								<div class="text-center">
@@ -375,7 +377,7 @@ def phase1_deduplicate_ctas(html):
 								<p class="mbc_logo_txt" style="margin:20px auto 0; color: #061130; width: 100%; max-width: 290px;"><img alt="mbc_logo" src="images/6508e799a8ce7068941edcae.png" loading="lazy"> BACKED BY OUR UNCONDITIONAL<br>30 DAY MONEY BACK GUARANTEE</p>
 							</div>
 							<div class="text-center">
-								<img class="secure_checkout_img" style="display: block; margin: 0 auto; max-width: 100%;" alt="secure_checkout_img" src="images/c6c86cdd-f716-4fba-8829-264762bd7588.jpg" loading="lazy">
+								<img class="secure_checkout_img" style="display: inline-block; vertical-align: middle;width: 100%;" alt="secure_checkout_img" src="images/c6c86cdd-f716-4fba-8829-264762bd7588.jpg" loading="lazy">
 							</div>
 						</div>'''
 
@@ -422,31 +424,14 @@ def phase1_deduplicate_ctas(html):
 # Phase 2: Restore Email Opt-In Forms
 # ─────────────────────────────────────────────
 def phase2_restore_email_optin(html):
-    """Restore GHL iframe email opt-in forms in each CTA buy box.
+    """Email opt-in iframes are now included in the canonical CTA template (phase1).
 
-    Original site had email forms between the 'fsize15 mb15' paragraph and the
-    'text-center mt10' div. Desktop form = JfoVUQbTOONUDr9Jraq7,
-    Mobile form = yv2cwQc9PjMulR5G88Qu.
-
-    Since we can't easily distinguish desktop vs mobile CTAs in this HTML
-    (both desktop-only and mobile-only classes are on parent wrappers, not the CTA),
-    we'll insert a responsive form that shows the right version based on viewport.
+    The iframe sits directly in flow with height:188px (matching original GHL site),
+    no wrapper div, no negative margins. This function is kept as a no-op for
+    documentation and in case future changes need to re-insert forms separately.
     """
-
-    # The form HTML to insert — responsive: shows desktop form on desktop, mobile form on mobile
-    form_html = '''<div class="cta-email-form">
-								<iframe src="https://api.leadconnectorhq.com/widget/form/JfoVUQbTOONUDr9Jraq7" style="width:100%;border:none;border-radius:3px;overflow:visible;height:220px;margin-top:-15px;" data-layout="{'id':'INLINE'}" data-trigger-type="alwaysShow" data-activation-type="alwaysActivated" data-deactivation-type="neverDeactivate" data-form-name="Email-Opt In 1CCO Funnel" data-form-id="JfoVUQbTOONUDr9Jraq7" title="Email-Opt In 1CCO Funnel" scrolling="no"></iframe>
-							</div>'''
-
-    # Insert form after the "Delivered instantly" paragraph in each CTA
-    # Target: after <p class="fsize15 mb15">Delivered instantly...</p>
-    insert_target = '<p class="fsize15 mb15">Delivered instantly. Start installing the pack in the next 2 minutes.</p>'
-    insert_replacement = insert_target + '\n' + form_html
-
-    count = html.count(insert_target)
-    html = html.replace(insert_target, insert_replacement)
-
-    print(f"  Restored email opt-in form in {count} CTA buy boxes")
+    iframe_count = html.count('JfoVUQbTOONUDr9Jraq7')
+    print(f"  Email opt-in iframes already present in {iframe_count} CTA blocks (via canonical template)")
     return html
 
 
