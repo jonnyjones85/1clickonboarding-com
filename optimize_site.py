@@ -375,7 +375,7 @@ def phase1_deduplicate_ctas(html):
 								<p class="mbc_logo_txt" style="margin:20px auto 0; color: #061130; width: 100%; max-width: 290px;"><img alt="mbc_logo" src="images/6508e799a8ce7068941edcae.png" loading="lazy"> BACKED BY OUR UNCONDITIONAL<br>30 DAY MONEY BACK GUARANTEE</p>
 							</div>
 							<div class="text-center">
-								<img class="secure_checkout_img" style="display: inline-block; vertical-align: middle;width: 100%;" alt="secure_checkout_img" src="images/c6c86cdd-f716-4fba-8829-264762bd7588.jpg" loading="lazy">
+								<img class="secure_checkout_img" style="display: block; margin: 0 auto; max-width: 100%;" alt="secure_checkout_img" src="images/c6c86cdd-f716-4fba-8829-264762bd7588.jpg" loading="lazy">
 							</div>
 						</div>'''
 
@@ -435,7 +435,7 @@ def phase2_restore_email_optin(html):
 
     # The form HTML to insert — responsive: shows desktop form on desktop, mobile form on mobile
     form_html = '''<div class="cta-email-form">
-								<iframe src="https://api.leadconnectorhq.com/widget/form/JfoVUQbTOONUDr9Jraq7" style="width:100%;border:none;border-radius:3px;overflow:visible;height:220px;margin-top:-30px;" data-layout="{'id':'INLINE'}" data-trigger-type="alwaysShow" data-activation-type="alwaysActivated" data-deactivation-type="neverDeactivate" data-form-name="Email-Opt In 1CCO Funnel" data-form-id="JfoVUQbTOONUDr9Jraq7" title="Email-Opt In 1CCO Funnel" scrolling="no"></iframe>
+								<iframe src="https://api.leadconnectorhq.com/widget/form/JfoVUQbTOONUDr9Jraq7" style="width:100%;border:none;border-radius:3px;overflow:visible;height:220px;margin-top:-15px;" data-layout="{'id':'INLINE'}" data-trigger-type="alwaysShow" data-activation-type="alwaysActivated" data-deactivation-type="neverDeactivate" data-form-name="Email-Opt In 1CCO Funnel" data-form-id="JfoVUQbTOONUDr9Jraq7" title="Email-Opt In 1CCO Funnel" scrolling="no"></iframe>
 							</div>'''
 
     # Insert form after the "Delivered instantly" paragraph in each CTA
