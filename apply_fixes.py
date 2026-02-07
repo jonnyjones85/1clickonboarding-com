@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Apply layout fixes, safe HTML cleanup, and font size reduction (85%) to index.html.
+Apply layout fixes, safe HTML cleanup, and CSS zoom to index.html.
 
 Operates on the restored backup (2570 lines). Does NOT touch google-fonts.css.
 
@@ -10,7 +10,7 @@ Steps:
   3. Layout fix: sticky sidebar max-height + overflow
   4. Safe cleanup: empty class/style/data-animation-class attributes
   5. Safe cleanup: simplify <picture> to <img>
-  6. Font size reduction: all font-size:Xpx -> ceil(X * 0.85)px
+  6. CSS zoom: body{zoom:0.8;} scales entire page proportionally
 
 SKIPS dangerous operations that broke colors in the previous cleanup:
   - font-weight:undefined removal
@@ -20,7 +20,6 @@ SKIPS dangerous operations that broke colors in the previous cleanup:
 
 import re
 import os
-import math
 
 SITE_DIR = os.path.dirname(os.path.abspath(__file__))
 INDEX_HTML = os.path.join(SITE_DIR, "index.html")
@@ -98,33 +97,26 @@ def safe_cleanup(html):
     return html, changes
 
 
-def reduce_font_sizes(html, factor=0.85):
-    """Reduce all font-size:Xpx declarations to ceil(X * factor)px."""
+def add_zoom(html, zoom=0.8):
+    """Insert body{zoom:X;} at the top of the first <style> block."""
     changes = []
-    count = 0
+    zoom_rule = f"body{{zoom:{zoom};}}"
 
-    def replace_font_size(match):
-        nonlocal count
-        prefix = match.group(1)  # "font-size:" possibly with spaces
-        value = float(match.group(2))
-        new_value = math.ceil(value * factor)
-        count += 1
-        return f"{prefix}{new_value}px"
+    # Insert after the first <style> tag
+    match = re.search(r'(<style[^>]*>)', html)
+    if match:
+        insert_pos = match.end()
+        html = html[:insert_pos] + " " + zoom_rule + " " + html[insert_pos:]
+        changes.append(f"Added {zoom_rule} to first <style> block")
+    else:
+        changes.append("WARNING: No <style> block found, zoom not applied")
 
-    # Match font-size:Xpx (with optional spaces, in both style attrs and CSS)
-    html = re.sub(
-        r'(font-size:\s*)(\d+(?:\.\d+)?)px',
-        replace_font_size,
-        html
-    )
-
-    changes.append(f"Reduced {count} font-size declarations to {int(factor*100)}% (rounded up)")
     return html, changes
 
 
 def main():
     print("=" * 60)
-    print("Apply Fixes: Layout + Safe Cleanup + Font Size Reduction")
+    print("Apply Fixes: Layout + Safe Cleanup + CSS Zoom")
     print("=" * 60)
 
     with open(INDEX_HTML, "r", encoding="utf-8") as f:
@@ -147,9 +139,9 @@ def main():
     for c in changes:
         print(f"  ✓ {c}")
 
-    # Step 3: Font size reduction
-    print("\n--- Font Size Reduction (85%) ---")
-    html, changes = reduce_font_sizes(html, 0.85)
+    # Step 3: CSS Zoom (scales everything proportionally)
+    print("\n--- CSS Zoom (0.8) ---")
+    html, changes = add_zoom(html, 0.8)
     all_changes.extend(changes)
     for c in changes:
         print(f"  ✓ {c}")
