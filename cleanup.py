@@ -78,23 +78,14 @@ def cleanup_html(path):
     html = re.sub(r'\sdata-animation-class=""', '', html)
     changes.append(f"Removed {count} empty data-animation-class=\"\" attributes")
 
-    # 5. Remove font-weight:undefined from CSS
-    count = len(re.findall(r'font-weight:\s*undefined', html))
-    html = re.sub(r';?font-weight:\s*undefined', '', html)
-    changes.append(f"Removed {count} font-weight:undefined declarations")
+    # NOTE: The following operations were REMOVED because they broke colors
+    # in minified CSS by stripping content that shared lines with color declarations:
+    #   - font-weight:undefined removal (creates empty rules)
+    #   - content:'\\' icon pseudo-element removal (breaks color inheritance)
+    #   - empty CSS rule cleanup (too aggressive on minified CSS)
+    # See apply_fixes.py for the safe approach.
 
-    # 6. Remove broken icon pseudo-element patterns
-    # Pattern: content:'\'; font-family: '';margin-right:5px;font-weight:700
-    pattern = r"content:'\\';[\s\n]*font-family:\s*'';[\s\n]*margin-right:\s*5px;[\s\n]*font-weight:\s*700"
-    count = len(re.findall(pattern, html))
-    html = re.sub(pattern, '', html)
-    changes.append(f"Removed {count} broken icon pseudo-element patterns")
-
-    # 7. Clean up empty CSS rule bodies left behind
-    # e.g., .selector{} or .selector:before{}
-    html = re.sub(r'(\.[a-zA-Z0-9_-]+(?::[\w-]+)?)\{\s*\}', '', html)
-
-    # 8. Remove empty <div></div> elements (no attributes)
+    # 5. Remove empty <div></div>
     count = len(re.findall(r'<div></div>', html))
     html = re.sub(r'<div></div>', '', html)
     changes.append(f"Removed {count} empty <div></div> elements")
