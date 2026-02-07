@@ -1,2 +1,4 @@
 *.bak
+*.pre-optimize
 __pycache__/
+.vercel/
