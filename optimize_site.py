@@ -435,7 +435,7 @@ def phase2_restore_email_optin(html):
 
     # The form HTML to insert — responsive: shows desktop form on desktop, mobile form on mobile
     form_html = '''<div class="cta-email-form">
-								<iframe src="https://api.leadconnectorhq.com/widget/form/JfoVUQbTOONUDr9Jraq7" style="width:100%;border:none;border-radius:3px;overflow:visible;height:188px;" data-layout="{'id':'INLINE'}" data-trigger-type="alwaysShow" data-activation-type="alwaysActivated" data-deactivation-type="neverDeactivate" data-form-name="Email-Opt In 1CCO Funnel" data-form-id="JfoVUQbTOONUDr9Jraq7" title="Email-Opt In 1CCO Funnel" scrolling="no"></iframe>
+								<iframe src="https://api.leadconnectorhq.com/widget/form/JfoVUQbTOONUDr9Jraq7" style="width:100%;border:none;border-radius:3px;overflow:visible;height:180px;" data-layout="{'id':'INLINE'}" data-trigger-type="alwaysShow" data-activation-type="alwaysActivated" data-deactivation-type="neverDeactivate" data-form-name="Email-Opt In 1CCO Funnel" data-form-id="JfoVUQbTOONUDr9Jraq7" title="Email-Opt In 1CCO Funnel" scrolling="no"></iframe>
 							</div>'''
 
     # Insert form after the "Delivered instantly" paragraph in each CTA
