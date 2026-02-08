@@ -1644,9 +1644,9 @@ p.mbc_logo_txt {
   #col-WFFPKR4Y96,
   #col-EDGB6PRHYY { left: 0 !important; }
 
-  /* Ensure download buttons fit within viewport */
+  /* Ensure download buttons are full-width on mobile */
   .download_big_btn_ghl,
-  .download_btn_ghl { min-width: 0 !important; max-width: 100% !important; box-sizing: border-box !important; }
+  .download_btn_ghl { width: 100% !important; min-width: 0 !important; max-width: 100% !important; box-sizing: border-box !important; background-size: 100% 100% !important; }
 
   /* Hero: tighter margin */
   .hl_page-preview--content .section-Y44Z2WH865 { margin-bottom: -10px; }
@@ -1684,36 +1684,31 @@ p.mbc_logo_txt {
   #section-CDQ2SBB9N7 #button-I4V7ARO2II_btn .sub-heading-button { font-size: 12px !important; }
   #section-CDQ2SBB9N7 #button-I4V7ARO2II_btn .sticky-price-line { display: block !important; }
 
-  /* Compact sticky sidebar CTA on mobile */
-  .top_right_sec.big_cta { padding: 0 !important; }
-  .top_right_sec.big_cta p.toptxt { font-size: 11px !important; padding: 6px 5px !important; margin: 0 !important; }
-  .top_right_sec.big_cta .inner_white_bkg { padding: 8px 12px !important; }
-  .top_right_sec.big_cta img.product_image { max-width: 180px !important; margin: 5px auto !important; display: block; }
-  .top_right_sec.big_cta .inner_white_bkg h1.small { font-size: 12px !important; margin: 2px 0 !important; }
-  .top_right_sec.big_cta .inner_white_bkg h4 { font-size: 14px !important; margin: 3px 0 !important; }
-  .top_right_sec.big_cta .inner_white_bkg h4.black { font-size: 13px !important; }
-  .top_right_sec.big_cta .inner_white_bkg h4.small { font-size: 12px !important; }
-  .top_right_sec.big_cta .inner_white_bkg p.savetoday { font-size: 12px !important; margin: 4px 0 !important; }
-  .top_right_sec.big_cta .inner_white_bkg p.fsize15 { font-size: 11px !important; margin: 2px 0 !important; }
-  .top_right_sec.big_cta .inner_white_bkg p.avail_dwld_sticky { font-size: 11px !important; margin: 4px 0 !important; padding: 4px !important; }
-  .top_right_sec.big_cta .inner_white_bkg .download_btn { font-size: 16px !important; padding: 10px 15px !important; }
-  .top_right_sec.big_cta .inner_white_bkg a.clickhere_txt { font-size: 11px !important; margin: 4px 0 !important; }
-  .top_right_sec.big_cta .inner_white_bkg p.mbc_logo_txt { font-size: 10px !important; margin: 5px auto !important; width: auto !important; max-width: 100% !important; }
-  .top_right_sec.big_cta .inner_white_bkg img.secure_checkout_img { max-width: 250px !important; margin: 0 auto !important; }
-  .top_right_sec.big_cta .inner_white_bkg .mt10 { margin-top: 5px !important; }
-  .top_right_sec.big_cta .inner_white_bkg .bkg_yellow { font-size: 11px !important; }
-
   /* Mobile font sizes for large headings */
   #custom-code-XVFvhUIAPo h1,
   #custom-code-9IIPtO4EWN h1 { font-size: 22px !important; }
   .cheading-igIZuqfnEi h2 { font-size: 18px !important; }
   .cheading-Imw6-MzfJ1 h1 { font-size: 20px !important; font-family: var(--headlinefont), Roboto, sans-serif !important; }
   .cheading-Imw6-MzfJ1 p { font-size: 16px !important; font-family: var(--headlinefont), Roboto, sans-serif !important; }
-  .cheading-mQcn13hAAk h1 { font-size: 20px !important; }
+  .cheading-mQcn13hAAk h1 { font-size: 20px !important; font-family: var(--headlinefont), Roboto, sans-serif !important; }
   .cheading-yWOW8MQRwO h1 { font-size: 22px !important; }
-  .cheading-yWOW8MQRwO p { font-size: 16px !important; }
+  .cheading-yWOW8MQRwO p { font-size: 18px !important; }
   .cheading-hBidK2Bp-B h2 { font-size: 18px !important; }
+
+  /* Fix 5: Left-align "We put everything we've learned..." on mobile */
+  .csub-heading-hkK715GSgl { text-align: left !important; padding: 15px 20px 0 !important; }
+  .csub-heading-hkK715GSgl h2 { font-size: 18px !important; }
+
+  /* Fix 6: Reduce "Every business scales..." paragraph font size */
+  .cheading-D-mxmEQ8k7 p { font-size: 14px !important; }
+
+  /* Fix 8: Hide empty video container (scripts removed, shows as empty bordered box) */
+  #video-af_SsXAw9S { display: none !important; }
 }
+
+/* Fix 7: Center "Guaranteed Safe Checkout" badge (global — mobile & desktop) */
+img.secure_checkout_img { display: block !important; margin: 10px auto !important; max-width: 400px !important; }
+
 </style></head><body><div id="__nuxt"><div class="bgCover bg-fixed"></div><div><div><div><div id="nav-menu-popup" style="display:none;" class="hide"><div class="nav-menu-body"><i class="close-menu fas fa-times"></i><ul class="nav-menu"></ul></div></div></div><div id="preview-container" class="preview-container hl_page-preview--content" style="margin-bottom: 114px;"><div><div class="radius0 noBorder c-section c-wrapper section-qV2_UC8cuJ desktop-only" id="section-qV2_UC8cuJ"><div class="inner"><div class="row-align-center none noBorder radius0 none c-row c-wrapper row-yC5ItBRw00 desktop-only" id="row-yC5ItBRw00"><div class="inner"><div class="c-column c-wrapper col-ffamN81DtU desktop-only" id="col-ffamN81DtU"><div class="none noBorder radius0 none bg bgCover vertical inner"><div id="paragraph-VqJrBiBQv0" class="c-paragraph c-wrapper desktop-only"><div class="paragraph-VqJrBiBQv0 text-output cparagraph-VqJrBiBQv0 radius0 noBorder"><div><p>Need Help? Click <a target="_self" rel="noopener noreferrer nofollow" href="mailto:info@8figuresystems.io">HERE</a> to Contact Us</p></div></div></div></div></div><div class="c-column c-wrapper col-daf3pRQXk2 desktop-only" id="col-daf3pRQXk2"><div class="none noBorder radius0 none bg bgCover vertical inner"><div id="image-xvEl1UfjZH" class="c-image c-wrapper image-xvEl1UfjZH desktop-only"><div style="cursor:default;" class="image-container cimage-xvEl1UfjZH"><div><div><img src="images/6552ff2ff4fe3f5193867271.png" alt="" class="img-none img-border-none img-shadow-none img-effects-none" loading="lazy"></div></div></div></div></div></div><div class="c-column c-wrapper col-v-nmvAAbMf desktop-only" id="col-v-nmvAAbMf"><div class="none noBorder radius0 none bg bgCover vertical inner"><div class="empty-slot"><div class="empty-component-wrapper"><div class="empty-component-min-height"></div></div></div></div></div></div></div></div></div><div class="noBorder radius0 c-section c-wrapper section-Y44Z2WH865 desktop-only" id="section-Y44Z2WH865"><div class="bg bgCover bg-section-Y44Z2WH865" style="border-radius:-3px;position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;"></div><div class="inner"><div class="row-align-center radius0 noBorder c-row c-wrapper row-P4NKRR2R2T desktop-only" id="row-P4NKRR2R2T"><div class="inner"><div class="c-column c-wrapper col-ZATJ6EDP2Q desktop-only" id="col-ZATJ6EDP2Q"><div class="noBorder radius0 bg bgCover vertical inner"><div id="custom-code-kU7OgPDUZv" class="c-custom-code c-wrapper custom-code-kU7OgPDUZv"><div id="custom-code-kU7OgPDUZv" class="custom-code-container ccustom-code-kU7OgPDUZv"><div style="text-align: center;">
     <div style="background-color: #323887; font-weight: bold; font-size: 19px; color: white; padding: 10px 10px; display: inline-block;">
         For Any Agency or Coaching Business Looking To Fully Streamline Their Client Onboarding Process In 2024...
