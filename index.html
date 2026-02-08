@@ -1705,38 +1705,38 @@ p.mbc_logo_txt {
   /* Hide empty white box above "The Only System You'll Ever Need" */
   #col-Y0MOGnG6vg { display: none !important; }
 
-  /* Fix 9: Top bar — mobile: logo left, orange button right */
-  #section-qV2_UC8cuJ { padding: 5px 10px !important; }
+  /* Fix 9: Top bar — mobile: logo left, orange button right, compact height */
+  #section-qV2_UC8cuJ { padding: 3px 8px !important; min-height: 0 !important; }
   #section-qV2_UC8cuJ > .inner { padding: 0 !important; }
   #row-yC5ItBRw00 > .inner { flex-direction: row !important; padding: 0 !important; align-items: center !important; justify-content: space-between !important; }
   #col-v-nmvAAbMf { display: none !important; }
   #col-daf3pRQXk2 { order: -1 !important; flex: 0 0 auto !important; text-align: left !important; }
   #col-ffamN81DtU { flex: 0 0 auto !important; text-align: right !important; }
   #col-daf3pRQXk2 > .inner,
-  #col-ffamN81DtU > .inner { padding: 5px !important; }
-  #image-xvEl1UfjZH img { max-height: 35px !important; width: auto !important; }
+  #col-ffamN81DtU > .inner { padding: 3px 5px !important; }
+  #image-xvEl1UfjZH img { max-height: 28px !important; width: auto !important; }
   #paragraph-VqJrBiBQv0 p {
     display: inline-block !important;
     background-color: #F79A06 !important;
     color: #fff !important;
     font-weight: bold !important;
     text-transform: uppercase !important;
-    padding: 8px 12px !important;
+    padding: 6px 10px !important;
     border-radius: 10px !important;
-    font-size: 9px !important;
+    font-size: 0 !important;
     letter-spacing: 1px !important;
     margin: 0 !important;
     white-space: nowrap !important;
     box-shadow: 0 4px 8px rgba(0,0,0,0.4) !important;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.3) !important;
   }
+  #paragraph-VqJrBiBQv0 p::before { content: "Need Help? Click" !important; font-size: 9px !important; }
   #paragraph-VqJrBiBQv0 p a {
     color: #fff !important;
     text-decoration: none !important;
+    font-size: 9px !important;
+    margin-left: 3px !important;
   }
-  #paragraph-VqJrBiBQv0 p { font-size: 0 !important; }
-  #paragraph-VqJrBiBQv0 p::before { content: "NEED HELP? CLICK " !important; font-size: 9px !important; }
-  #paragraph-VqJrBiBQv0 p a { font-size: 9px !important; }
 }
 
 /* Fix 7: Center "Guaranteed Safe Checkout" badge (global — mobile & desktop) */
