@@ -1637,11 +1637,10 @@ p.mbc_logo_txt {
         }
     }
   
-/* === Global font-size fixes (desktop + mobile) === */
-/* Intro paragraph "The 1 Click Client Onboarding Install Pack is a counterintuitive..." */
-.cheading-73D1RMGPKB p { font-size: var(--fs-xl) !important; line-height: 1.6 !important; }
-/* "Every business scales..." paragraph */
-.cheading-D-mxmEQ8k7 p { font-size: var(--fs-xl) !important; line-height: 1.6 !important; }
+/* === Global paragraph fixes (desktop + mobile) === */
+/* Match line-height to "Before we created..." reference paragraphs */
+.cheading-73D1RMGPKB p,
+.cheading-D-mxmEQ8k7 p { line-height: 1.6 !important; }
 .cheading-D-mxmEQ8k7 { padding: 15px 10px 0 !important; }
 
 /* === Responsive overrides (merged from mobile sections) === */
@@ -1718,13 +1717,11 @@ p.mbc_logo_txt {
   .csub-heading-hkK715GSgl { text-align: left !important; padding: 15px 20px 0 !important; }
   .csub-heading-hkK715GSgl h2 { font-size:var(--fs-base) !important; }
 
-  /* Fix 6: "Every business scales..." paragraph — readable on mobile */
-  .cheading-D-mxmEQ8k7 p { font-size:var(--fs-xl) !important; line-height: 1.6 !important; }
+  /* Fix 6: "Every business scales..." paragraph — mobile padding */
   .cheading-D-mxmEQ8k7 { padding: 0 15px !important; }
 
-  /* Fix: Intro paragraph + "This Install Pack works with all..." — readable on mobile */
+  /* Fix: Intro paragraph + "This Install Pack works with all..." — mobile padding */
   .cheading-73D1RMGPKB { padding: 0 15px !important; margin-bottom: 15px !important; }
-  .cheading-73D1RMGPKB p { font-size:var(--fs-xl) !important; line-height: 1.6 !important; }
 
   /* Hide empty white box above "The Only System You'll Ever Need" */
   #col-vp-mobile-placeholder { display: none !important; }
