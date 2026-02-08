@@ -34,8 +34,8 @@ TYPE_SCALE = {
     "xl":   24,   # sub-headings (22-25px → 24px)
     "2xl":  28,   # section headings (26-29px → 28px)
     "3xl":  32,   # major headings (30-35px → 32px)
-    "4xl":  40,   # hero headings (36-45px → 40px)
-    "5xl":  52,   # display text (46-64px → 52px)
+    "4xl":  44,   # hero headings (36-46px → 44px)
+    "5xl":  52,   # display text (50-64px → 52px)
 }
 
 # Mapping: original px value → scale token name
@@ -71,7 +71,7 @@ SIZE_TO_TOKEN = {
     40:   "4xl",
     42:   "4xl",
     44.8: "4xl",
-    46:   "5xl",
+    46:   "4xl",
     50:   "5xl",
     52:   "5xl",
     56:   "5xl",
@@ -89,7 +89,7 @@ CSS_VARS = """/* === Type Scale (Phase 2: Font Harmonization) === */
   --fs-xl: 24px;
   --fs-2xl: 28px;
   --fs-3xl: 32px;
-  --fs-4xl: 40px;
+  --fs-4xl: 44px;
   --fs-5xl: 52px;
 }
 """
