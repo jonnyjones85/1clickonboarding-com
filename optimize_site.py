@@ -488,17 +488,19 @@ def main():
     html = phase4a_convert_large_pngs_to_webp(html)
     html = phase4b_add_lazy_loading(html)
 
-    # Phase 1: CTA Deduplication
+    # Phase 1: CTA Deduplication — DISABLED
+    # The original site has TWO distinct CTA types (email forms vs button links)
+    # that must NOT be merged into a single template. See plan for details.
     print(f"\n{'─'*60}")
-    print("Phase 1: CTA Deduplication")
+    print("Phase 1: CTA Deduplication — SKIPPED (preserves original CTA variations)")
     print(f"{'─'*60}")
-    html = phase1_deduplicate_ctas(html)
 
-    # Phase 2: Restore Email Opt-In
+    # Phase 2: Restore Email Opt-In — DISABLED
+    # No longer needed since Phase 1 is disabled. Original CTAs already have
+    # email forms where they belong (2 desktop + 2 mobile) and button links elsewhere.
     print(f"\n{'─'*60}")
-    print("Phase 2: Restore Email Opt-In")
+    print("Phase 2: Restore Email Opt-In — SKIPPED (original forms preserved)")
     print(f"{'─'*60}")
-    html = phase2_restore_email_optin(html)
 
     # Write optimized HTML
     with open(INDEX_PATH, "w", encoding="utf-8") as f:
