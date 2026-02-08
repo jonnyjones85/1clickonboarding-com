@@ -67,7 +67,11 @@ MOBILE_COMPONENT_IDS = [
 
 RESPONSIVE_CSS = """
 /* === Responsive overrides (merged from mobile sections) === */
+
+/* After removing mobile-only sections, desktop sections must show on mobile */
 @media only screen and (max-width: 767px) {
+  .desktop-only { display: block !important; }
+
   /* Hero: tighter margin */
   .hl_page-preview--content .section-Y44Z2WH865 { margin-bottom: -10px; }
 
@@ -427,14 +431,14 @@ def verify(html):
     section_count = len(re.findall(r'id="section-[^"]+', html))
     print(f"Section count: {section_count} (target: 14)")
 
-    # Check for mobile-only/desktop-only in body
+    # Check for mobile-only/desktop-only in body (kept intact, CSS override handles mobile)
     body_start = html.find('<body>')
     if body_start != -1:
         body_html = html[body_start:]
         desktop_in_body = body_html.count('desktop-only')
         mobile_in_body = body_html.count('mobile-only')
-        print(f"desktop-only in body: {desktop_in_body} (target: 0)")
-        print(f"mobile-only in body: {mobile_in_body} (target: 0)")
+        print(f"desktop-only in body: {desktop_in_body} (preserved, CSS override in Phase 5)")
+        print(f"mobile-only in body: {mobile_in_body} (preserved)")
 
     # Check CTA links
     order_page_underscore = html.count('order_page_')
@@ -475,13 +479,16 @@ def main():
     # Phase 2: Remove mobile sections
     html = phase2_remove_mobile_sections(html)
 
-    # Phase 3: Strip desktop-only classes
-    html = phase3_strip_desktop_only(html)
+    # Phase 3: SKIPPED — keeping desktop-only/mobile-only classes intact
+    # entry.css uses these for responsive visibility. Instead of stripping,
+    # Phase 5 adds a CSS override to show desktop-only elements on mobile.
+    print("[Phase 3] Skipped (classes preserved, CSS override in Phase 5)")
 
-    # Phase 4: Remove dead CSS
-    html = phase4_remove_dead_css(html)
+    # Phase 4: SKIPPED — dead CSS doesn't affect rendering, only file size.
+    # Removing CSS blocks risks breaking :root variable cascade and desktop styling.
+    print("[Phase 4] Skipped (dead CSS preserved for layout safety)")
 
-    # Phase 5: Add responsive CSS
+    # Phase 5: Add responsive CSS (includes .desktop-only visibility override)
     html = phase5_add_responsive_css(html)
 
     # Phase 6: Normalize CTA links
