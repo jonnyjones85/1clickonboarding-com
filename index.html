@@ -1631,6 +1631,23 @@ p.mbc_logo_txt {
 @media only screen and (max-width: 767px) {
   .desktop-only { display: block !important; }
 
+  /* Global overflow protection — prevent horizontal scroll from any overflowing element */
+  html, body { overflow-x: hidden !important; }
+
+  /* Reset 116% width elements (desktop visual effect) to fit mobile viewport */
+  #heading-MN85Y3PGSO,
+  #heading-LUJ5OMJG97,
+  #image-feature-hWJ4rd15WO { width: 100% !important; margin-left: 0 !important; }
+
+  /* Reset hard-coded left positioning on columns */
+  #col-8A1V8YCH9N,
+  #col-WFFPKR4Y96,
+  #col-EDGB6PRHYY { left: 0 !important; }
+
+  /* Ensure download buttons fit within viewport */
+  .download_big_btn_ghl,
+  .download_btn_ghl { min-width: 0 !important; max-width: 100% !important; box-sizing: border-box !important; }
+
   /* Hero: tighter margin */
   .hl_page-preview--content .section-Y44Z2WH865 { margin-bottom: -10px; }
 
@@ -1666,11 +1683,6 @@ p.mbc_logo_txt {
   #section-CDQ2SBB9N7 #button-I4V7ARO2II_btn .main-heading-button { font-size: 16px !important; }
   #section-CDQ2SBB9N7 #button-I4V7ARO2II_btn .sub-heading-button { font-size: 12px !important; }
   #section-CDQ2SBB9N7 #button-I4V7ARO2II_btn .sticky-price-line { display: block !important; }
-
-  /* Prevent CTA boxes from overflowing viewport on mobile */
-  .top_right_sec { max-width: 100% !important; box-sizing: border-box !important; overflow: hidden !important; }
-  .top_right_sec .inner_white_bkg { max-width: 100% !important; box-sizing: border-box !important; }
-  .top_right_sec .inner_white_bkg img { max-width: 100% !important; height: auto !important; }
 
   /* Compact sticky sidebar CTA on mobile */
   .top_right_sec.big_cta { padding: 0 !important; }
