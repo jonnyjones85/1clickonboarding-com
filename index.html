@@ -1705,15 +1705,19 @@ p.mbc_logo_txt {
   /* Hide empty white box above "The Only System You'll Ever Need" */
   #col-Y0MOGnG6vg { display: none !important; }
 
-  /* Fix 9: Top bar — mobile: logo left, orange button right, compact height */
-  #section-qV2_UC8cuJ { padding: 3px 12px !important; min-height: 0 !important; }
-  #section-qV2_UC8cuJ > .inner { padding: 0 !important; }
-  #row-yC5ItBRw00 > .inner { flex-direction: row !important; padding: 0 !important; align-items: center !important; justify-content: space-between !important; }
+  /* Fix 9: Mobile top bar — nuclear reset, single padding source */
+  #section-qV2_UC8cuJ,
+  #section-qV2_UC8cuJ * { padding: 0 !important; margin: 0 !important; border: none !important; min-height: 0 !important; }
+  #row-yC5ItBRw00 > .inner {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 8px 12px !important;
+  }
   #col-v-nmvAAbMf { display: none !important; }
-  #col-daf3pRQXk2 { order: -1 !important; flex: 0 0 auto !important; width: auto !important; text-align: left !important; border: none !important; }
-  #col-ffamN81DtU { flex: 0 0 auto !important; width: auto !important; text-align: right !important; border: none !important; }
-  #row-yC5ItBRw00 { border: none !important; }
-  #col-daf3pRQXk2 div, #col-ffamN81DtU div { margin: 0 !important; padding: 0 !important; border: none !important; width: auto !important; }
+  #col-daf3pRQXk2 { order: -1 !important; width: auto !important; }
+  #col-ffamN81DtU { width: auto !important; }
   #image-xvEl1UfjZH img { max-height: 28px !important; width: auto !important; display: block !important; }
   #paragraph-VqJrBiBQv0 p {
     display: inline-block !important;
@@ -1725,7 +1729,6 @@ p.mbc_logo_txt {
     border-radius: 10px !important;
     font-size: 0 !important;
     letter-spacing: 1px !important;
-    margin: 0 !important;
     white-space: nowrap !important;
     box-shadow: 0 4px 8px rgba(0,0,0,0.4) !important;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.3) !important;
