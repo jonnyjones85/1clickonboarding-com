@@ -183,25 +183,151 @@ def phase3_strip_desktop_only(html):
     return html
 
 
+def _extract_ids_from_css(css_text):
+    """Extract all GHL component IDs referenced in CSS text."""
+    id_re = re.compile(
+        r'(?:section|row|col|heading|sub-heading|custom-code|video|paragraph|'
+        r'image|button|c-button|form|bg-section|cheading|csub-heading|cvideo|'
+        r'cparagraph|cimage|cbutton)-([A-Za-z0-9_-]{6,})'
+    )
+    return set(id_re.findall(css_text))
+
+
+def _filter_mobile_rules(block_text, mobile_id_set):
+    """Remove individual CSS rules that reference ONLY mobile IDs from a mixed block.
+
+    Parses minified CSS by tracking brace depth. Handles @media wrappers.
+    Returns the filtered block text and count of bytes removed.
+    """
+    # Tokenize into top-level CSS chunks: rules and @media blocks
+    # A top-level rule ends at } when depth returns to 0
+    # An @media block ends at } when depth returns to 0 (contains nested rules)
+    chunks = []
+    i = 0
+    length = len(block_text)
+
+    # Skip leading comment marker + :root block
+    # We want to preserve the comment and :root{} declarations
+    while i < length:
+        # Skip whitespace
+        if block_text[i] in ' \t\n\r':
+            i += 1
+            continue
+        # Skip comments
+        if block_text[i:i+2] == '/*':
+            end = block_text.find('*/', i)
+            if end == -1:
+                break
+            chunks.append(('comment', block_text[i:end+2]))
+            i = end + 2
+            continue
+        # Found start of a rule or @-rule
+        break
+
+    # Now parse individual CSS rules/blocks
+    while i < length:
+        # Skip whitespace
+        start = i
+        while i < length and block_text[i] in ' \t\n\r':
+            i += 1
+        if i >= length:
+            break
+
+        # Check for @media or @-rule
+        if block_text[i] == '@':
+            # Find the opening brace of the @-rule
+            brace_pos = block_text.find('{', i)
+            if brace_pos == -1:
+                chunks.append(('other', block_text[start:]))
+                break
+            # Now track nested braces to find the matching close
+            depth = 1
+            j = brace_pos + 1
+            while j < length and depth > 0:
+                if block_text[j] == '{':
+                    depth += 1
+                elif block_text[j] == '}':
+                    depth -= 1
+                j += 1
+            rule_text = block_text[start:j]
+            chunks.append(('at-rule', rule_text))
+            i = j
+            continue
+
+        # Check for :root or regular rule — find opening {
+        if block_text[i:i+5] == ':root':
+            # :root{...} block — always keep (CSS variables)
+            brace_pos = block_text.find('{', i)
+            if brace_pos == -1:
+                chunks.append(('other', block_text[start:]))
+                break
+            depth = 1
+            j = brace_pos + 1
+            while j < length and depth > 0:
+                if block_text[j] == '{':
+                    depth += 1
+                elif block_text[j] == '}':
+                    depth -= 1
+                j += 1
+            chunks.append(('root', block_text[start:j]))
+            i = j
+            continue
+
+        # Regular CSS rule: selector { properties }
+        brace_pos = block_text.find('{', i)
+        if brace_pos == -1:
+            # Remaining text (trailing whitespace, etc.)
+            chunks.append(('other', block_text[start:]))
+            break
+
+        # Track braces for the rule body
+        depth = 1
+        j = brace_pos + 1
+        while j < length and depth > 0:
+            if block_text[j] == '{':
+                depth += 1
+            elif block_text[j] == '}':
+                depth -= 1
+            j += 1
+        rule_text = block_text[start:j]
+        chunks.append(('rule', rule_text))
+        i = j
+
+    # Now filter: remove rules/at-rules where ALL referenced IDs are mobile-only
+    kept = []
+    removed_bytes = 0
+
+    for chunk_type, chunk_text in chunks:
+        if chunk_type in ('comment', 'root', 'other'):
+            kept.append(chunk_text)
+            continue
+
+        ids_in_chunk = _extract_ids_from_css(chunk_text)
+
+        if not ids_in_chunk:
+            # No GHL IDs — keep (generic CSS)
+            kept.append(chunk_text)
+            continue
+
+        # If ALL IDs in this rule are mobile-only, remove it
+        if ids_in_chunk.issubset(mobile_id_set):
+            removed_bytes += len(chunk_text)
+        else:
+            kept.append(chunk_text)
+
+    return ''.join(kept), removed_bytes
+
+
 def phase4_remove_dead_css(html):
     """Phase 4: Remove CSS rules targeting IDs from the 9 removed mobile sections.
 
-    Targets CSS in <style> blocks that reference component IDs from removed sections.
-    Each section has a /* ---- top/Section styles ----- */ comment block.
+    Two strategies:
+    - Pure mobile blocks (all IDs are mobile): remove the entire block
+    - Mixed blocks (has both mobile + desktop IDs): remove individual rules only
     """
-    # Strategy: Find the CSS style blocks for mobile sections and remove them.
-    # The CSS is organized in blocks starting with /* ---- top styles ----- */ or /* ---- Section styles ----- */
-    # followed by CSS rules for that section.
-
-    # Build a set of ID patterns to match
     mobile_id_set = set(MOBILE_COMPONENT_IDS)
-
-    # Find all style block boundaries
-    # Each section's CSS starts with /* ---- (top|Section) styles ----- */
     style_marker = re.compile(r'/\* ---- (?:top|Section) styles ----- \*/')
 
-    # Split the <head> styles from <body> content
-    # The CSS blocks are between <style> tags and before </head><body>
     head_end = html.find('</style></head>')
     if head_end == -1:
         print("[Phase 4] Could not find style/head boundary")
@@ -210,52 +336,58 @@ def phase4_remove_dead_css(html):
     head_content = html[:head_end]
     body_content = html[head_end:]
 
-    # Find all style block positions
     markers = list(style_marker.finditer(head_content))
 
     removed_blocks = 0
-    removed_bytes = 0
+    removed_rules_bytes = 0
+    removed_block_bytes = 0
 
     # Process blocks in reverse order to maintain positions
-    blocks_to_remove = []
+    changes = []  # (start, end, replacement_or_None)
 
     for i, m in enumerate(markers):
         block_start = m.start()
-        # Block ends at next marker or at end of head_content
-        if i + 1 < len(markers):
-            block_end = markers[i + 1].start()
-        else:
-            block_end = len(head_content)
-
+        block_end = markers[i + 1].start() if i + 1 < len(markers) else len(head_content)
         block_text = head_content[block_start:block_end]
 
-        # Check if this block references any of the mobile section IDs
-        is_mobile_block = False
-        for comp_id in mobile_id_set:
-            # Check for section-ID, col-ID, row-ID, heading-ID etc.
-            if comp_id in block_text:
-                is_mobile_block = True
-                break
+        # Extract all IDs in this block
+        ids_in_block = _extract_ids_from_css(block_text)
+        mobile_ids_in_block = ids_in_block & mobile_id_set
+        desktop_ids_in_block = ids_in_block - mobile_id_set
 
-        if is_mobile_block:
-            # Also check it doesn't contain desktop section IDs we want to keep
-            # Desktop sections we're keeping all have different IDs, so if the block
-            # ONLY contains mobile IDs, remove it
-            blocks_to_remove.append((block_start, block_end))
-            removed_bytes += block_end - block_start
+        if not mobile_ids_in_block:
+            # No mobile IDs — skip entirely
+            continue
+
+        if not desktop_ids_in_block:
+            # Pure mobile block — remove entirely
+            changes.append((block_start, block_end, None))
+            removed_block_bytes += block_end - block_start
             removed_blocks += 1
+        else:
+            # Mixed block — filter at rule level
+            filtered, bytes_removed = _filter_mobile_rules(block_text, mobile_id_set)
+            if bytes_removed > 0:
+                changes.append((block_start, block_end, filtered))
+                removed_rules_bytes += bytes_removed
 
-    # Remove blocks in reverse order
-    for start, end in reversed(blocks_to_remove):
-        # Also remove the preceding newline if present
+    # Apply changes in reverse order
+    for start, end, replacement in reversed(changes):
         actual_start = start
-        if actual_start > 0 and head_content[actual_start - 1] == '\n':
-            actual_start -= 1
-        head_content = head_content[:actual_start] + head_content[end:]
+        if replacement is None:
+            # Full removal — also eat preceding newline
+            if actual_start > 0 and head_content[actual_start - 1] == '\n':
+                actual_start -= 1
+            head_content = head_content[:actual_start] + head_content[end:]
+        else:
+            head_content = head_content[:start] + replacement + head_content[end:]
 
     html = head_content + body_content
 
-    print(f"[Phase 4] Removed {removed_blocks} CSS style blocks ({removed_bytes:,} bytes)")
+    total_removed = removed_block_bytes + removed_rules_bytes
+    print(f"[Phase 4] Removed {removed_blocks} pure-mobile CSS blocks ({removed_block_bytes:,} bytes)")
+    print(f"  + filtered mobile rules from mixed blocks ({removed_rules_bytes:,} bytes)")
+    print(f"  Total CSS removed: {total_removed:,} bytes")
     return html
 
 
