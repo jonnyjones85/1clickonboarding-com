@@ -1667,6 +1667,11 @@ p.mbc_logo_txt {
   #section-CDQ2SBB9N7 #button-I4V7ARO2II_btn .sub-heading-button { font-size: 12px !important; }
   #section-CDQ2SBB9N7 #button-I4V7ARO2II_btn .sticky-price-line { display: block !important; }
 
+  /* Prevent CTA boxes from overflowing viewport on mobile */
+  .top_right_sec { max-width: 100% !important; box-sizing: border-box !important; overflow: hidden !important; }
+  .top_right_sec .inner_white_bkg { max-width: 100% !important; box-sizing: border-box !important; }
+  .top_right_sec .inner_white_bkg img { max-width: 100% !important; height: auto !important; }
+
   /* Compact sticky sidebar CTA on mobile */
   .top_right_sec.big_cta { padding: 0 !important; }
   .top_right_sec.big_cta p.toptxt { font-size: 11px !important; padding: 6px 5px !important; margin: 0 !important; }
