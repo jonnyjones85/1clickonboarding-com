@@ -345,23 +345,27 @@ em { font-family: var(--sans); font-style: italic; }
 .pillar-badge {
   display: inline-block; font-size: 0.6rem; font-weight: 700;
   background: var(--green); color: var(--white); border-radius: 20px;
-  padding: 2px 8px; letter-spacing: 0.03em; text-transform: uppercase;
-  margin-left: var(--sp-2); vertical-align: middle;
+  padding: 2px 10px; letter-spacing: 0.03em; text-transform: uppercase;
+  vertical-align: middle; margin-left: var(--sp-3);
+}
+.pillar-num-row {
+  display: flex; align-items: center; gap: 0; margin-bottom: var(--sp-1);
 }
 .perk-list {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--sp-2) var(--sp-6);
-  margin-top: var(--sp-6);
-  padding-top: var(--sp-6);
-  border-top: 1px solid var(--white-06);
+  grid-column: 1 / -1;
+  display: flex; flex-wrap: wrap;
+  gap: var(--sp-2);
+  margin-top: var(--sp-2);
 }
 .perk-item {
-  display: flex; gap: var(--sp-2); align-items: center;
-  font-size: var(--fs-sm); color: var(--white-80);
+  display: inline-flex; align-items: center; gap: var(--sp-2);
+  font-size: var(--fs-xs); color: var(--white-80);
+  background: var(--white-03); border: 1px solid var(--white-06);
+  border-radius: 20px; padding: var(--sp-1) var(--sp-3);
+  white-space: nowrap;
 }
 .perk-check {
-  flex-shrink: 0; color: var(--green); font-weight: 700; font-size: var(--fs-xs);
+  flex-shrink: 0; color: var(--green); font-weight: 700; font-size: 0.6rem;
 }
 
 /* Problems */
@@ -750,9 +754,6 @@ em { font-family: var(--sans); font-style: italic; }
   .pillars-grid {
     grid-template-columns: 1fr;
   }
-  .perk-list {
-    grid-template-columns: 1fr;
-  }
   .sidebar-cta .cta-full { display: none; }
   .sidebar-cta .cta-short { display: inline; }
 }
@@ -864,15 +865,15 @@ em { font-family: var(--sans); font-style: italic; }
   <div class="pillars reveal">
     <h2>What You're Getting</h2>
     <div class="pillars-grid">
-      <div class="pillar-card pillar-featured stagger"><div class="pillar-num">01 <span class="pillar-badge">Most in-demand</span></div><div class="pillar-title">Fast Feedback - Skip the $5K Consultant</div><p class="pillar-desc">Your own private 1-on-1 channel with Katie and her team. Ask anything about your setup - systems, automations, workflows - and get expert feedback back fast. No booking calls. No waiting weeks. The kind of access consultants charge $5,000 for, included in your membership.</p></div>
+      <div class="pillar-card pillar-featured stagger"><div class="pillar-num-row"><span class="pillar-num">01</span><span class="pillar-badge">Most in-demand</span></div><div class="pillar-title">Fast Feedback - Skip the $5K Consultant</div><p class="pillar-desc">Your own private 1-on-1 channel with Katie and her team. Ask anything about your setup - systems, automations, workflows - and get expert feedback back fast. No booking calls. No waiting weeks. The kind of access consultants charge $5,000 for, included in your membership.</p></div>
       <div class="pillar-card stagger"><div class="pillar-num">02</div><div class="pillar-title">Monthly Live Calls with Katie &amp; Her Team</div><p class="pillar-desc">Live calls every month where you bring the problem and leave with the solution. Real-time feedback on your ClickUp setup, your automations, your workflows. Not theory - what's actually working right now in 7-figure businesses.</p></div>
-      <div class="pillar-card stagger"><div class="pillar-num">03</div><div class="pillar-title">30% Off Every Future Release</div><p class="pillar-desc">Every template, install pack, and resource we release - you get it at 30% off, automatically. One discounted purchase covers your membership. Everything after that is pure upside.</p></div>
-    </div>
-    <div class="perk-list">
-      <div class="perk-item"><span class="perk-check">&#10003;</span> Community chat with vetted operators and systems pros</div>
-      <div class="perk-item"><span class="perk-check">&#10003;</span> Architecture &amp; systems reviews from the team</div>
-      <div class="perk-item"><span class="perk-check">&#10003;</span> Recorded replays of all live sessions</div>
-      <div class="perk-item"><span class="perk-check">&#10003;</span> Priority early access to new templates and resources</div>
+      <div class="pillar-card stagger"><div class="pillar-num">03</div><div class="pillar-title">30% Off Every Future Template</div><p class="pillar-desc">Every template, install pack, and resource we release - you get it at 30% off, automatically. One discounted purchase covers your membership. Everything after that is pure upside.</p></div>
+      <div class="perk-list">
+        <div class="perk-item"><span class="perk-check">&#10003;</span> Community chat with vetted operators</div>
+        <div class="perk-item"><span class="perk-check">&#10003;</span> Architecture &amp; systems reviews</div>
+        <div class="perk-item"><span class="perk-check">&#10003;</span> Live course replays</div>
+        <div class="perk-item"><span class="perk-check">&#10003;</span> Priority early access to new templates</div>
+      </div>
     </div>
   </div>
 </div>
@@ -912,14 +913,15 @@ em { font-family: var(--sans); font-style: italic; }
       <div class="sidebar-stack-header">What You Get</div>
       <div class="sidebar-stack-row"><span class="label">Fast Feedback (Private Channel)</span><span class="value">$5,000/mo</span></div>
       <div class="sidebar-stack-row"><span class="label">Live Calls with Katie &amp; Team</span><span class="value">$2,000/mo</span></div>
+      <div class="sidebar-stack-row"><span class="label">Live Course Replays</span><span class="value">$500/mo</span></div>
       <div class="sidebar-stack-row"><span class="label">Community Chat</span><span class="value">$2,000/yr</span></div>
-      <div class="sidebar-stack-row"><span class="label">Architecture Reviews</span><span class="value">Included</span></div>
-      <div class="sidebar-stack-row"><span class="label">30% Product Discount</span><span class="value">Ongoing</span></div>
-      <div class="sidebar-stack-row"><span class="label">Session Replays</span><span class="value">Included</span></div>
-      <div class="sidebar-stack-total"><span class="label">Total Value</span><span class="value">$7,000+/mo</span></div>
+      <div class="sidebar-stack-row"><span class="label">Architecture Reviews</span><span class="value">$5,000/yr</span></div>
+      <div class="sidebar-stack-row"><span class="label">Priority Template Access</span><span class="value">Included</span></div>
+      <div class="sidebar-stack-row"><span class="label">30% Template Discount</span><span class="value">$2,000/yr</span></div>
+      <div class="sidebar-stack-total"><span class="label">Total Value</span><span class="value">$7,500+/mo</span></div>
     </div>
     <div class="sidebar-proof">
-      <strong>$6.57/day</strong> for direct access to the team behind $1.2M/month businesses. A single consulting call costs $500&ndash;$1,000.
+      <strong>$5.47/day</strong> for direct access to the team behind $1.2M/month businesses. A single consulting call costs $500&ndash;$1,000.
     </div>
   </div>
 
