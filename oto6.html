@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Systems Mastermind — Special One-Time Offer</title>
+<meta name="description" content="Join The Systems Mastermind — direct access to the team behind $1.2M/month businesses. Founding member rate: $97/month.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,wght@0,400;0,500;0,700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --fs-xs: 0.702rem;
+  --fs-sm: 0.833rem;
+  --fs-base: 1rem;
+  --fs-md: 1.125rem;
+  --fs-lg: 1.333rem;
+  --fs-xl: 1.777rem;
+  --fs-2xl: 2.369rem;
+  --fs-3xl: 3.157rem;
+  --fs-hero: clamp(2.6rem, 5.5vw, 4.2rem);
+
+  --lh-tight: 1.05;
+  --lh-heading: 1.15;
+  --lh-body: 1.6;
+  --lh-loose: 1.7;
+
+  --sp-1: 4px; --sp-2: 8px; --sp-3: 12px; --sp-4: 16px;
+  --sp-5: 20px; --sp-6: 24px; --sp-8: 32px; --sp-10: 40px;
+  --sp-12: 48px; --sp-16: 64px; --sp-20: 80px;
+
+  --navy: #0F1028;
+  --navy-mid: #141535;
+  --navy-light: #1a1b42;
+  --navy-card: #171840;
+
+  --white: #ffffff;
+  --white-95: rgba(255,255,255,0.95);
+  --white-80: rgba(255,255,255,0.80);
+  --white-55: rgba(255,255,255,0.55);
+  --white-30: rgba(255,255,255,0.30);
+  --white-12: rgba(255,255,255,0.12);
+  --white-06: rgba(255,255,255,0.06);
+  --white-03: rgba(255,255,255,0.03);
+
+  --orange: #FF9800;
+  --orange-hover: #FFa929;
+  --orange-glow: rgba(255,152,0,0.2);
+  --orange-subtle: rgba(255,152,0,0.08);
+
+  --green: #4bc653;
+  --green-deep: #2b8a35;
+  --green-light: rgba(75,198,83,0.1);
+  --green-border: rgba(75,198,83,0.3);
+
+  --red: #e63333;
+  --red-light: rgba(230,51,51,0.1);
+  --gold: #F5AD43;
+
+  --max-w: 1080px;
+  --gutter: var(--sp-6);
+  --col-left: 58%;
+  --col-right: 38%;
+  --col-gap: 4%;
+
+  --serif: 'Instrument Serif', Georgia, serif;
+  --sans: 'DM Sans', -apple-system, sans-serif;
+  --mono: 'DM Mono', 'SF Mono', monospace;
+
+  --ease-out: cubic-bezier(0.16,1,0.3,1);
+  --ease-spring: cubic-bezier(0.34,1.56,0.64,1);
+  --ease-smooth: cubic-bezier(0.22,1,0.36,1);
+  --dur-fast: 0.2s;
+  --dur-normal: 0.4s;
+  --dur-slow: 0.7s;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--navy);
+  color: var(--white-95);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Atmosphere */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 50% 40% at 50% 12%, rgba(255,152,0,0.03) 0%, transparent 70%),
+    radial-gradient(ellipse 30% 20% at 75% 50%, rgba(75,198,83,0.015) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  opacity: 0.018;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── LAYOUT ── */
+.page-wrap {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  position: relative;
+  z-index: 1;
+}
+.narrow-wrap {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  position: relative;
+  z-index: 1;
+}
+
+/* Two-column layout */
+.two-col {
+  display: flex;
+  gap: var(--col-gap);
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  position: relative;
+  z-index: 1;
+  align-items: flex-start;
+}
+.col-main {
+  flex: 0 0 var(--col-left);
+  min-width: 0;
+}
+.col-side {
+  flex: 0 0 var(--col-right);
+  position: sticky;
+  top: var(--sp-6);
+  min-width: 0;
+}
+
+section { padding: var(--sp-12) 0; position: relative; }
+
+.divider {
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--white-06) 20%, var(--white-12) 50%, var(--white-06) 80%, transparent);
+  margin: 0;
+}
+
+/* ── TYPOGRAPHY ── */
+h1, h2, h3 {
+  font-family: var(--serif);
+  font-weight: 400;
+  line-height: var(--lh-heading);
+  letter-spacing: -0.03em;
+  color: var(--white);
+  text-wrap: balance;
+}
+h1 { font-size: var(--fs-hero); line-height: var(--lh-tight); letter-spacing: -0.04em; }
+h2 { font-size: clamp(var(--fs-xl), 3.5vw, var(--fs-2xl)); }
+h3 { font-size: var(--fs-lg); }
+p { margin-bottom: 1em; }
+em { font-family: var(--serif); font-style: italic; }
+
+.text-orange { color: var(--orange); }
+.text-red { color: var(--red); }
+.text-green { color: var(--green); }
+.text-muted { color: var(--white-55); }
+.text-center { text-align: center; }
+.text-sm { font-size: var(--fs-sm); }
+.text-xs { font-size: var(--fs-xs); }
+.font-bold { font-weight: 700; }
+
+.hl {
+  background: linear-gradient(180deg, transparent 55%, rgba(255,152,0,0.25) 55%);
+  display: inline;
+  padding: 0 2px;
+  font-weight: 700;
+}
+
+.italic-accent { font-style: italic; color: var(--orange); }
+
+/* ── SCROLL ANIMATIONS ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity var(--dur-slow) var(--ease-smooth),
+              transform var(--dur-slow) var(--ease-out);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+.reveal.visible .stagger {
+  opacity: 0;
+  animation: stagger-in var(--dur-slow) var(--ease-out) forwards;
+}
+.reveal.visible .stagger:nth-child(1) { animation-delay: 0.05s; }
+.reveal.visible .stagger:nth-child(2) { animation-delay: 0.1s; }
+.reveal.visible .stagger:nth-child(3) { animation-delay: 0.15s; }
+.reveal.visible .stagger:nth-child(4) { animation-delay: 0.2s; }
+.reveal.visible .stagger:nth-child(5) { animation-delay: 0.25s; }
+.reveal.visible .stagger:nth-child(6) { animation-delay: 0.3s; }
+.reveal.visible .stagger:nth-child(7) { animation-delay: 0.35s; }
+
+@keyframes stagger-in {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ═══════════════════════════════════════
+   1. WARNING BANNER
+   ═══════════════════════════════════════ */
+.warning-banner {
+  background: rgba(230,51,51,0.08);
+  border-bottom: 1px solid rgba(230,51,51,0.15);
+  padding: var(--sp-3) var(--gutter);
+  text-align: center;
+  font-size: var(--fs-sm);
+  color: var(--red);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  position: relative;
+  z-index: 2;
+}
+
+/* ═══════════════════════════════════════
+   2. STEP PROGRESS BAR
+   ═══════════════════════════════════════ */
+.steps-bar { padding: var(--sp-8) 0 0; position: relative; z-index: 1; }
+.steps-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 360px;
+  margin: 0 auto;
+}
+.step { display: flex; flex-direction: column; align-items: center; flex: 1; }
+.step-circle {
+  width: 34px; height: 34px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--mono); font-weight: 500; font-size: var(--fs-sm);
+  border: 2px solid var(--white-30); color: var(--white-55);
+  background: transparent; position: relative; z-index: 2;
+  transition: all var(--dur-normal) var(--ease-spring);
+}
+.step.done .step-circle { background: var(--green); border-color: var(--green); color: var(--white); }
+.step.active .step-circle { background: var(--orange); border-color: var(--orange); color: var(--white); box-shadow: 0 0 16px var(--orange-glow); }
+.step-label { margin-top: var(--sp-2); font-family: var(--mono); font-size: var(--fs-xs); letter-spacing: 0.04em; text-transform: uppercase; color: var(--white-55); }
+.step.done .step-label { color: var(--green); }
+.step.active .step-label { color: var(--orange); }
+.step-line { flex: 0 0 48px; height: 2px; background: var(--white-12); margin-bottom: var(--sp-5); border-radius: 1px; }
+.step-line.filled { background: linear-gradient(90deg, var(--green-deep), var(--green)); }
+.step.done .step-circle::after { content: '\2713'; font-size: var(--fs-sm); }
+.step.done .step-circle span { display: none; }
+
+/* ═══════════════════════════════════════
+   3. ORDER CONFIRMATION
+   ═══════════════════════════════════════ */
+.confirm-section { padding: var(--sp-8) 0 var(--sp-4); }
+.confirm-box {
+  background: var(--green-light);
+  border: 1px solid var(--green-border);
+  border-radius: var(--sp-2);
+  padding: var(--sp-5) var(--sp-6);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.confirm-box::before {
+  content: '';
+  position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(75,198,83,0.06), transparent);
+  animation: shine-once 2s ease-in-out 0.8s 1 forwards;
+}
+@keyframes shine-once { to { left: 100%; } }
+.confirm-box h3 { font-family: var(--serif); font-weight: 400; color: var(--green); font-size: var(--fs-lg); margin-bottom: var(--sp-2); }
+.confirm-box p { color: var(--white-80); font-size: var(--fs-sm); margin-bottom: 0; line-height: var(--lh-body); }
+
+/* ═══════════════════════════════════════
+   4. HERO
+   ═══════════════════════════════════════ */
+.hero-section { padding: var(--sp-12) 0 var(--sp-10); text-align: center; }
+.hero-label { font-family: var(--mono); font-size: var(--fs-xs); letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange); margin-bottom: var(--sp-5); font-weight: 500; }
+.hero-section h1 { margin-bottom: var(--sp-5); }
+.hero-sub { font-size: clamp(var(--fs-base), 2vw, var(--fs-md)); color: var(--white-80); max-width: 560px; margin: 0 auto; line-height: var(--lh-loose); }
+
+/* ═══════════════════════════════════════
+   LEFT COLUMN SECTIONS
+   ═══════════════════════════════════════ */
+
+/* Bridge */
+.bridge { padding: var(--sp-10) 0; }
+.bridge p { color: var(--white-80); }
+.bridge .key-line {
+  color: var(--white);
+  font-size: var(--fs-md);
+  border-left: 3px solid var(--orange);
+  padding: var(--sp-3) var(--sp-5);
+  margin: var(--sp-6) 0;
+  line-height: var(--lh-body);
+  background: var(--orange-subtle);
+  border-radius: 0 var(--sp-1) var(--sp-1) 0;
+}
+
+/* Problems */
+.problems { padding: var(--sp-10) 0; }
+.problems h2 { margin-bottom: var(--sp-8); }
+.problem-item {
+  display: flex; gap: var(--sp-3); align-items: flex-start;
+  margin-bottom: var(--sp-3); padding: var(--sp-3);
+  border-radius: var(--sp-2);
+  transition: background var(--dur-fast) ease;
+}
+.problem-item:hover { background: var(--red-light); }
+.problem-icon {
+  flex-shrink: 0; width: 24px; height: 24px; border-radius: 50%;
+  background: var(--red-light); border: 1.5px solid var(--red);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--red); font-size: var(--fs-xs); font-weight: 700; margin-top: 2px;
+}
+.problem-text { color: var(--white-80); font-size: var(--fs-sm); line-height: var(--lh-body); }
+
+/* Solution */
+.solution { padding: var(--sp-10) 0; }
+.solution h2 { margin-bottom: var(--sp-4); }
+.solution .lead { font-size: var(--fs-sm); color: var(--white-80); margin-bottom: var(--sp-5); line-height: var(--lh-loose); }
+.solution .distinction { font-family: var(--serif); font-style: italic; font-size: var(--fs-md); color: var(--orange); line-height: 1.5; }
+
+/* Pillars */
+.pillars { padding: var(--sp-10) 0; }
+.pillars h2 { margin-bottom: var(--sp-8); }
+.pillar-card {
+  background: var(--navy-card); border: 1px solid var(--white-06);
+  border-radius: var(--sp-2); padding: var(--sp-5); margin-bottom: var(--sp-3);
+  transition: transform var(--dur-normal) var(--ease-spring), box-shadow var(--dur-normal) ease, border-color var(--dur-normal) ease;
+  cursor: default;
+}
+.pillar-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.3); border-color: var(--orange); }
+.pillar-num { font-family: var(--mono); font-size: var(--fs-xs); color: var(--orange); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: var(--sp-1); }
+.pillar-title { font-family: var(--serif); font-weight: 400; font-size: var(--fs-md); color: var(--white); margin-bottom: var(--sp-2); letter-spacing: -0.01em; }
+.pillar-desc { color: var(--white-80); font-size: var(--fs-sm); line-height: var(--lh-body); margin: 0; }
+
+/* Outcomes */
+.outcomes { padding: var(--sp-10) 0; }
+.outcomes h2 { margin-bottom: var(--sp-8); }
+.outcome-item {
+  display: flex; gap: var(--sp-3); align-items: flex-start;
+  margin-bottom: var(--sp-3); padding: var(--sp-2) var(--sp-3);
+  border-radius: var(--sp-2); transition: background var(--dur-fast) ease;
+}
+.outcome-item:hover { background: var(--green-light); }
+.outcome-check {
+  flex-shrink: 0; width: 20px; height: 20px; border-radius: 50%;
+  background: var(--green); display: flex; align-items: center; justify-content: center;
+  color: var(--white); font-size: 0.55rem; font-weight: 700; margin-top: 3px;
+}
+.outcome-text { color: var(--white-80); font-size: var(--fs-sm); line-height: var(--lh-body); }
+
+/* FAQ */
+.faq-section { padding: var(--sp-10) 0; }
+.faq-section h2 { margin-bottom: var(--sp-8); }
+.faq-item { border-bottom: 1px solid var(--white-06); }
+.faq-question {
+  width: 100%; display: flex; justify-content: space-between; align-items: center;
+  padding: var(--sp-4) 0; background: none; border: none;
+  color: var(--white); font-family: var(--sans); font-size: var(--fs-sm);
+  font-weight: 500; cursor: pointer; text-align: left; gap: var(--sp-3);
+  line-height: 1.4; transition: color var(--dur-fast) ease;
+}
+.faq-question:hover { color: var(--orange); }
+.faq-chevron { flex-shrink: 0; width: 16px; height: 16px; transition: transform 0.35s var(--ease-spring); color: var(--white-55); }
+.faq-item.open .faq-chevron { transform: rotate(180deg); color: var(--orange); }
+.faq-answer { max-height: 0; overflow: hidden; transition: max-height var(--dur-normal) var(--ease-smooth), opacity 0.3s ease; opacity: 0; }
+.faq-item.open .faq-answer { opacity: 1; max-height: 300px; }
+.faq-answer-inner { padding: 0 0 var(--sp-4); color: var(--white-80); font-size: var(--fs-sm); line-height: var(--lh-loose); }
+
+/* ═══════════════════════════════════════
+   RIGHT COLUMN — STICKY SIDEBAR
+   ═══════════════════════════════════════ */
+.sidebar-card {
+  background: var(--navy-card);
+  border: 1px solid var(--orange);
+  border-radius: var(--sp-3);
+  padding: var(--sp-8) var(--sp-6);
+  text-align: center;
+  box-shadow: 0 0 48px rgba(255,152,0,0.05), 0 12px 40px rgba(0,0,0,0.3);
+  margin-bottom: var(--sp-6);
+  position: relative;
+  overflow: hidden;
+}
+.sidebar-card::before {
+  content: '';
+  position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+  background: radial-gradient(circle at center, rgba(255,152,0,0.03) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.sidebar-card .price-old {
+  font-family: var(--mono); font-size: var(--fs-lg);
+  color: var(--white-55); text-decoration: line-through;
+  text-decoration-color: var(--red); text-decoration-thickness: 2px;
+  margin-bottom: var(--sp-1); position: relative;
+}
+.sidebar-card .price-new {
+  font-family: var(--serif); font-weight: 400;
+  font-size: var(--fs-3xl); color: var(--orange);
+  line-height: var(--lh-tight); margin-bottom: var(--sp-1);
+  letter-spacing: -0.03em; position: relative;
+}
+.sidebar-card .price-per {
+  font-family: var(--mono); font-size: var(--fs-xs);
+  color: var(--white-55); letter-spacing: 0.04em;
+  margin-bottom: var(--sp-5); position: relative;
+}
+
+.sidebar-card .founding-badge {
+  display: inline-flex; align-items: center; gap: var(--sp-2);
+  background: var(--orange-subtle); border: 1px solid rgba(255,152,0,0.2);
+  border-radius: 40px; padding: var(--sp-2) var(--sp-4);
+  font-family: var(--mono); font-size: var(--fs-xs);
+  color: var(--orange); font-weight: 500;
+  margin-bottom: var(--sp-5); position: relative;
+}
+.founding-badge .dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--orange);
+  animation: pulse-dot 2.5s ease-in-out infinite;
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.3; transform: scale(0.7); }
+}
+
+.sidebar-card .sidebar-cta {
+  display: block; width: 100%;
+  background: linear-gradient(180deg, var(--green) 0%, var(--green-deep) 100%);
+  color: var(--white); font-family: var(--sans); font-weight: 700;
+  font-size: var(--fs-sm); padding: var(--sp-4) var(--sp-5);
+  border-radius: var(--sp-2); text-decoration: none; text-align: center;
+  transition: transform var(--dur-fast) var(--ease-spring), box-shadow var(--dur-fast) ease;
+  box-shadow: 0 4px 16px rgba(75,198,83,0.2), inset 0 1px 0 rgba(255,255,255,0.12);
+  cursor: pointer; border: none; line-height: 1.4;
+  position: relative; overflow: hidden;
+}
+.sidebar-cta::after {
+  content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  transition: left var(--dur-slow) ease;
+}
+.sidebar-cta:hover::after { left: 100%; }
+.sidebar-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(75,198,83,0.3), inset 0 1px 0 rgba(255,255,255,0.12); }
+.sidebar-cta:active { transform: translateY(0) scale(0.98); }
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 4px 16px rgba(75,198,83,0.2), inset 0 1px 0 rgba(255,255,255,0.12); }
+  50% { box-shadow: 0 4px 24px rgba(75,198,83,0.35), inset 0 1px 0 rgba(255,255,255,0.12); }
+}
+.sidebar-cta { animation: pulse-glow 4s ease-in-out infinite; }
+.sidebar-cta:hover { animation: none; }
+
+.sidebar-card .cta-sub {
+  margin-top: var(--sp-3); font-size: var(--fs-xs); color: var(--white-55); position: relative;
+}
+
+.sidebar-card .decline-link {
+  display: inline-block; margin-top: var(--sp-3);
+  font-size: var(--fs-xs); color: var(--white-55);
+  text-decoration: none; font-style: italic; cursor: pointer;
+  border: 1px solid var(--white-12); border-radius: var(--sp-1);
+  background: transparent; padding: var(--sp-1) var(--sp-3);
+  font-family: var(--sans); transition: all var(--dur-fast) ease;
+}
+.sidebar-card .decline-link:hover { color: var(--white-80); border-color: var(--white-30); background: var(--white-03); }
+
+/* Value stack in sidebar */
+.sidebar-stack {
+  background: var(--navy-card);
+  border: 1px solid var(--white-06);
+  border-radius: var(--sp-2);
+  overflow: hidden;
+  margin-bottom: var(--sp-6);
+}
+.sidebar-stack-header {
+  background: var(--orange);
+  padding: var(--sp-3) var(--sp-4);
+  font-family: var(--mono); font-size: var(--fs-xs);
+  font-weight: 500; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--white);
+  text-shadow: 0 1px 1px rgba(0,0,0,0.1);
+}
+.sidebar-stack-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: var(--sp-3) var(--sp-4);
+  border-bottom: 1px solid var(--white-06);
+  font-size: var(--fs-xs);
+  transition: background var(--dur-fast) ease;
+}
+.sidebar-stack-row:hover { background: var(--white-03); }
+.sidebar-stack-row:last-child { border-bottom: none; }
+.sidebar-stack-row .label { color: var(--white-80); }
+.sidebar-stack-row .value { color: var(--orange); font-family: var(--mono); font-weight: 500; }
+.sidebar-stack-total {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: var(--sp-3) var(--sp-4);
+  border-top: 2px solid var(--orange);
+  background: var(--orange-subtle);
+  font-weight: 700; font-size: var(--fs-sm);
+}
+.sidebar-stack-total .label { color: var(--white); }
+.sidebar-stack-total .value { color: var(--orange); font-family: var(--mono); }
+
+/* Social proof nudge in sidebar */
+.sidebar-proof {
+  background: var(--navy-card);
+  border: 1px solid var(--white-06);
+  border-radius: var(--sp-2);
+  padding: var(--sp-4);
+  font-size: var(--fs-xs);
+  color: var(--white-55);
+  line-height: var(--lh-body);
+  text-align: center;
+}
+.sidebar-proof strong { color: var(--white-80); }
+
+/* Section divider in left col */
+.col-divider {
+  border: none;
+  height: 1px;
+  background: var(--white-06);
+  margin: 0;
+}
+
+/* ═══════════════════════════════════════
+   FULL-WIDTH BOTTOM SECTIONS
+   ═══════════════════════════════════════ */
+
+/* Full-width CTA */
+.cta-full-section {
+  padding: var(--sp-16) 0 var(--sp-10);
+  text-align: center;
+}
+.cta-full-section h2 { margin-bottom: var(--sp-5); }
+.cta-full-section .urgency-text {
+  color: var(--white-80); max-width: 560px;
+  margin: 0 auto var(--sp-8); font-size: var(--fs-base);
+}
+
+.cta-btn {
+  display: inline-block;
+  background: linear-gradient(180deg, var(--green) 0%, var(--green-deep) 100%);
+  color: var(--white); font-family: var(--sans); font-weight: 700;
+  font-size: var(--fs-base); padding: var(--sp-5) var(--sp-10);
+  border-radius: var(--sp-2); text-decoration: none;
+  transition: transform var(--dur-fast) var(--ease-spring), box-shadow var(--dur-fast) ease;
+  box-shadow: 0 4px 16px rgba(75,198,83,0.2), inset 0 1px 0 rgba(255,255,255,0.12);
+  cursor: pointer; border: none; line-height: 1.4;
+  position: relative; overflow: hidden;
+}
+.cta-btn::after {
+  content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  transition: left var(--dur-slow) ease;
+}
+.cta-btn:hover::after { left: 100%; }
+.cta-btn:hover { transform: translateY(-2px) scale(1.01); box-shadow: 0 8px 28px rgba(75,198,83,0.3), inset 0 1px 0 rgba(255,255,255,0.12); }
+.cta-btn:active { transform: translateY(0) scale(0.98); }
+.cta-btn { animation: pulse-glow 4s ease-in-out infinite; }
+.cta-btn:hover { animation: none; }
+
+.cta-sub { margin-top: var(--sp-3); font-size: var(--fs-sm); color: var(--white-55); }
+
+.decline-link-full {
+  display: inline-block; margin-top: var(--sp-4);
+  font-size: var(--fs-sm); color: var(--white-55);
+  text-decoration: none; font-style: italic; cursor: pointer;
+  border: 1px solid var(--white-12); border-radius: var(--sp-1);
+  background: transparent; padding: var(--sp-2) var(--sp-4);
+  font-family: var(--sans); transition: all var(--dur-fast) ease;
+}
+.decline-link-full:hover { color: var(--white-80); border-color: var(--white-30); background: var(--white-03); }
+
+/* ═══════════════════════════════════════
+   DOWNSELL POPUP
+   ═══════════════════════════════════════ */
+.downsell-overlay {
+  display: none; position: fixed; inset: 0;
+  background: rgba(15,16,40,0.9); z-index: 1000;
+  align-items: center; justify-content: center;
+  padding: var(--sp-5); backdrop-filter: blur(8px);
+}
+.downsell-overlay.active { display: flex; }
+.downsell-card {
+  background: var(--navy-card); border: 1px solid var(--orange);
+  border-radius: var(--sp-3); padding: var(--sp-10) var(--sp-8);
+  max-width: 460px; width: 100%; text-align: center;
+  position: relative; animation: popup-in 0.4s var(--ease-spring);
+  box-shadow: 0 24px 64px rgba(0,0,0,0.5), 0 0 80px rgba(255,152,0,0.06);
+}
+@keyframes popup-in {
+  from { opacity: 0; transform: scale(0.92) translateY(16px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+.downsell-close {
+  position: absolute; top: var(--sp-3); right: var(--sp-4);
+  background: none; border: none; color: var(--white-55);
+  font-size: 1.3rem; cursor: pointer; padding: var(--sp-1); line-height: 1;
+  transition: color var(--dur-fast) ease, transform var(--dur-fast) ease;
+}
+.downsell-close:hover { color: var(--white); transform: scale(1.15); }
+.downsell-card .wait-label { font-family: var(--mono); font-size: var(--fs-xs); letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: var(--sp-3); font-weight: 500; }
+.downsell-card h3 { font-family: var(--serif); font-size: var(--fs-xl); font-weight: 400; margin-bottom: var(--sp-3); color: var(--white); }
+.downsell-card .downsell-price { font-family: var(--serif); font-weight: 400; font-size: var(--fs-2xl); color: var(--orange); margin: var(--sp-3) 0 var(--sp-1); }
+.downsell-card .downsell-detail { font-size: var(--fs-sm); color: var(--white-80); margin-bottom: var(--sp-5); }
+.downsell-card .cta-btn { font-size: var(--fs-sm); padding: var(--sp-4) var(--sp-8); }
+.downsell-card .final-decline {
+  display: block; margin-top: var(--sp-4); font-size: var(--fs-xs);
+  color: var(--white-55); text-decoration: none; cursor: pointer;
+  background: none; border: none; font-style: italic; font-family: var(--sans);
+  transition: color var(--dur-fast) ease;
+}
+.downsell-card .final-decline:hover { color: var(--white-80); }
+
+/* ═══════════════════════════════════════
+   FOOTER
+   ═══════════════════════════════════════ */
+.page-footer {
+  padding: var(--sp-6) 0 var(--sp-10);
+  text-align: center;
+  border-top: 1px solid var(--white-06);
+  position: relative; z-index: 1;
+}
+.page-footer p { font-size: var(--fs-xs); color: var(--white-55); max-width: 480px; margin: 0 auto; line-height: var(--lh-body); }
+
+/* ═══════════════════════════════════════
+   RESPONSIVE — Collapse to single column
+   ═══════════════════════════════════════ */
+@media (max-width: 860px) {
+  .two-col {
+    flex-direction: column;
+    gap: var(--sp-10);
+  }
+  .col-main, .col-side {
+    flex: 1 1 100%;
+  }
+  .col-side {
+    position: static;
+    order: -1;
+  }
+  /* On mobile, show sidebar card first (pricing at top) then content below */
+  .col-main { order: 1; }
+}
+
+@media (max-width: 768px) {
+  :root { --gutter: var(--sp-5); }
+  body { font-size: 15px; }
+  section { padding: var(--sp-10) 0; }
+  .pillar-card { padding: var(--sp-4); }
+  .cta-btn { font-size: var(--fs-sm); padding: var(--sp-4) var(--sp-6); }
+  .step-line { flex: 0 0 32px; }
+}
+
+@media (max-width: 480px) {
+  :root { --gutter: var(--sp-4); }
+  .step-label { font-size: 0.62rem; }
+  .step-circle { width: 30px; height: 30px; font-size: var(--fs-xs); }
+  .step-line { flex: 0 0 20px; }
+  .downsell-card { padding: var(--sp-6) var(--sp-5); }
+  .cta-btn { padding: var(--sp-4) var(--sp-5); }
+  .cta-btn .cta-full { display: none; }
+  .cta-btn .cta-short { display: inline; }
+  .sidebar-cta .cta-full { display: none; }
+  .sidebar-cta .cta-short { display: inline; }
+}
+
+.cta-btn .cta-short, .sidebar-cta .cta-short { display: none; }
+
+/* ═══════════════════════════════════════
+   ACCESSIBILITY
+   ═══════════════════════════════════════ */
+.faq-question:focus-visible { outline: 2px solid var(--orange); outline-offset: 4px; border-radius: 2px; }
+.cta-btn:focus-visible, .sidebar-cta:focus-visible { outline: 2px solid var(--white); outline-offset: 4px; }
+.decline-link:focus-visible, .decline-link-full:focus-visible,
+.downsell-close:focus-visible, .final-decline:focus-visible { outline: 2px solid var(--orange); outline-offset: 2px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .reveal.visible .stagger { animation: none; opacity: 1; }
+  .cta-btn, .sidebar-cta { animation: none; }
+  .cta-btn::after, .sidebar-cta::after { display: none; }
+  .founding-badge .dot { animation: none; }
+  .downsell-card { animation: none; }
+  .confirm-box::before { animation: none; display: none; }
+  html { scroll-behavior: auto; }
+  .pillar-card, .problem-item, .outcome-item { transition: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- 1. WARNING BANNER -->
+<div class="warning-banner" role="alert">
+  Do not close this window or click the back button. This may result in your order being double-billed.
+</div>
+
+<!-- 2. STEPS -->
+<div class="steps-bar page-wrap">
+  <div class="steps-row">
+    <div class="step done"><div class="step-circle"><span>1</span></div><div class="step-label">Install Pack</div></div>
+    <div class="step-line filled"></div>
+    <div class="step active"><div class="step-circle"><span>2</span></div><div class="step-label">Upgrade</div></div>
+    <div class="step-line"></div>
+    <div class="step"><div class="step-circle"><span>3</span></div><div class="step-label">Complete</div></div>
+  </div>
+</div>
+
+<!-- 3. ORDER CONFIRMATION -->
+<section class="confirm-section narrow-wrap reveal">
+  <div class="confirm-box">
+    <h3>Order Confirmed</h3>
+    <p>Your 1 Click Client Onboarding Install Pack is on its way. Login details arrive in 5 minutes.</p>
+    <p style="margin-top:6px">Read this page carefully&mdash;it contains a one-time offer you won't see again.</p>
+  </div>
+</section>
+
+<!-- 4. HERO -->
+<section class="hero-section narrow-wrap reveal">
+  <div class="hero-label">Step 2 of 3 &mdash; Special One-Time Offer</div>
+  <h1>The Systems<br><span class="italic-accent">Mastermind</span></h1>
+  <p class="hero-sub">Get direct access to the team behind $1.2M/month businesses&mdash;at a fraction of the cost of a single consulting call.</p>
+</section>
+
+<hr class="divider">
+
+<!-- ═══════════════════════════════════
+     TWO-COLUMN LAYOUT BEGINS
+     Left: content | Right: sticky pricing
+     ═══════════════════════════════════ -->
+<div class="two-col" style="padding-top:var(--sp-12);">
+
+  <!-- LEFT COLUMN -->
+  <div class="col-main">
+
+    <!-- 5. BRIDGE -->
+    <div class="bridge reveal">
+      <p>You just made a smart move. The 1 Click Client Onboarding system is going to save you hours every single week.</p>
+      <p>But here's what we've learned after installing this system for hundreds of businesses:</p>
+      <p class="key-line">The template is <span class="hl">20% of the result.</span> The other 80% comes from knowing how to adapt it, optimize it, and build on top of it as your business grows.</p>
+      <p>That's why our most successful clients don't just use our templates&mdash;they stay connected to the team that built them.</p>
+    </div>
+
+    <hr class="col-divider">
+
+    <!-- 6. PROBLEMS -->
+    <div class="problems reveal">
+      <h2>Here's What Happens<br><span class="italic-accent">Without Support</span></h2>
+      <div class="problem-item stagger"><div class="problem-icon">&times;</div><p class="problem-text">You hit a wall customizing the system for your specific workflow</p></div>
+      <div class="problem-item stagger"><div class="problem-icon">&times;</div><p class="problem-text">You Google a fix at midnight and waste 3 hours on a solution that doesn't work</p></div>
+      <div class="problem-item stagger"><div class="problem-icon">&times;</div><p class="problem-text">Your business grows, but your systems don't&mdash;and things start breaking</p></div>
+      <div class="problem-item stagger"><div class="problem-icon">&times;</div><p class="problem-text">You hire a consultant for $5,000+ who gives you theory instead of answers</p></div>
+      <div class="problem-item stagger"><div class="problem-icon">&times;</div><p class="problem-text">You're the only person who understands systems&mdash;and it's lonely at the top</p></div>
+    </div>
+
+    <hr class="col-divider">
+
+    <!-- 7. SOLUTION -->
+    <div class="solution reveal">
+      <h2>Introducing The Systems <span class="italic-accent">Mastermind</span></h2>
+      <p class="lead">A vetted, confidential community where business owners and systems experts get direct access to the 8 Figure Systems team&mdash;the same operators behind companies generating up to $1.2M/month.</p>
+      <p class="distinction">This is not a course. This is not a group coaching program.<br>This is a room full of operators who've already built what you're trying to build.</p>
+    </div>
+
+    <hr class="col-divider">
+
+    <!-- 8. PILLARS -->
+    <div class="pillars reveal">
+      <h2>What You're Getting</h2>
+      <div class="pillar-card stagger"><div class="pillar-num">01</div><div class="pillar-title">A High-Signal Community</div><p class="pillar-desc">Business owners and systems pros. Every conversation focused on operations, automations, and scaling. No noise. No hobbyists.</p></div>
+      <div class="pillar-card stagger"><div class="pillar-num">02</div><div class="pillar-title">Direct Access to a 7-Figure Systems Team</div><p class="pillar-desc">Ask questions, get architecture reviews, and tap into cross-industry expertise spanning coaching, agencies, SaaS, and local services.</p></div>
+      <div class="pillar-card stagger"><div class="pillar-num">03</div><div class="pillar-title">Fast Feedback&mdash;$5K Consultant Replacement</div><p class="pillar-desc">Daily troubleshooting, build guidance, and expert recommendations. Real answers from people who've already solved it.</p></div>
+      <div class="pillar-card stagger"><div class="pillar-num">04</div><div class="pillar-title">Monthly Live Trainings</div><p class="pillar-desc">Focused sessions on frameworks, tools, and principles scaling 7-figure businesses right now.</p></div>
+      <div class="pillar-card stagger"><div class="pillar-num">05</div><div class="pillar-title">Inner Circle&mdash;Win a $50K System Build</div><p class="pillar-desc">Each month, one active member receives a full system build-out worth up to $50,000&mdash;designed, built, and installed by our team.</p></div>
+      <div class="pillar-card stagger"><div class="pillar-num">06</div><div class="pillar-title">Battle-Tested Templates &amp; Resources</div><p class="pillar-desc">Exclusive pricing on resources proven across hundreds of 7-figure clients&mdash;including future install packs.</p></div>
+      <div class="pillar-card stagger"><div class="pillar-num">07</div><div class="pillar-title">A Growth Partner for the Long Haul</div><p class="pillar-desc">Answers, frameworks, and support based on real experience scaling multi-million dollar businesses.</p></div>
+    </div>
+
+    <hr class="col-divider">
+
+    <!-- 11. OUTCOMES -->
+    <div class="outcomes reveal">
+      <h2>After Joining, You'll</h2>
+      <div class="outcome-item stagger"><div class="outcome-check">&#10003;</div><p class="outcome-text">Get expert answers in minutes, not months</p></div>
+      <div class="outcome-item stagger"><div class="outcome-check">&#10003;</div><p class="outcome-text">Stop wasting money on consultants who give theory instead of solutions</p></div>
+      <div class="outcome-item stagger"><div class="outcome-check">&#10003;</div><p class="outcome-text">Adapt and optimize your install packs with guidance from the builders</p></div>
+      <div class="outcome-item stagger"><div class="outcome-check">&#10003;</div><p class="outcome-text">See exactly how $1.2M/month businesses structure operations</p></div>
+      <div class="outcome-item stagger"><div class="outcome-check">&#10003;</div><p class="outcome-text">Build automations that actually scale</p></div>
+      <div class="outcome-item stagger"><div class="outcome-check">&#10003;</div><p class="outcome-text">Access templates proven across hundreds of 7-figure businesses</p></div>
+      <div class="outcome-item stagger"><div class="outcome-check">&#10003;</div><p class="outcome-text">Become eligible for a $50K full system build</p></div>
+    </div>
+
+    <hr class="col-divider">
+
+    <!-- 13. FAQ -->
+    <div class="faq-section reveal">
+      <h2>FAQ</h2>
+      <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>"I just bought the Install Pack&mdash;isn't that enough?"</span><svg class="faq-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><polyline points="5 8 10 13 15 8"/></svg></button><div class="faq-answer" role="region"><div class="faq-answer-inner">The Install Pack gives you the system. The Mastermind gives you the team that built it. When you hit a wall customizing it or want to build more on top&mdash;that's where the Mastermind pays for itself in the first week.</div></div></div>
+      <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>"Can't I just Google this stuff?"</span><svg class="faq-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><polyline points="5 8 10 13 15 8"/></svg></button><div class="faq-answer" role="region"><div class="faq-answer-inner">You can. And you'll spend weeks testing solutions that don't work. The Mastermind gives you answers in minutes, not months. Trial and error always costs more than asking an expert.</div></div></div>
+      <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>"How is this different from other communities?"</span><svg class="faq-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><polyline points="5 8 10 13 15 8"/></svg></button><div class="faq-answer" role="region"><div class="faq-answer-inner">Most communities are full of beginners. This one is vetted. You're surrounded by operators actively scaling real businesses, with access to a working systems team&mdash;not influencers.</div></div></div>
+      <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>"I already have a systems person / VA."</span><svg class="faq-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><polyline points="5 8 10 13 15 8"/></svg></button><div class="faq-answer" role="region"><div class="faq-answer-inner">Great. Imagine what they could do with access to a community of experts and battle-tested templates. This makes your existing team better and faster.</div></div></div>
+      <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>"What's the Inner Circle?"</span><svg class="faq-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><polyline points="5 8 10 13 15 8"/></svg></button><div class="faq-answer" role="region"><div class="faq-answer-inner">An earned tier for members who show up and add value. Inner Circle members are eligible for a full system build-out&mdash;worth up to $50,000&mdash;implemented by our team at no extra cost.</div></div></div>
+      <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>"How much time do I need?"</span><svg class="faq-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><polyline points="5 8 10 13 15 8"/></svg></button><div class="faq-answer" role="region"><div class="faq-answer-inner">As much or as little as you want. Ask a question in 2 minutes and get an answer. Attend a live training for an hour. The value scales with your engagement.</div></div></div>
+    </div>
+
+  </div><!-- /col-main -->
+
+  <!-- RIGHT COLUMN — Sticky Sidebar -->
+  <div class="col-side">
+
+    <!-- Pricing Card -->
+    <div class="sidebar-card">
+      <div class="price-old">$197/mo</div>
+      <div class="price-new">$97</div>
+      <div class="price-per">per month</div>
+      <div class="founding-badge">
+        <span class="dot"></span>
+        <span id="spots-count">23</span> of 50 spots left
+      </div>
+      <a href="#checkout" class="sidebar-cta"><span class="cta-full">Yes! Add For $97/month</span><span class="cta-short">Add &mdash; $97/mo</span></a>
+      <p class="cta-sub">Cancel anytime. No commitment.</p>
+      <button class="decline-link" onclick="document.getElementById('downsell').classList.add('active')">No thanks</button>
+    </div>
+
+    <!-- Value Stack -->
+    <div class="sidebar-stack">
+      <div class="sidebar-stack-header">What You Get</div>
+      <div class="sidebar-stack-row"><span class="label">Vetted Community</span><span class="value">$2,000/yr</span></div>
+      <div class="sidebar-stack-row"><span class="label">7-Figure Team Access</span><span class="value">$5,000/mo</span></div>
+      <div class="sidebar-stack-row"><span class="label">Fast Feedback</span><span class="value">$5,000/mo</span></div>
+      <div class="sidebar-stack-row"><span class="label">Live Trainings</span><span class="value">$500/mo</span></div>
+      <div class="sidebar-stack-row"><span class="label">Inner Circle ($50K Build)</span><span class="value">Priceless</span></div>
+      <div class="sidebar-stack-row"><span class="label">Templates &amp; Pricing</span><span class="value">$2,000/yr</span></div>
+      <div class="sidebar-stack-row"><span class="label">Growth Support</span><span class="value">Ongoing</span></div>
+      <div class="sidebar-stack-total"><span class="label">Total Value</span><span class="value">$10,500+/mo</span></div>
+    </div>
+
+    <!-- Social proof -->
+    <div class="sidebar-proof">
+      <strong>$3.23/day</strong> for direct access to the team behind $1.2M/month businesses. A single consulting call costs $500&ndash;$1,000.
+    </div>
+
+  </div><!-- /col-side -->
+
+</div><!-- /two-col -->
+
+<hr class="divider">
+
+<!-- 14. FINAL CTA — Full width -->
+<section class="cta-full-section narrow-wrap reveal">
+  <h2>This Offer Is Only<br><em>Available Right Now</em></h2>
+  <p class="urgency-text">Once you leave this page, you won't see this price again. Lock in the founding member rate of <strong style="color:var(--orange)">$97/month</strong> for as long as you stay.</p>
+  <a href="#checkout" class="cta-btn"><span class="cta-full">Yes! Add The Systems Mastermind For $97/month</span><span class="cta-short">Add Mastermind &mdash; $97/mo</span></a>
+  <p class="cta-sub">Cancel anytime. Your Install Pack order is confirmed regardless.</p>
+  <button class="decline-link-full" id="final-decline" onclick="document.getElementById('downsell').classList.add('active')">No thanks, I'll pass on the founding member rate.</button>
+</section>
+
+<!-- FOOTER -->
+<footer class="page-footer page-wrap">
+  <p>Your Install Pack order is confirmed and processing. This upgrade is optional. &copy; 2026 8 Figure Systems. All rights reserved.</p>
+</footer>
+
+<!-- DOWNSELL POPUP -->
+<div class="downsell-overlay" id="downsell" role="dialog" aria-modal="true" aria-label="Special offer">
+  <div class="downsell-card">
+    <button class="downsell-close" aria-label="Close" onclick="document.getElementById('downsell').classList.remove('active')">&times;</button>
+    <p class="wait-label">Wait&mdash;before you go</p>
+    <h3>What If You Could Try It<br>For Just $47?</h3>
+    <p class="downsell-detail">First month at a reduced rate. Same access. Same team. Same everything.</p>
+    <div class="downsell-price">$47</div>
+    <p class="downsell-detail" style="margin-top:4px">first month, then $97/mo</p>
+    <a href="#checkout-downsell" class="cta-btn">Yes! Give Me Access For $47</a>
+    <button class="final-decline" onclick="document.getElementById('downsell').classList.remove('active')">No thanks, I don't need systems support right now.</button>
+  </div>
+</div>
+
+<!-- JAVASCRIPT -->
+<script>
+// FAQ
+document.querySelectorAll('.faq-question').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(el => {
+      el.classList.remove('open');
+      el.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+    });
+    if (!isOpen) { item.classList.add('open'); btn.setAttribute('aria-expanded', 'true'); }
+  });
+});
+
+// Scroll reveals
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+}, { threshold: 0.08, rootMargin: '0px 0px -50px 0px' });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// Downsell
+const ds = document.getElementById('downsell');
+ds.addEventListener('click', (e) => { if (e.target === e.currentTarget) e.currentTarget.classList.remove('active'); });
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') ds.classList.remove('active'); });
+
+// Founding spots
+let spotsEl = document.getElementById('spots-count');
+if (spotsEl) {
+  let spots = parseInt(spotsEl.textContent);
+  setTimeout(() => {
+    if (spots > 18) {
+      spots--;
+      spotsEl.textContent = spots;
+      spotsEl.style.transition = 'color 0.4s ease';
+      spotsEl.style.color = 'var(--gold)';
+      setTimeout(() => { spotsEl.style.color = ''; }, 2000);
+    }
+  }, 50000 + Math.random() * 40000);
+}
+</script>
+</body>
+</html>
