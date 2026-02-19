@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Systems Mastermind — Special One-Time Offer</title>
+<meta name="description" content="Join The Systems Mastermind — direct access to the team behind $1.2M/month businesses. Founding member rate: $97/month.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;0,900;1,400&family=Kalam:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════
+   RESET & BASE — GHL Style
+   ═══════════════════════════════════════ */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --navy: #0F1028;
+  --navy-light: #161836;
+  --orange: #FF9800;
+  --orange-hover: #FFa929;
+  --orange-glow: rgba(255, 152, 0, 0.3);
+  --green: #3ea244;
+  --green-light: rgba(62, 162, 68, 0.15);
+  --green-border: rgba(62, 162, 68, 0.4);
+  --red: #cc0000;
+  --red-light: rgba(204, 0, 0, 0.1);
+  --yellow-hl: #FFd300;
+  --gold-accent: #F5AD43;
+  --white: #ffffff;
+  --white-dim: rgba(255, 255, 255, 0.75);
+  --white-muted: rgba(255, 255, 255, 0.5);
+  --gray: #888888;
+  --font: 'Roboto', -apple-system, sans-serif;
+  --hand: 'Kalam', cursive;
+  --max-w: 720px;
+  --gutter: 24px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--navy);
+  color: var(--white);
+  font-family: var(--font);
+  font-size: 17px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ═══════════════════════════════════════
+   LAYOUT
+   ═══════════════════════════════════════ */
+.page-wrap {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+section {
+  padding: 48px 0;
+  position: relative;
+}
+
+/* White dashed border container — GHL style */
+.dashed-container {
+  border: 3px dashed rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  padding: 40px 28px;
+  margin: 0 auto;
+  max-width: var(--max-w);
+}
+
+/* Subtle section divider */
+.section-divider {
+  border: none;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+  margin: 0;
+}
+
+/* ═══════════════════════════════════════
+   TYPOGRAPHY
+   ═══════════════════════════════════════ */
+h1, h2, h3 { font-family: var(--font); font-weight: 900; line-height: 1.2; }
+
+h1 { font-size: clamp(2.2rem, 5vw, 3.2rem); letter-spacing: -0.02em; }
+h2 { font-size: clamp(1.5rem, 3.5vw, 2rem); }
+h3 { font-size: clamp(1.1rem, 2.5vw, 1.4rem); }
+
+p { margin-bottom: 1em; }
+
+.text-orange { color: var(--orange); }
+.text-red { color: var(--red); }
+.text-green { color: var(--green); }
+.text-white { color: var(--white); }
+.text-muted { color: var(--white-muted); }
+.text-center { text-align: center; }
+.text-hand { font-family: var(--hand); }
+.text-sm { font-size: 0.88rem; }
+.text-xs { font-size: 0.78rem; }
+.font-bold { font-weight: 700; }
+
+/* Yellow highlight inline — GHL style */
+.hl {
+  background: var(--yellow-hl);
+  color: #000;
+  display: inline;
+  padding: 0 4px;
+  font-weight: 700;
+}
+
+/* ═══════════════════════════════════════
+   FADE-UP ON SCROLL
+   ═══════════════════════════════════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ═══════════════════════════════════════
+   1. WARNING BANNER
+   ═══════════════════════════════════════ */
+.warning-banner {
+  background: #fff;
+  border-bottom: 2px solid var(--red);
+  padding: 12px var(--gutter);
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--red);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+/* ═══════════════════════════════════════
+   2. STEP PROGRESS BAR
+   ═══════════════════════════════════════ */
+.steps-bar {
+  padding: 28px 0 0;
+}
+.steps-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  max-width: 420px;
+  margin: 0 auto;
+}
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  position: relative;
+}
+.step-circle {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 0.9rem;
+  border: 3px solid var(--white-muted);
+  color: var(--white-muted);
+  background: transparent;
+  position: relative;
+  z-index: 2;
+}
+.step.done .step-circle {
+  background: var(--green);
+  border-color: var(--green);
+  color: var(--white);
+}
+.step.active .step-circle {
+  background: var(--orange);
+  border-color: var(--orange);
+  color: var(--white);
+  box-shadow: 0 0 16px var(--orange-glow);
+}
+.step-label {
+  margin-top: 8px;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--white-muted);
+  font-weight: 700;
+}
+.step.done .step-label { color: var(--green); }
+.step.active .step-label { color: var(--orange); }
+
+.step-line {
+  flex: 0 0 60px;
+  height: 3px;
+  background: var(--white-muted);
+  margin-bottom: 20px;
+}
+.step-line.filled { background: var(--green); }
+
+.step.done .step-circle::after {
+  content: '\2713';
+  font-size: 1rem;
+}
+.step.done .step-circle span { display: none; }
+
+/* ═══════════════════════════════════════
+   3. ORDER CONFIRMATION
+   ═══════════════════════════════════════ */
+.confirm-section {
+  padding: 36px 0 12px;
+}
+.confirm-box {
+  background: var(--green-light);
+  border: 2px solid var(--green-border);
+  border-radius: 6px;
+  padding: 24px 28px;
+  text-align: center;
+}
+.confirm-box h3 {
+  font-weight: 900;
+  color: var(--green);
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+}
+.confirm-box p {
+  color: var(--white-dim);
+  font-size: 0.92rem;
+  margin-bottom: 0;
+  line-height: 1.55;
+}
+
+/* ═══════════════════════════════════════
+   4. HERO
+   ═══════════════════════════════════════ */
+.hero-section {
+  padding: 48px 0 40px;
+  text-align: center;
+}
+.hero-label {
+  font-size: 0.82rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+.hero-section h1 {
+  margin-bottom: 20px;
+  color: var(--white);
+}
+.hero-sub {
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  color: var(--white-dim);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* ═══════════════════════════════════════
+   5. BRIDGE COPY
+   ═══════════════════════════════════════ */
+.bridge {
+  padding: 36px 0 40px;
+}
+.bridge p { color: var(--white-dim); }
+.bridge .key-line {
+  color: var(--white);
+  font-weight: 700;
+  font-size: 1.05rem;
+  border-left: 4px solid var(--orange);
+  padding-left: 20px;
+  margin: 24px 0;
+  line-height: 1.55;
+}
+
+/* ═══════════════════════════════════════
+   6. PROBLEM AGITATION
+   ═══════════════════════════════════════ */
+.problems {
+  padding: 40px 0;
+}
+.problems h2 { margin-bottom: 28px; color: var(--red); }
+.problem-item {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  margin-bottom: 18px;
+}
+.problem-icon {
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--red-light);
+  border: 2px solid var(--red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--red);
+  font-size: 0.8rem;
+  font-weight: 900;
+  margin-top: 2px;
+}
+.problem-text {
+  color: var(--white-dim);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+/* ═══════════════════════════════════════
+   7. SOLUTION INTRO
+   ═══════════════════════════════════════ */
+.solution {
+  padding: 40px 0;
+  text-align: center;
+}
+.solution h2 { margin-bottom: 16px; color: var(--orange); }
+.solution .lead {
+  font-size: 1rem;
+  color: var(--white-dim);
+  max-width: 640px;
+  margin: 0 auto 20px;
+}
+.solution .distinction {
+  font-family: var(--hand);
+  font-size: 1.2rem;
+  color: var(--yellow-hl);
+  line-height: 1.6;
+}
+
+/* ═══════════════════════════════════════
+   8. 7 PILLARS
+   ═══════════════════════════════════════ */
+.pillars {
+  padding: 40px 0;
+}
+.pillars > .page-wrap > h2 { text-align: center; margin-bottom: 36px; }
+
+.pillar-card {
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-left: 4px solid var(--orange);
+  border-radius: 4px;
+  padding: 24px 20px;
+  margin-bottom: 14px;
+  background: rgba(255, 255, 255, 0.03);
+  transition: border-color 0.3s, background 0.3s;
+}
+.pillar-card:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+}
+.pillar-num {
+  font-weight: 900;
+  font-size: 0.78rem;
+  color: var(--orange);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.pillar-title {
+  font-weight: 900;
+  font-size: 1.1rem;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+.pillar-desc {
+  color: var(--white-dim);
+  font-size: 0.9rem;
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* ═══════════════════════════════════════
+   9. VALUE STACK TABLE
+   ═══════════════════════════════════════ */
+.value-stack {
+  padding: 40px 0;
+}
+.value-stack h2 { text-align: center; margin-bottom: 28px; }
+
+.stack-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+}
+.stack-table thead th {
+  background: var(--orange);
+  color: var(--white);
+  font-weight: 900;
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 12px 16px;
+  text-align: left;
+}
+.stack-table thead th:last-child { text-align: right; }
+.stack-table tbody td {
+  padding: 13px 16px;
+  font-size: 0.9rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--white-dim);
+}
+.stack-table tbody td:last-child {
+  text-align: right;
+  color: var(--orange);
+  font-weight: 700;
+  white-space: nowrap;
+}
+.stack-table tbody tr:hover td { background: rgba(255, 255, 255, 0.03); }
+.stack-table tfoot td {
+  padding: 14px 16px;
+  font-weight: 900;
+  font-size: 1rem;
+  border-top: 3px solid var(--orange);
+  color: var(--white);
+}
+.stack-table tfoot td:last-child {
+  text-align: right;
+  color: var(--orange);
+  font-size: 1.1rem;
+}
+
+/* ═══════════════════════════════════════
+   10. PRICING
+   ═══════════════════════════════════════ */
+.pricing-section {
+  padding: 48px 0;
+  text-align: center;
+}
+.pricing-card {
+  background: var(--navy-light);
+  border: 3px dashed rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 36px 28px;
+  max-width: 520px;
+  margin: 0 auto;
+  position: relative;
+}
+.price-old {
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: var(--white-muted);
+  text-decoration: line-through;
+  text-decoration-color: var(--red);
+  text-decoration-thickness: 3px;
+  margin-bottom: 4px;
+}
+.price-new {
+  font-weight: 900;
+  font-size: clamp(2.8rem, 7vw, 4rem);
+  color: var(--orange);
+  line-height: 1.1;
+  margin-bottom: 4px;
+}
+.price-per {
+  font-size: 1rem;
+  color: var(--white-dim);
+  margin-bottom: 20px;
+}
+
+.founding-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 152, 0, 0.12);
+  border: 2px solid rgba(255, 152, 0, 0.3);
+  border-radius: 40px;
+  padding: 8px 20px;
+  font-size: 0.82rem;
+  color: var(--orange);
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  margin-bottom: 24px;
+}
+.founding-badge .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--orange);
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.price-context {
+  color: var(--white-dim);
+  font-size: 0.9rem;
+  max-width: 440px;
+  margin: 0 auto;
+  line-height: 1.55;
+}
+.price-context strong { color: var(--white); }
+
+/* ═══════════════════════════════════════
+   11. OUTCOME BULLETS
+   ═══════════════════════════════════════ */
+.outcomes {
+  padding: 40px 0;
+}
+.outcomes h2 { text-align: center; margin-bottom: 28px; }
+.outcome-item {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  margin-bottom: 14px;
+}
+.outcome-check {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(62, 162, 68, 0.15);
+  border: 2px solid var(--green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--green);
+  font-size: 0.7rem;
+  font-weight: 900;
+  margin-top: 2px;
+}
+.outcome-text {
+  color: var(--white-dim);
+  font-size: 0.93rem;
+  line-height: 1.55;
+}
+
+/* ═══════════════════════════════════════
+   12 & 14. CTA
+   ═══════════════════════════════════════ */
+.cta-section {
+  padding: 40px 0;
+  text-align: center;
+}
+
+/* Green buy button — GHL style */
+.cta-btn {
+  display: inline-block;
+  background: var(--green);
+  color: var(--white);
+  font-family: var(--font);
+  font-weight: 900;
+  font-size: 1.05rem;
+  padding: 18px 36px;
+  border-radius: 6px;
+  text-decoration: none;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+  box-shadow: 0 4px 16px rgba(62, 162, 68, 0.3);
+  cursor: pointer;
+  border: none;
+  line-height: 1.4;
+}
+.cta-btn:hover {
+  transform: translateY(-2px);
+  background: #45b34b;
+  box-shadow: 0 6px 24px rgba(62, 162, 68, 0.4);
+}
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 4px 16px rgba(62, 162, 68, 0.3); }
+  50% { box-shadow: 0 4px 28px rgba(62, 162, 68, 0.45); }
+}
+.cta-btn { animation: pulse-glow 3s ease-in-out infinite; }
+.cta-btn:hover { animation: none; }
+
+.cta-sub {
+  margin-top: 12px;
+  font-size: 0.82rem;
+  color: var(--white-muted);
+}
+
+/* Transparent decline — GHL style */
+.decline-link {
+  display: inline-block;
+  margin-top: 16px;
+  font-size: 0.82rem;
+  color: var(--white-muted);
+  text-decoration: none;
+  font-style: italic;
+  cursor: pointer;
+  border: 2px solid var(--green);
+  border-radius: 4px;
+  background: transparent;
+  padding: 6px 16px;
+  transition: color 0.2s, border-color 0.2s;
+}
+.decline-link:hover {
+  color: var(--white-dim);
+  border-color: var(--white-muted);
+}
+
+/* ═══════════════════════════════════════
+   13. FAQ ACCORDION
+   ═══════════════════════════════════════ */
+.faq-section {
+  padding: 40px 0;
+}
+.faq-section h2 { text-align: center; margin-bottom: 32px; }
+
+.faq-item {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.faq-question {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 0;
+  background: none;
+  border: none;
+  color: var(--white);
+  font-family: var(--font);
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: left;
+  gap: 16px;
+  line-height: 1.4;
+}
+.faq-question:hover { color: var(--orange); }
+.faq-chevron {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease;
+}
+.faq-item.open .faq-chevron { transform: rotate(180deg); }
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
+  opacity: 0;
+}
+.faq-item.open .faq-answer {
+  opacity: 1;
+  max-height: 300px;
+}
+.faq-answer-inner {
+  padding: 0 0 18px;
+  color: var(--white-dim);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* ═══════════════════════════════════════
+   14. FINAL CTA
+   ═══════════════════════════════════════ */
+.final-cta {
+  padding: 48px 0 32px;
+  text-align: center;
+}
+.final-cta h2 { margin-bottom: 16px; }
+.final-cta .urgency-text {
+  color: var(--white-dim);
+  max-width: 560px;
+  margin: 0 auto 24px;
+  font-size: 0.93rem;
+}
+
+/* ═══════════════════════════════════════
+   DOWNSELL POPUP
+   ═══════════════════════════════════════ */
+.downsell-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 16, 40, 0.9);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  backdrop-filter: blur(4px);
+}
+.downsell-overlay.active { display: flex; }
+
+.downsell-card {
+  background: var(--navy-light);
+  border: 3px solid var(--orange);
+  border-radius: 8px;
+  padding: 36px 28px;
+  max-width: 480px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  animation: popup-in 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+@keyframes popup-in {
+  from { opacity: 0; transform: scale(0.92) translateY(16px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+.downsell-close {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  background: none;
+  border: none;
+  color: var(--white-muted);
+  font-size: 1.4rem;
+  cursor: pointer;
+  padding: 4px;
+  line-height: 1;
+}
+.downsell-close:hover { color: var(--white); }
+.downsell-card h3 {
+  font-size: 1.3rem;
+  font-weight: 900;
+  margin-bottom: 12px;
+  color: var(--white);
+}
+.downsell-card .downsell-price {
+  font-weight: 900;
+  font-size: 2.4rem;
+  color: var(--orange);
+  margin: 12px 0 4px;
+}
+.downsell-card .downsell-detail {
+  font-size: 0.88rem;
+  color: var(--white-dim);
+  margin-bottom: 20px;
+}
+.downsell-card .cta-btn { font-size: 0.95rem; padding: 14px 28px; }
+.downsell-card .final-decline {
+  display: block;
+  margin-top: 14px;
+  font-size: 0.78rem;
+  color: var(--white-muted);
+  text-decoration: none;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-style: italic;
+}
+
+/* ═══════════════════════════════════════
+   FOOTER
+   ═══════════════════════════════════════ */
+.page-footer {
+  padding: 20px 0 28px;
+  text-align: center;
+  border-top: 2px solid rgba(255, 255, 255, 0.08);
+}
+.page-footer p {
+  font-size: 0.72rem;
+  color: var(--white-muted);
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.55;
+}
+
+/* ═══════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════ */
+@media (max-width: 768px) {
+  :root { --gutter: 20px; }
+  body { font-size: 16px; }
+  section { padding: 36px 0; }
+  .dashed-container { padding: 28px 20px; }
+  .pillar-card { padding: 20px 16px; }
+  .pricing-card { padding: 28px 20px; }
+  .cta-btn { font-size: 0.95rem; padding: 16px 24px; }
+  .step-line { flex: 0 0 36px; }
+  .stack-table thead th,
+  .stack-table tbody td,
+  .stack-table tfoot td { padding: 10px 12px; font-size: 0.85rem; }
+}
+
+@media (max-width: 480px) {
+  :root { --gutter: 16px; }
+  .hero-section { padding: 40px 0 32px; }
+  .step-label { font-size: 0.65rem; }
+  .step-circle { width: 32px; height: 32px; font-size: 0.78rem; }
+  .step-line { flex: 0 0 24px; }
+  .downsell-card { padding: 24px 18px; }
+  .cta-btn { font-size: 0.88rem; padding: 14px 20px; }
+  .cta-btn .cta-full { display: none; }
+  .cta-btn .cta-short { display: inline; }
+}
+
+.cta-btn .cta-short { display: none; }
+
+/* ═══════════════════════════════════════
+   ACCESSIBILITY
+   ═══════════════════════════════════════ */
+.faq-question:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 4px;
+}
+.cta-btn:focus-visible {
+  outline: 2px solid var(--white);
+  outline-offset: 4px;
+}
+.decline-link:focus-visible,
+.downsell-close:focus-visible,
+.final-decline:focus-visible {
+  outline: 1px solid var(--orange);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .cta-btn { animation: none; }
+  .founding-badge .dot { animation: none; }
+  .downsell-card { animation: none; }
+  html { scroll-behavior: auto; }
+}
+</style>
+</head>
+<body>
+
+<!-- 1. WARNING BANNER -->
+<div class="warning-banner" role="alert">
+  IMPORTANT: Do not close this window or click the back button. This may result in your order being double-billed.
+</div>
+
+<!-- 2. STEP PROGRESS BAR -->
+<div class="steps-bar page-wrap">
+  <div class="steps-row">
+    <div class="step done">
+      <div class="step-circle"><span>1</span></div>
+      <div class="step-label">Install Pack</div>
+    </div>
+    <div class="step-line filled"></div>
+    <div class="step active">
+      <div class="step-circle"><span>2</span></div>
+      <div class="step-label">Upgrade</div>
+    </div>
+    <div class="step-line"></div>
+    <div class="step">
+      <div class="step-circle"><span>3</span></div>
+      <div class="step-label">Complete</div>
+    </div>
+  </div>
+</div>
+
+<!-- 3. ORDER CONFIRMATION -->
+<section class="confirm-section page-wrap reveal">
+  <div class="confirm-box">
+    <h3>Order Confirmed</h3>
+    <p>Your 1 Click Client Onboarding Install Pack is on its way. Login details will arrive in the next 5 minutes.</p>
+    <p style="margin-top:8px">In the meantime, read this page carefully&mdash;it contains a one-time offer you won't see again.</p>
+  </div>
+</section>
+
+<!-- 4. HERO -->
+<section class="hero-section page-wrap reveal">
+  <div class="hero-label">Step 2 of 3 &mdash; Special One-Time Offer</div>
+  <h1>THE SYSTEMS<br>MASTERMIND</h1>
+  <p class="hero-sub">Get direct access to the team behind $1.2M/month businesses&mdash;at a fraction of the cost of a single consulting call.</p>
+</section>
+
+<hr class="section-divider">
+
+<!-- 5. BRIDGE COPY -->
+<section class="bridge page-wrap reveal">
+  <p>You just made a smart move. The 1 Click Client Onboarding system is going to save you hours every single week.</p>
+  <p>But here's what we've learned after installing this system for hundreds of businesses:</p>
+  <p class="key-line">The template is <span class="hl">20% of the result.</span> The other 80% comes from knowing how to adapt it, optimize it, and build on top of it as your business grows.</p>
+  <p>That's why our most successful clients don't just use our templates&mdash;they stay connected to the team that built them.</p>
+</section>
+
+<hr class="section-divider">
+
+<!-- 6. PROBLEM AGITATION -->
+<section class="problems page-wrap reveal">
+  <h2>Here's What Happens<br>Without Ongoing Support</h2>
+  <div class="problem-item">
+    <div class="problem-icon">&times;</div>
+    <p class="problem-text">You install the system, but hit a wall customizing it for your specific workflow</p>
+  </div>
+  <div class="problem-item">
+    <div class="problem-icon">&times;</div>
+    <p class="problem-text">You Google a fix at midnight and waste 3 hours on a solution that doesn't work</p>
+  </div>
+  <div class="problem-item">
+    <div class="problem-icon">&times;</div>
+    <p class="problem-text">Your business grows, but your systems don't grow with it&mdash;and things start breaking</p>
+  </div>
+  <div class="problem-item">
+    <div class="problem-icon">&times;</div>
+    <p class="problem-text">You hire a consultant for $5,000+ who gives you theory instead of answers</p>
+  </div>
+  <div class="problem-item">
+    <div class="problem-icon">&times;</div>
+    <p class="problem-text">You're the only person in your business who understands systems&mdash;and it's lonely at the top</p>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- 7. SOLUTION INTRO -->
+<section class="solution page-wrap reveal">
+  <h2>Introducing The Systems Mastermind</h2>
+  <p class="lead">A vetted, confidential community where business owners and systems experts get direct access to the 8 Figure Systems team&mdash;the same operators who engineer the machines behind companies generating up to $1.2 million per month.</p>
+  <p class="distinction">This is not a course. This is not a group coaching program.<br>This is a room full of operators who've already built what you're trying to build&mdash;and they're on speed dial.</p>
+</section>
+
+<hr class="section-divider">
+
+<!-- 8. 7 PILLARS -->
+<section class="pillars reveal">
+  <div class="page-wrap">
+    <h2>Everything You're Getting<br>With Your Membership</h2>
+
+    <div class="pillar-card">
+      <div class="pillar-num">Pillar 01</div>
+      <div class="pillar-title">A High-Signal Community</div>
+      <p class="pillar-desc">Surround yourself with business owners and systems pros building real businesses. Every conversation is focused on operations, automations, and scaling. No noise. No hobbyists. No fluff.</p>
+    </div>
+
+    <div class="pillar-card">
+      <div class="pillar-num">Pillar 02</div>
+      <div class="pillar-title">Direct Access to a 7-Figure Systems Team</div>
+      <p class="pillar-desc">The same team engineering systems for companies doing $1.2M/month is now in your corner. Ask questions, get architecture reviews, and tap into cross-industry expertise spanning coaching, agencies, SaaS, and local services.</p>
+    </div>
+
+    <div class="pillar-card">
+      <div class="pillar-num">Pillar 03</div>
+      <div class="pillar-title">Fast Feedback&mdash;Your $5,000 Consultant Replacement</div>
+      <p class="pillar-desc">Stop guessing. Get daily troubleshooting, build guidance, and expert recommendations. Instead of paying $5,000+ for a systems consultant, you get real answers from people who've already solved it.</p>
+    </div>
+
+    <div class="pillar-card">
+      <div class="pillar-num">Pillar 04</div>
+      <div class="pillar-title">Monthly Live Trainings</div>
+      <p class="pillar-desc">Focused sessions on the exact frameworks, tools, and principles scaling 7-figure businesses right now. Not recycled content. Just what's working.</p>
+    </div>
+
+    <div class="pillar-card">
+      <div class="pillar-num">Pillar 05</div>
+      <div class="pillar-title">Inner Circle&mdash;Win a $50,000 System Build</div>
+      <p class="pillar-desc">Show up and add value, and you earn access to the Inner Circle. Each month, one member receives a full system build-out worth up to $50,000&mdash;designed, built, and installed by our team.</p>
+    </div>
+
+    <div class="pillar-card">
+      <div class="pillar-num">Pillar 06</div>
+      <div class="pillar-title">Battle-Tested Templates &amp; Resources</div>
+      <p class="pillar-desc">Access the exact templates, SOPs, and tools proven across hundreds of 7-figure clients. As a member, you get exclusive pricing on resources that normally cost 5&ndash;10x more&mdash;including future install packs like the one you just bought.</p>
+    </div>
+
+    <div class="pillar-card">
+      <div class="pillar-num">Pillar 07</div>
+      <div class="pillar-title">A Growth Partner for the Long Haul</div>
+      <p class="pillar-desc">Your systems will need to evolve as you scale. We'll be here providing answers, frameworks, and support based on real experience scaling businesses generating multi-millions every year.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- 9. VALUE STACK TABLE -->
+<section class="value-stack page-wrap reveal">
+  <h2>Total Value Breakdown</h2>
+  <table class="stack-table">
+    <thead>
+      <tr>
+        <th>What You Get</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Vetted Community of Operators &amp; Systems Pros</td><td>$2,000/yr</td></tr>
+      <tr><td>Direct Access to 7-Figure Systems Team</td><td>$5,000/mo</td></tr>
+      <tr><td>Fast Feedback (Daily Expert Troubleshooting)</td><td>$5,000/mo</td></tr>
+      <tr><td>Monthly Live Trainings</td><td>$500/mo</td></tr>
+      <tr><td>Inner Circle Eligibility ($50K System Build)</td><td>Priceless</td></tr>
+      <tr><td>Battle-Tested Templates &amp; Member Pricing</td><td>$2,000/yr</td></tr>
+      <tr><td>Long-Term Growth Support</td><td>Ongoing</td></tr>
+    </tbody>
+    <tfoot>
+      <tr><td>Total Value</td><td>$10,500+/mo</td></tr>
+    </tfoot>
+  </table>
+</section>
+
+<hr class="section-divider">
+
+<!-- 10. PRICING -->
+<section class="pricing-section page-wrap reveal">
+  <div class="pricing-card">
+    <div class="price-old">$197/month</div>
+    <div class="price-new">$97</div>
+    <div class="price-per">per month</div>
+    <div class="founding-badge">
+      <span class="dot"></span>
+      23 of 50 founding spots remaining
+    </div>
+    <p class="price-context">That's less than <strong>$3.23/day</strong> for direct access to the team behind $1.2M/month businesses.</p>
+    <p class="price-context" style="margin-top:12px;font-size:0.85rem">A single systems consulting call costs $500&ndash;$1,000. One broken automation can cost thousands. One wrong hire costs $15,000+.</p>
+    <p class="price-context" style="font-weight:900;color:var(--white)">$97/month to have expert operators in your corner? That's not an expense&mdash;it's insurance.</p>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- 11. OUTCOME BULLETS -->
+<section class="outcomes page-wrap reveal">
+  <h2>After Joining, You'll Be Able To</h2>
+  <div class="outcome-item"><div class="outcome-check">&#10003;</div><p class="outcome-text">Get expert answers to systems questions in minutes, not months</p></div>
+  <div class="outcome-item"><div class="outcome-check">&#10003;</div><p class="outcome-text">Stop wasting money on consultants who give you theory instead of solutions</p></div>
+  <div class="outcome-item"><div class="outcome-check">&#10003;</div><p class="outcome-text">Adapt and optimize your install packs with guidance from the team that built them</p></div>
+  <div class="outcome-item"><div class="outcome-check">&#10003;</div><p class="outcome-text">See exactly how $1.2M/month businesses structure their operations</p></div>
+  <div class="outcome-item"><div class="outcome-check">&#10003;</div><p class="outcome-text">Build automations that actually scale instead of breaking every time something changes</p></div>
+  <div class="outcome-item"><div class="outcome-check">&#10003;</div><p class="outcome-text">Access templates and SOPs proven across hundreds of 7-figure businesses</p></div>
+  <div class="outcome-item"><div class="outcome-check">&#10003;</div><p class="outcome-text">Become eligible for a $50,000 full system build&mdash;just for being an active member</p></div>
+</section>
+
+<hr class="section-divider">
+
+<!-- 12. CTA + DECLINE -->
+<section class="cta-section page-wrap reveal">
+  <a href="#checkout" class="cta-btn"><span class="cta-full">Yes! Add The Systems Mastermind To My Order For Just $97/month</span><span class="cta-short">Yes! Add The Mastermind &mdash; $97/mo</span></a>
+  <p class="cta-sub">Cancel anytime. No long-term commitment. No questions asked.</p>
+  <button class="decline-link" onclick="document.getElementById('downsell').classList.add('active')">No thanks, I'll figure it out on my own.</button>
+</section>
+
+<hr class="section-divider">
+
+<!-- 13. FAQ ACCORDION -->
+<section class="faq-section page-wrap reveal">
+  <h2>Frequently Asked Questions</h2>
+
+  <div class="faq-item">
+    <button class="faq-question" aria-expanded="false">
+      <span>"I just bought the Install Pack&mdash;isn't that enough?"</span>
+      <svg class="faq-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><polyline points="5 8 10 13 15 8"/></svg>
+    </button>
+    <div class="faq-answer" role="region">
+      <div class="faq-answer-inner">The Install Pack gives you the system. The Mastermind gives you the team that built it. When you hit a wall customizing it, need help scaling it, or want to build more systems on top of it&mdash;that's where the Mastermind pays for itself in the first week.</div>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question" aria-expanded="false">
+      <span>"Can't I just Google this stuff?"</span>
+      <svg class="faq-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><polyline points="5 8 10 13 15 8"/></svg>
+    </button>
+    <div class="faq-answer" role="region">
+      <div class="faq-answer-inner">You can. And you'll spend weeks testing solutions that don't work. The Mastermind gives you answers from people who've already built it&mdash;in minutes, not months. The cost of trial and error is always higher than the cost of asking an expert.</div>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question" aria-expanded="false">
+      <span>"How is this different from other communities?"</span>
+      <svg class="faq-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><polyline points="5 8 10 13 15 8"/></svg>
+    </button>
+    <div class="faq-answer" role="region">
+      <div class="faq-answer-inner">Most communities are full of beginners asking beginner questions. This one is vetted. You're surrounded by operators actively building and scaling real businesses. And you're getting access to a working systems team, not influencers.</div>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question" aria-expanded="false">
+      <span>"I already have a systems person / VA."</span>
+      <svg class="faq-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><polyline points="5 8 10 13 15 8"/></svg>
+    </button>
+    <div class="faq-answer" role="region">
+      <div class="faq-answer-inner">Great. Imagine what they could do with access to a community of experts and battle-tested templates. This makes your existing team better, faster, and more confident.</div>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question" aria-expanded="false">
+      <span>"What's the Inner Circle?"</span>
+      <svg class="faq-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><polyline points="5 8 10 13 15 8"/></svg>
+    </button>
+    <div class="faq-answer" role="region">
+      <div class="faq-answer-inner">An earned tier for members who consistently show up and add value. Inner Circle members are eligible for a full system build-out&mdash;worth up to $50,000&mdash;implemented by our team at no additional cost.</div>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question" aria-expanded="false">
+      <span>"How much time do I need to commit?"</span>
+      <svg class="faq-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><polyline points="5 8 10 13 15 8"/></svg>
+    </button>
+    <div class="faq-answer" role="region">
+      <div class="faq-answer-inner">As much or as little as you want. Ask a question in 2 minutes and get an answer. Attend a live training for an hour. The value scales with your engagement.</div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- 14. FINAL CTA -->
+<section class="final-cta page-wrap reveal">
+  <h2>This Offer Is Only<br>Available Right Now</h2>
+  <p class="urgency-text">Once you leave this page, you won't see this price again. The Systems Mastermind is normally $197/month. Today&mdash;because you just became a customer&mdash;you can lock in the founding member rate of <strong style="color:var(--orange)">$97/month</strong> for as long as you stay.</p>
+  <a href="#checkout" class="cta-btn"><span class="cta-full">Yes! Add The Systems Mastermind For $97/month</span><span class="cta-short">Yes! Add The Mastermind &mdash; $97/mo</span></a>
+  <p class="cta-sub">Cancel anytime. Your Install Pack order is already confirmed regardless of your choice here.</p>
+  <button class="decline-link" id="final-decline" onclick="document.getElementById('downsell').classList.add('active')">No thanks, I'll pass on the founding member rate.</button>
+</section>
+
+<!-- FOOTER -->
+<footer class="page-footer page-wrap">
+  <p>Your Install Pack order is confirmed and processing. This upgrade is optional and does not affect your current order. &copy; 2026 8 Figure Systems. All rights reserved.</p>
+</footer>
+
+<!-- DOWNSELL POPUP -->
+<div class="downsell-overlay" id="downsell" role="dialog" aria-modal="true" aria-label="Special offer">
+  <div class="downsell-card">
+    <button class="downsell-close" aria-label="Close" onclick="document.getElementById('downsell').classList.remove('active')">&times;</button>
+    <p class="text-sm text-orange" style="letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;font-weight:700">Wait&mdash;before you go</p>
+    <h3>What If You Could Try It<br>For Just $47?</h3>
+    <p class="downsell-detail">Get your first month of The Systems Mastermind at a reduced rate. Same access. Same team. Same everything.</p>
+    <div class="downsell-price">$47</div>
+    <p class="downsell-detail" style="margin-top:4px">first month, then $97/mo</p>
+    <a href="#checkout-downsell" class="cta-btn">Yes! Give Me Access For $47</a>
+    <button class="final-decline" onclick="document.getElementById('downsell').classList.remove('active')">No thanks, I don't need systems support right now.</button>
+  </div>
+</div>
+
+<!-- JAVASCRIPT -->
+<script>
+document.querySelectorAll('.faq-question').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(el => {
+      el.classList.remove('open');
+      el.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+    });
+    if (!isOpen) {
+      item.classList.add('open');
+      btn.setAttribute('aria-expanded', 'true');
+    }
+  });
+});
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+document.getElementById('downsell').addEventListener('click', (e) => {
+  if (e.target === e.currentTarget) e.currentTarget.classList.remove('active');
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') document.getElementById('downsell').classList.remove('active');
+});
+</script>
+</body>
+</html>
