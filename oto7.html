@@ -406,6 +406,22 @@ em { font-family: var(--sans); font-style: italic; }
   pointer-events: none;
 }
 
+.card-eyebrow {
+  font-family: var(--mono); font-size: var(--fs-xs); letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--gold); font-weight: 500;
+  margin-bottom: var(--sp-2);
+}
+.card-headline {
+  font-family: var(--sans); font-size: var(--fs-lg); font-weight: 700;
+  color: var(--white); line-height: var(--lh-heading);
+  margin-bottom: var(--sp-5);
+}
+.card-headline strong { color: var(--orange); }
+.card-headline-sub {
+  display: block; font-size: var(--fs-sm); font-weight: 400;
+  color: var(--white-55); margin-top: var(--sp-1);
+}
+
 .sidebar-card .price-old {
   font-family: var(--mono); font-size: var(--fs-lg);
   color: var(--white-55); text-decoration: line-through;
@@ -897,15 +913,16 @@ em { font-family: var(--sans); font-style: italic; }
 
     <!-- Pricing Card -->
     <div class="sidebar-card">
+      <p class="card-eyebrow">Founding Member Rate</p>
+      <p class="card-headline">Lock in <strong>50% off</strong> for life<br><span class="card-headline-sub">Regular price: <span class="plan-price-old">$397/mo</span></span></p>
       <div class="plan-options" data-group="main">
         <div class="plan-row" data-plan="monthly" onclick="selectPlan(this)">
           <div class="plan-radio"></div>
           <div class="plan-info">
             <div class="plan-label">Monthly</div>
-            <div class="plan-savings">Save 50%</div>
           </div>
           <div class="plan-price-wrap">
-            <div class="plan-price"><span class="plan-price-old">$397</span> $197/mo</div>
+            <div class="plan-price">$197/mo</div>
           </div>
         </div>
         <div class="plan-row selected" data-plan="yearly" onclick="selectPlan(this)">
@@ -955,17 +972,16 @@ em { font-family: var(--sans); font-style: italic; }
 
 <!-- 14. FINAL CTA — Full width -->
 <section class="cta-full-section narrow-wrap reveal">
-  <h2>This Offer Is Only<br><em>Available Right Now</em></h2>
-  <p class="urgency-text">Once you leave this page, you won't see this price again. Lock in the founding member rate for as long as you stay.</p>
+  <h2>Lock In <em>50% Off</em> For Life</h2>
+  <p class="urgency-text">Founding members pay <span class="plan-price-old" style="font-size:inherit;color:var(--white-55)">$397/mo</span> &rarr; <strong style="color:var(--orange)">$197/mo</strong> &mdash; and keep that rate for as long as you stay. This page is the only way in.</p>
   <div class="plan-options" data-group="final" style="max-width:420px;margin:0 auto var(--sp-5)">
     <div class="plan-row" data-plan="monthly" onclick="selectPlan(this)">
       <div class="plan-radio"></div>
       <div class="plan-info">
         <div class="plan-label">Monthly</div>
-        <div class="plan-savings">Save 50%</div>
       </div>
       <div class="plan-price-wrap">
-        <div class="plan-price"><span class="plan-price-old">$397</span> $197/mo</div>
+        <div class="plan-price">$197/mo</div>
       </div>
     </div>
     <div class="plan-row selected" data-plan="yearly" onclick="selectPlan(this)">
@@ -1002,7 +1018,6 @@ em { font-family: var(--sans); font-style: italic; }
         <div class="plan-radio"></div>
         <div class="plan-info">
           <div class="plan-label">Monthly</div>
-          <div class="plan-savings">Save 30%</div>
         </div>
         <div class="plan-price-wrap">
           <div class="plan-price"><span class="plan-price-old">$197</span> $137/mo</div>
@@ -1013,7 +1028,6 @@ em { font-family: var(--sans); font-style: italic; }
         <div class="plan-radio"></div>
         <div class="plan-info">
           <div class="plan-label">Pay Upfront <span class="plan-badge">Best Value</span></div>
-          <div class="plan-savings">Save $1,197 vs monthly</div>
         </div>
         <div class="plan-price-wrap">
           <div class="plan-price"><span class="plan-price-old">$197</span> $97/mo</div>
