@@ -532,32 +532,61 @@ em { font-family: var(--sans); font-style: italic; }
 }
 .sidebar-proof strong { color: var(--white-80); }
 
-/* ── BILLING TOGGLE ── */
-.billing-toggle {
-  display: flex; justify-content: center; gap: var(--sp-1);
-  background: var(--white-06); border-radius: 40px;
-  padding: 3px; margin-bottom: var(--sp-5); position: relative;
+/* ── PLAN SELECTOR (stacked rows) ── */
+.plan-options {
+  display: flex; flex-direction: column; gap: var(--sp-2);
+  margin-bottom: var(--sp-5); position: relative;
 }
-.billing-toggle button {
-  flex: 1; padding: var(--sp-2) var(--sp-3);
-  border: none; border-radius: 40px; cursor: pointer;
-  font-family: var(--sans); font-size: var(--fs-xs); font-weight: 500;
-  letter-spacing: 0.02em; transition: all var(--dur-fast) ease;
-  background: transparent; color: var(--white-55);
+.plan-row {
+  display: flex; align-items: center; gap: var(--sp-3);
+  padding: var(--sp-3) var(--sp-4);
+  border: 1.5px solid var(--white-12); border-radius: var(--sp-2);
+  cursor: pointer; transition: all var(--dur-fast) ease;
+  background: transparent; position: relative;
 }
-.billing-toggle button.active {
-  background: var(--orange); color: var(--white);
-  box-shadow: 0 2px 8px rgba(255,152,0,0.2);
+.plan-row:hover { border-color: var(--white-30); background: var(--white-03); }
+.plan-row.selected {
+  border-color: var(--orange); background: var(--orange-subtle);
+  box-shadow: 0 0 12px rgba(255,152,0,0.08);
 }
-.billing-toggle button:not(.active):hover { color: var(--white-80); }
-.billing-save {
-  display: inline-block; font-size: 0.6rem; font-weight: 700;
+.plan-radio {
+  flex-shrink: 0; width: 18px; height: 18px; border-radius: 50%;
+  border: 2px solid var(--white-30); background: transparent;
+  display: flex; align-items: center; justify-content: center;
+  transition: all var(--dur-fast) ease;
+}
+.plan-row.selected .plan-radio {
+  border-color: var(--orange); background: var(--orange);
+}
+.plan-radio::after {
+  content: ''; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--white); opacity: 0; transition: opacity var(--dur-fast) ease;
+}
+.plan-row.selected .plan-radio::after { opacity: 1; }
+.plan-info { flex: 1; min-width: 0; }
+.plan-label {
+  font-family: var(--sans); font-size: var(--fs-sm); font-weight: 700;
+  color: var(--white); line-height: 1.3; display: flex; align-items: center; gap: var(--sp-2);
+}
+.plan-sub {
+  font-size: var(--fs-xs); color: var(--white-55); margin-top: 2px; line-height: 1.3;
+}
+.plan-price {
+  flex-shrink: 0; text-align: right;
+  font-family: var(--sans); font-weight: 700;
+  font-size: var(--fs-md); color: var(--white);
+}
+.plan-row.selected .plan-price { color: var(--orange); }
+.plan-badge {
+  display: inline-block; font-size: 0.58rem; font-weight: 700;
   background: var(--green); color: var(--white); border-radius: 20px;
-  padding: 1px 6px; margin-left: 4px; vertical-align: middle;
-  letter-spacing: 0.03em;
+  padding: 2px 7px; letter-spacing: 0.04em; text-transform: uppercase;
+  line-height: 1.3;
 }
-.price-block { display: none; }
-.price-block.active { display: block; }
+.plan-savings {
+  font-size: var(--fs-xs); color: var(--green); font-weight: 500;
+  margin-top: 1px;
+}
 .cta-text-monthly, .cta-text-yearly { display: none; }
 .cta-text-monthly.active, .cta-text-yearly.active { display: inline; }
 
@@ -856,25 +885,29 @@ em { font-family: var(--sans); font-style: italic; }
 
     <!-- Pricing Card -->
     <div class="sidebar-card">
-      <div class="billing-toggle" data-group="main">
-        <button class="active" data-plan="monthly">Monthly</button>
-        <button data-plan="yearly">Yearly <span class="billing-save">SAVE</span></button>
-      </div>
-      <div class="price-block active" data-plan="monthly">
-        <div class="price-old">$397/mo</div>
-        <div class="price-new">$197</div>
-        <div class="price-per">per month</div>
-      </div>
-      <div class="price-block" data-plan="yearly">
-        <div class="price-old">$4,764/yr</div>
-        <div class="price-new">$1,997</div>
-        <div class="price-per">per year &mdash; just $167/mo</div>
+      <div class="price-old">$397/mo</div>
+      <div class="plan-options" data-group="main">
+        <div class="plan-row" data-plan="monthly" onclick="selectPlan(this)">
+          <div class="plan-radio"></div>
+          <div class="plan-info">
+            <div class="plan-label">Monthly</div>
+          </div>
+          <div class="plan-price">$197/mo</div>
+        </div>
+        <div class="plan-row selected" data-plan="yearly" onclick="selectPlan(this)">
+          <div class="plan-radio"></div>
+          <div class="plan-info">
+            <div class="plan-label">Yearly <span class="plan-badge">Best Value</span></div>
+            <div class="plan-savings">Save $367 vs monthly</div>
+          </div>
+          <div class="plan-price">$1,997/yr</div>
+        </div>
       </div>
       <div class="founding-badge">
         <span class="dot"></span>
         <span id="spots-count">23</span> of 50 spots left
       </div>
-      <a href="#checkout-monthly" class="sidebar-cta" data-cta="main"><span class="cta-full">Yes! Add For $197/month</span><span class="cta-short">Add &mdash; $197/mo</span></a>
+      <a href="#checkout-yearly" class="sidebar-cta" data-cta="main"><span class="cta-full cta-text-yearly active">Yes! Add For $1,997/year</span><span class="cta-full cta-text-monthly">Yes! Add For $197/month</span><span class="cta-short cta-text-yearly active">Add &mdash; $1,997/yr</span><span class="cta-short cta-text-monthly">Add &mdash; $197/mo</span></a>
       <p class="cta-sub">Cancel anytime. No commitment.</p>
       <button class="decline-link" onclick="document.getElementById('downsell').classList.add('active')">No thanks</button>
     </div>
@@ -906,12 +939,25 @@ em { font-family: var(--sans); font-style: italic; }
 <!-- 14. FINAL CTA — Full width -->
 <section class="cta-full-section narrow-wrap reveal">
   <h2>This Offer Is Only<br><em>Available Right Now</em></h2>
-  <p class="urgency-text">Once you leave this page, you won't see this price again. Lock in the founding member rate of <strong style="color:var(--orange)">$197/month</strong> or <strong style="color:var(--orange)">$1,997/year</strong> for as long as you stay.</p>
-  <div class="billing-toggle" data-group="final" style="max-width:280px;margin:0 auto var(--sp-5)">
-    <button class="active" data-plan="monthly">Monthly</button>
-    <button data-plan="yearly">Yearly <span class="billing-save">SAVE</span></button>
+  <p class="urgency-text">Once you leave this page, you won't see this price again. Lock in the founding member rate for as long as you stay.</p>
+  <div class="plan-options" data-group="final" style="max-width:420px;margin:0 auto var(--sp-5)">
+    <div class="plan-row" data-plan="monthly" onclick="selectPlan(this)">
+      <div class="plan-radio"></div>
+      <div class="plan-info">
+        <div class="plan-label">Monthly</div>
+      </div>
+      <div class="plan-price">$197/mo</div>
+    </div>
+    <div class="plan-row selected" data-plan="yearly" onclick="selectPlan(this)">
+      <div class="plan-radio"></div>
+      <div class="plan-info">
+        <div class="plan-label">Yearly <span class="plan-badge">Best Value</span></div>
+        <div class="plan-savings">Save $367 vs monthly</div>
+      </div>
+      <div class="plan-price">$1,997/yr</div>
+    </div>
   </div>
-  <a href="#checkout-monthly" class="cta-btn" data-cta="final"><span class="cta-full cta-text-monthly active">Yes! Add The Systems Mastermind For $197/month</span><span class="cta-full cta-text-yearly">Yes! Add The Systems Mastermind For $1,997/year</span><span class="cta-short cta-text-monthly active">Add Mastermind &mdash; $197/mo</span><span class="cta-short cta-text-yearly">Add Mastermind &mdash; $1,997/yr</span></a>
+  <a href="#checkout-yearly" class="cta-btn" data-cta="final"><span class="cta-full cta-text-yearly active">Yes! Add The Systems Mastermind For $1,997/year</span><span class="cta-full cta-text-monthly">Yes! Add The Systems Mastermind For $197/month</span><span class="cta-short cta-text-yearly active">Add Mastermind &mdash; $1,997/yr</span><span class="cta-short cta-text-monthly">Add Mastermind &mdash; $197/mo</span></a>
   <p class="cta-sub">Cancel anytime. Your Install Pack order is confirmed regardless.</p>
   <button class="decline-link-full" id="final-decline" onclick="document.getElementById('downsell').classList.add('active')">No thanks, I'll pass on the founding member rate.</button>
 </section>
@@ -928,19 +974,25 @@ em { font-family: var(--sans); font-style: italic; }
     <p class="wait-label">Wait&mdash;before you go</p>
     <h3>What If You Could Start<br>At a Lower Rate?</h3>
     <p class="downsell-detail">Same access. Same team. Same everything&mdash;just a friendlier price.</p>
-    <div class="billing-toggle" data-group="downsell" style="max-width:260px;margin:0 auto var(--sp-4)">
-      <button class="active" data-plan="monthly">Monthly</button>
-      <button data-plan="yearly">Yearly <span class="billing-save">SAVE</span></button>
+    <div class="plan-options" data-group="downsell">
+      <div class="plan-row" data-plan="monthly" onclick="selectPlan(this)">
+        <div class="plan-radio"></div>
+        <div class="plan-info">
+          <div class="plan-label">Monthly</div>
+          <div class="plan-sub">then $197/mo after 3 months</div>
+        </div>
+        <div class="plan-price">$137/mo</div>
+      </div>
+      <div class="plan-row selected" data-plan="yearly" onclick="selectPlan(this)">
+        <div class="plan-radio"></div>
+        <div class="plan-info">
+          <div class="plan-label">Pay Upfront <span class="plan-badge">Best Value</span></div>
+          <div class="plan-sub">$97/mo &bull; then $197/mo to renew</div>
+        </div>
+        <div class="plan-price">$1,167/yr</div>
+      </div>
     </div>
-    <div class="price-block active" data-plan="monthly" data-group="downsell">
-      <div class="downsell-price">$137</div>
-      <p class="downsell-detail" style="margin-top:4px">per month &mdash; then $197/mo after 3 months</p>
-    </div>
-    <div class="price-block" data-plan="yearly" data-group="downsell">
-      <div class="downsell-price">$1,167</div>
-      <p class="downsell-detail" style="margin-top:4px">per year &mdash; just $97/mo &bull; then $197/mo to renew</p>
-    </div>
-    <a href="#checkout-downsell-monthly" class="cta-btn" data-cta="downsell"><span class="cta-text-monthly active">Yes! Give Me Access For $137/mo</span><span class="cta-text-yearly">Yes! Give Me Access For $1,167/yr</span></a>
+    <a href="#checkout-downsell-yearly" class="cta-btn" data-cta="downsell"><span class="cta-text-yearly active">Yes! Give Me Access For $1,167/yr</span><span class="cta-text-monthly">Yes! Give Me Access For $137/mo</span></a>
     <button class="final-decline" onclick="document.getElementById('downsell').classList.remove('active')">No thanks, I don't need systems support right now.</button>
   </div>
 </div>
@@ -986,56 +1038,27 @@ if (spotsEl) {
   }, 50000 + Math.random() * 40000);
 }
 
-// Billing toggles
+// Plan selector (stacked rows)
 const ctaLinks = {
   main: { monthly: '#checkout-monthly', yearly: '#checkout-yearly' },
   final: { monthly: '#checkout-monthly', yearly: '#checkout-yearly' },
   downsell: { monthly: '#checkout-downsell-monthly', yearly: '#checkout-downsell-yearly' }
 };
-const ctaText = {
-  main: {
-    monthly: { full: 'Yes! Add For $197/month', short: 'Add \u2014 $197/mo' },
-    yearly: { full: 'Yes! Add For $1,997/year', short: 'Add \u2014 $1,997/yr' }
-  }
-};
 
-document.querySelectorAll('.billing-toggle').forEach(toggle => {
-  toggle.querySelectorAll('button').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const group = toggle.dataset.group;
-      const plan = btn.dataset.plan;
-      // Toggle active button
-      toggle.querySelectorAll('button').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      // Toggle price blocks within same container
-      const container = toggle.closest('.sidebar-card, .cta-full-section, .downsell-card');
-      if (container) {
-        container.querySelectorAll('.price-block').forEach(pb => {
-          pb.classList.toggle('active', pb.dataset.plan === plan);
-        });
-      }
-      // Toggle CTA text
-      const ctaEl = document.querySelector('[data-cta="' + group + '"]');
-      if (ctaEl) {
-        ctaEl.querySelectorAll('.cta-text-monthly').forEach(el => el.classList.toggle('active', plan === 'monthly'));
-        ctaEl.querySelectorAll('.cta-text-yearly').forEach(el => el.classList.toggle('active', plan === 'yearly'));
-        // Update CTA link
-        if (ctaLinks[group]) ctaEl.href = ctaLinks[group][plan];
-      }
-      // Sidebar CTA special handling (has cta-full/cta-short spans, not cta-text-*)
-      if (group === 'main') {
-        const sCta = container.querySelector('.sidebar-cta');
-        if (sCta) {
-          const full = sCta.querySelector('.cta-full');
-          const short = sCta.querySelector('.cta-short');
-          if (full) full.textContent = ctaText.main[plan].full;
-          if (short) short.textContent = ctaText.main[plan].short;
-          sCta.href = ctaLinks.main[plan];
-        }
-      }
-    });
-  });
-});
+function selectPlan(row) {
+  const group = row.closest('.plan-options').dataset.group;
+  const plan = row.dataset.plan;
+  // Update selected row
+  row.closest('.plan-options').querySelectorAll('.plan-row').forEach(r => r.classList.remove('selected'));
+  row.classList.add('selected');
+  // Update CTA text + link
+  const ctaEl = document.querySelector('[data-cta="' + group + '"]');
+  if (ctaEl) {
+    ctaEl.querySelectorAll('.cta-text-monthly').forEach(el => el.classList.toggle('active', plan === 'monthly'));
+    ctaEl.querySelectorAll('.cta-text-yearly').forEach(el => el.classList.toggle('active', plan === 'yearly'));
+    if (ctaLinks[group]) ctaEl.href = ctaLinks[group][plan];
+  }
+}
 </script>
 </body>
 </html>
