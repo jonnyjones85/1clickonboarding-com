@@ -1148,11 +1148,63 @@ em { font-style: italic; }
   </div>
 </div>
 
-<!-- 14. FINAL CTA (post-FAQ) -->
+<!-- 14. FINAL CTA (post-FAQ) — full pricing card -->
 <div class="section-cta narrow-wrap reveal">
-  <h2 style="margin-bottom:var(--sp-5)">Ready to Automate<br>Your <span class="italic-accent">Business?</span></h2>
-  <a href="#pricing" class="cta-btn"><span class="cta-full">Yes! Lock In Founding Member Pricing</span><span class="cta-short">Lock In Founding Pricing</span></a>
-  <p class="cta-sub">30-day money-back guarantee &middot; Cancel anytime &middot; <span id="spots-count-2">9</span> founding spots left</p>
+  <h2 style="margin-bottom:var(--sp-8)">Ready to Automate<br>Your <span class="italic-accent">Business?</span></h2>
+</div>
+<div class="two-col" style="padding-top:0;padding-bottom:var(--sp-12);">
+  <div>
+    <div class="sidebar-stack">
+      <div class="sidebar-stack-header">What You Get</div>
+      <div class="sidebar-stack-row"><span class="label">Fast Feedback (Private Channel)</span><span class="value">$5,000/mo</span></div>
+      <div class="sidebar-stack-row"><span class="label">Live Calls with Katie &amp; Team</span><span class="value">$2,000/mo</span></div>
+      <div class="sidebar-stack-row"><span class="label">Live Calls Replays</span><span class="value">$500/mo</span></div>
+      <div class="sidebar-stack-row"><span class="label">Community Chat</span><span class="value">$2,000/yr</span></div>
+      <div class="sidebar-stack-row"><span class="label">Architecture Reviews</span><span class="value">$5,000/yr</span></div>
+      <div class="sidebar-stack-row"><span class="label">Priority Template Access</span><span class="value">Included</span></div>
+      <div class="sidebar-stack-row"><span class="label">30% Template Discount</span><span class="value">$2,000/yr</span></div>
+      <div class="sidebar-stack-row" style="border-bottom:2px solid var(--orange);background:var(--orange-subtle);"><span class="label" style="font-weight:700;color:var(--white);font-size:var(--fs-sm);">Total Value</span><span class="value" style="font-weight:700;font-size:var(--fs-md);">$8,250+/mo</span></div>
+      <div class="value-comparison"><span class="vc-label">Your investment</span><span class="vc-value">$5.47/day</span></div>
+    </div>
+    <div class="sidebar-proof">
+      <strong>One consulting call with Katie costs $1K.</strong> Your membership costs $5.47/day.
+    </div>
+  </div>
+  <div>
+    <div class="sidebar-card">
+      <p class="card-eyebrow">Founding Member Rate</p>
+      <p class="card-headline">Lock in founding pricing <strong>for life</strong><br><span class="card-headline-sub">Price increases when founding spots fill</span></p>
+      <div class="plan-options" data-group="bottom">
+        <div class="plan-row" data-plan="monthly" onclick="selectPlan(this)">
+          <div class="plan-radio"></div>
+          <div class="plan-info">
+            <div class="plan-label">Monthly</div>
+          </div>
+          <div class="plan-price-wrap">
+            <div class="plan-price">$197/mo</div>
+          </div>
+        </div>
+        <div class="plan-row selected" data-plan="yearly" onclick="selectPlan(this)">
+          <div class="plan-radio"></div>
+          <div class="plan-info">
+            <div class="plan-label">Yearly <span class="plan-badge">Best Value</span></div>
+            <div class="plan-savings">2 months free vs monthly</div>
+          </div>
+          <div class="plan-price-wrap">
+            <div class="plan-price">$167/mo</div>
+            <div class="plan-price-sub">$1,997 billed yearly</div>
+          </div>
+        </div>
+      </div>
+      <div class="founding-badge">
+        <span class="dot"></span>
+        <span id="spots-count-2">9</span> of 25 founding spots left
+      </div>
+      <a href="#checkout-yearly" class="sidebar-cta" data-cta="bottom"><span class="cta-full cta-text-yearly active">Yes! Lock In $167/mo For Life</span><span class="cta-full cta-text-monthly">Yes! Lock In $197/mo</span><span class="cta-short cta-text-yearly active">Lock In $167/mo</span><span class="cta-short cta-text-monthly">Lock In $197/mo</span></a>
+      <p class="cta-sub">Cancel anytime. No commitment.</p>
+      <button class="decline-link" onclick="document.getElementById('downsell').classList.add('active')">No thanks, I'll handle systems on my own</button>
+    </div>
+  </div>
 </div>
 
 <hr class="divider">
@@ -1264,6 +1316,7 @@ if (timerEl) {
 // Plan selector
 const ctaLinks = {
   main: { monthly: '#checkout-monthly', yearly: '#checkout-yearly' },
+  bottom: { monthly: '#checkout-monthly', yearly: '#checkout-yearly' },
   downsell: { monthly: '#checkout-downsell-monthly', yearly: '#checkout-downsell-yearly' }
 };
 
