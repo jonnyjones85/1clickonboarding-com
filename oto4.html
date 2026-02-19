@@ -1,0 +1,1453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Systems Mastermind — Special One-Time Offer</title>
+<meta name="description" content="Join The Systems Mastermind — direct access to the team behind $1.2M/month businesses. Founding member rate: $97/month.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,wght@0,400;0,500;0,700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════
+   DESIGN TOKENS — Cream Editorial
+   Inspired by trumprx.gov
+   Type: Instrument Serif + DM Sans
+   Scale: Perfect Fourth (1.333)
+   ═══════════════════════════════════════ */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  /* ── Type Scale (Perfect Fourth 1.333) ── */
+  --fs-xs: 0.702rem;
+  --fs-sm: 0.833rem;
+  --fs-base: 1rem;
+  --fs-md: 1.125rem;
+  --fs-lg: 1.333rem;
+  --fs-xl: 1.777rem;
+  --fs-2xl: 2.369rem;
+  --fs-3xl: 3.157rem;
+  --fs-4xl: 4.209rem;
+  --fs-hero: clamp(3rem, 7vw, 5.5rem);
+
+  /* ── Line Heights ── */
+  --lh-tight: 1.05;
+  --lh-heading: 1.15;
+  --lh-body: 1.6;
+  --lh-loose: 1.7;
+
+  /* ── Spacing (base-8) ── */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 20px;
+  --sp-6: 24px;
+  --sp-8: 32px;
+  --sp-10: 40px;
+  --sp-12: 48px;
+  --sp-16: 64px;
+  --sp-20: 80px;
+  --sp-24: 96px;
+
+  /* ── Colors (WCAG AA verified) ── */
+  --cream: #FAF7F2;
+  --cream-warm: #F5F0E8;
+  --cream-dark: #EDE8DE;
+
+  --charcoal: #333334;        /* on cream: 10.4:1 ✓ AAA */
+  --charcoal-light: #555556;  /* on cream: 6.6:1 ✓ AA */
+  --charcoal-muted: #888888;  /* on cream: 3.5:1 ~ AA large text */
+  --charcoal-faint: rgba(51, 51, 52, 0.08);
+  --charcoal-edge: rgba(51, 51, 52, 0.12);
+  --charcoal-hover: rgba(51, 51, 52, 0.03);
+
+  --green: #2b5e49;           /* on cream: 6.8:1 ✓ AA */
+  --green-bright: #357a5c;
+  --green-light: rgba(43, 94, 73, 0.08);
+  --green-hover: rgba(43, 94, 73, 0.12);
+
+  --red: #b33030;             /* on cream: 5.5:1 ✓ AA */
+  --red-light: rgba(179, 48, 48, 0.06);
+
+  --gold: #c4953a;
+  --gold-light: rgba(196, 149, 58, 0.1);
+
+  --white: #ffffff;
+
+  /* ── Layout ── */
+  --max-w: 680px;
+  --gutter: var(--sp-6);
+
+  /* ── Fonts ── */
+  --serif: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+  --sans: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --mono: 'DM Mono', 'SF Mono', 'Consolas', monospace;
+
+  /* ── Timing (smooth, authoritative) ── */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-fast: 0.2s;
+  --dur-normal: 0.4s;
+  --dur-slow: 0.7s;
+  --dur-slower: 1s;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--cream);
+  color: var(--charcoal);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ═══════════════════════════════════════
+   FLOATING DECORATIVE SHAPES
+   Pill/circle/squircle with drop shadows
+   ═══════════════════════════════════════ */
+.deco {
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity var(--dur-slower) ease;
+}
+.deco.visible { opacity: 1; }
+
+.deco-pill {
+  width: 80px;
+  height: 36px;
+  border-radius: 18px;
+  background: var(--cream-warm);
+  filter: drop-shadow(12px 14px 10px rgba(0,0,0,0.06));
+}
+.deco-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--cream-dark);
+  filter: drop-shadow(10px 12px 8px rgba(0,0,0,0.05));
+}
+.deco-squircle {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: var(--green-light);
+  filter: drop-shadow(15px 16px 12px rgba(0,0,0,0.07));
+  transform: rotate(15deg);
+}
+.deco-diamond {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background: var(--gold-light);
+  filter: drop-shadow(8px 10px 8px rgba(0,0,0,0.05));
+  transform: rotate(45deg);
+}
+
+/* Float animation for decorative elements */
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0) rotate(var(--float-rot, 0deg)); }
+  50% { transform: translateY(-12px) rotate(var(--float-rot, 0deg)); }
+}
+@keyframes float-med {
+  0%, 100% { transform: translateY(0) rotate(var(--float-rot, 15deg)); }
+  50% { transform: translateY(-8px) rotate(calc(var(--float-rot, 15deg) + 3deg)); }
+}
+.deco.visible.deco-pill { animation: float-slow 6s ease-in-out infinite; }
+.deco.visible.deco-circle { animation: float-slow 8s ease-in-out infinite; --float-rot: 0deg; }
+.deco.visible.deco-squircle { animation: float-med 7s ease-in-out infinite; --float-rot: 15deg; }
+.deco.visible.deco-diamond { animation: float-med 5.5s ease-in-out infinite; --float-rot: 45deg; }
+
+/* ═══════════════════════════════════════
+   LAYOUT
+   ═══════════════════════════════════════ */
+.page-wrap {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  position: relative;
+  z-index: 1;
+}
+
+section {
+  padding: var(--sp-16) 0;
+  position: relative;
+}
+
+/* Hairline divider — 1px, very subtle */
+.divider {
+  border: none;
+  height: 1px;
+  background: var(--charcoal-faint);
+  margin: 0;
+}
+
+/* ═══════════════════════════════════════
+   TYPOGRAPHY — Instrument Serif headlines
+   ═══════════════════════════════════════ */
+h1, h2, h3 {
+  font-family: var(--serif);
+  font-weight: 400; /* Instrument Serif is optically heavy at 400 */
+  line-height: var(--lh-heading);
+  letter-spacing: -0.03em;
+  color: var(--charcoal);
+  text-wrap: balance;
+}
+
+h1 { font-size: var(--fs-hero); line-height: var(--lh-tight); letter-spacing: -0.04em; }
+h2 { font-size: clamp(var(--fs-xl), 4vw, var(--fs-2xl)); }
+h3 { font-size: var(--fs-lg); }
+
+p { margin-bottom: 1em; }
+
+em, .italic { font-family: var(--serif); font-style: italic; }
+
+.text-green { color: var(--green); }
+.text-red { color: var(--red); }
+.text-gold { color: var(--gold); }
+.text-muted { color: var(--charcoal-light); }
+.text-faint { color: var(--charcoal-muted); }
+.text-center { text-align: center; }
+.text-sm { font-size: var(--fs-sm); }
+.text-xs { font-size: var(--fs-xs); }
+.text-mono { font-family: var(--mono); }
+.font-medium { font-weight: 500; }
+.font-bold { font-weight: 700; }
+
+/* Highlight — subtle warm background */
+.hl {
+  background: linear-gradient(180deg, transparent 55%, rgba(196, 149, 58, 0.2) 55%);
+  display: inline;
+  padding: 0 2px;
+  font-weight: 700;
+}
+
+/* ═══════════════════════════════════════
+   SCROLL ANIMATIONS — Fade + Rise + Stagger
+   ═══════════════════════════════════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity var(--dur-slow) var(--ease-smooth),
+              transform var(--dur-slow) var(--ease-out);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger children */
+.reveal.visible .stagger {
+  opacity: 0;
+  animation: stagger-in var(--dur-slow) var(--ease-out) forwards;
+}
+.reveal.visible .stagger:nth-child(1) { animation-delay: 0.06s; }
+.reveal.visible .stagger:nth-child(2) { animation-delay: 0.12s; }
+.reveal.visible .stagger:nth-child(3) { animation-delay: 0.18s; }
+.reveal.visible .stagger:nth-child(4) { animation-delay: 0.24s; }
+.reveal.visible .stagger:nth-child(5) { animation-delay: 0.30s; }
+.reveal.visible .stagger:nth-child(6) { animation-delay: 0.36s; }
+.reveal.visible .stagger:nth-child(7) { animation-delay: 0.42s; }
+
+@keyframes stagger-in {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ═══════════════════════════════════════
+   1. WARNING BANNER
+   ═══════════════════════════════════════ */
+.warning-banner {
+  background: var(--red-light);
+  border-bottom: 1px solid rgba(179, 48, 48, 0.15);
+  padding: var(--sp-3) var(--gutter);
+  text-align: center;
+  font-size: var(--fs-sm);
+  color: var(--red);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+/* ═══════════════════════════════════════
+   2. STEP PROGRESS BAR
+   ═══════════════════════════════════════ */
+.steps-bar {
+  padding: var(--sp-10) 0 0;
+  position: relative;
+  z-index: 1;
+}
+.steps-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 380px;
+  margin: 0 auto;
+}
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+.step-circle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: var(--fs-sm);
+  border: 2px solid var(--charcoal-edge);
+  color: var(--charcoal-muted);
+  background: var(--white);
+  position: relative;
+  z-index: 2;
+  transition: all var(--dur-normal) var(--ease-spring);
+}
+.step.done .step-circle {
+  background: var(--green);
+  border-color: var(--green);
+  color: var(--white);
+}
+.step.active .step-circle {
+  background: var(--charcoal);
+  border-color: var(--charcoal);
+  color: var(--white);
+  box-shadow: 0 2px 12px rgba(51, 51, 52, 0.2);
+}
+.step-label {
+  margin-top: var(--sp-2);
+  font-family: var(--mono);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--charcoal-muted);
+}
+.step.done .step-label { color: var(--green); }
+.step.active .step-label { color: var(--charcoal); }
+
+.step-line {
+  flex: 0 0 56px;
+  height: 2px;
+  background: var(--charcoal-edge);
+  margin-bottom: var(--sp-5);
+  border-radius: 1px;
+}
+.step-line.filled {
+  background: var(--green);
+}
+
+.step.done .step-circle::after {
+  content: '\2713';
+  font-size: var(--fs-sm);
+}
+.step.done .step-circle span { display: none; }
+
+/* ═══════════════════════════════════════
+   3. ORDER CONFIRMATION
+   ═══════════════════════════════════════ */
+.confirm-section {
+  padding: var(--sp-10) 0 var(--sp-6);
+}
+.confirm-box {
+  background: var(--white);
+  border: 1px solid var(--green);
+  border-radius: var(--sp-2);
+  padding: var(--sp-6) var(--sp-8);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.confirm-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(43, 94, 73, 0.04), transparent);
+  animation: shine-once 2s ease-in-out 0.8s 1 forwards;
+}
+@keyframes shine-once {
+  to { left: 100%; }
+}
+.confirm-box h3 {
+  font-family: var(--serif);
+  font-weight: 400;
+  color: var(--green);
+  font-size: var(--fs-lg);
+  margin-bottom: var(--sp-2);
+}
+.confirm-box p {
+  color: var(--charcoal-light);
+  font-size: var(--fs-sm);
+  margin-bottom: 0;
+  line-height: var(--lh-body);
+}
+
+/* ═══════════════════════════════════════
+   4. HERO
+   ═══════════════════════════════════════ */
+.hero-section {
+  padding: var(--sp-16) 0 var(--sp-12);
+  text-align: center;
+  overflow: hidden;
+}
+.hero-label {
+  font-family: var(--mono);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--charcoal-muted);
+  margin-bottom: var(--sp-6);
+  font-weight: 500;
+}
+.hero-section h1 {
+  margin-bottom: var(--sp-6);
+  color: var(--charcoal);
+}
+.hero-section h1 .italic-accent {
+  font-style: italic;
+  color: var(--green);
+}
+.hero-sub {
+  font-size: clamp(var(--fs-base), 2vw, var(--fs-md));
+  color: var(--charcoal-light);
+  max-width: 540px;
+  margin: 0 auto;
+  line-height: var(--lh-loose);
+}
+
+/* ═══════════════════════════════════════
+   5. BRIDGE COPY
+   ═══════════════════════════════════════ */
+.bridge {
+  padding: var(--sp-12) 0;
+}
+.bridge p { color: var(--charcoal-light); }
+.bridge .key-line {
+  color: var(--charcoal);
+  font-size: var(--fs-md);
+  border-left: 3px solid var(--green);
+  padding: var(--sp-4) var(--sp-5);
+  margin: var(--sp-8) 0;
+  line-height: var(--lh-body);
+  background: var(--white);
+  border-radius: 0 var(--sp-1) var(--sp-1) 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+}
+
+/* ═══════════════════════════════════════
+   6. PROBLEM AGITATION
+   ═══════════════════════════════════════ */
+.problems {
+  padding: var(--sp-12) 0;
+}
+.problems h2 {
+  margin-bottom: var(--sp-10);
+  color: var(--charcoal);
+}
+.problems h2 .italic-accent { font-style: italic; color: var(--red); }
+.problem-item {
+  display: flex;
+  gap: var(--sp-4);
+  align-items: flex-start;
+  margin-bottom: var(--sp-4);
+  padding: var(--sp-4);
+  border-radius: var(--sp-2);
+  transition: background var(--dur-fast) ease;
+}
+.problem-item:hover { background: var(--red-light); }
+.problem-icon {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 1.5px solid var(--red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--red);
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  margin-top: 1px;
+}
+.problem-text {
+  color: var(--charcoal-light);
+  font-size: var(--fs-base);
+  line-height: var(--lh-body);
+}
+
+/* ═══════════════════════════════════════
+   7. SOLUTION INTRO
+   ═══════════════════════════════════════ */
+.solution {
+  padding: var(--sp-12) 0;
+  text-align: center;
+}
+.solution h2 { margin-bottom: var(--sp-5); }
+.solution h2 .italic-accent { font-style: italic; color: var(--green); }
+.solution .lead {
+  font-size: var(--fs-base);
+  color: var(--charcoal-light);
+  max-width: 600px;
+  margin: 0 auto var(--sp-6);
+}
+.solution .distinction {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: var(--fs-lg);
+  color: var(--green);
+  line-height: 1.5;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+/* ═══════════════════════════════════════
+   8. 7 PILLARS
+   ═══════════════════════════════════════ */
+.pillars {
+  padding: var(--sp-12) 0;
+}
+.pillars > .page-wrap > h2 { text-align: center; margin-bottom: var(--sp-12); }
+
+.pillar-card {
+  background: var(--white);
+  border: 1px solid var(--charcoal-faint);
+  border-radius: var(--sp-2);
+  padding: var(--sp-6);
+  margin-bottom: var(--sp-4);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+  transition: transform var(--dur-normal) var(--ease-spring),
+              box-shadow var(--dur-normal) ease,
+              border-color var(--dur-normal) ease;
+  cursor: default;
+}
+.pillar-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+  border-color: var(--green);
+}
+.pillar-num {
+  font-family: var(--mono);
+  font-size: var(--fs-xs);
+  color: var(--green);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: var(--sp-2);
+}
+.pillar-title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: var(--fs-lg);
+  color: var(--charcoal);
+  margin-bottom: var(--sp-2);
+  letter-spacing: -0.01em;
+}
+.pillar-desc {
+  color: var(--charcoal-light);
+  font-size: var(--fs-sm);
+  line-height: var(--lh-body);
+  margin: 0;
+}
+
+/* ═══════════════════════════════════════
+   9. VALUE STACK TABLE — Monospace data
+   ═══════════════════════════════════════ */
+.value-stack {
+  padding: var(--sp-12) 0;
+}
+.value-stack h2 { text-align: center; margin-bottom: var(--sp-10); }
+
+.stack-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid var(--charcoal-faint);
+  border-radius: var(--sp-2);
+  overflow: hidden;
+  background: var(--white);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+}
+.stack-table thead th {
+  background: var(--charcoal);
+  color: var(--white);
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: var(--fs-xs);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: var(--sp-3) var(--sp-5);
+  text-align: left;
+}
+.stack-table thead th:last-child { text-align: right; }
+.stack-table tbody td {
+  padding: var(--sp-4) var(--sp-5);
+  font-size: var(--fs-sm);
+  border-bottom: 1px solid var(--charcoal-faint);
+  color: var(--charcoal-light);
+  transition: background var(--dur-fast) ease;
+}
+.stack-table tbody td:last-child {
+  text-align: right;
+  color: var(--green);
+  font-family: var(--mono);
+  font-weight: 500;
+  white-space: nowrap;
+}
+.stack-table tbody tr:hover td { background: var(--charcoal-hover); }
+.stack-table tfoot td {
+  padding: var(--sp-4) var(--sp-5);
+  font-weight: 700;
+  font-size: var(--fs-base);
+  border-top: 2px solid var(--charcoal);
+  color: var(--charcoal);
+  background: var(--cream-warm);
+}
+.stack-table tfoot td:last-child {
+  text-align: right;
+  color: var(--green);
+  font-family: var(--mono);
+  font-size: var(--fs-md);
+}
+
+/* ═══════════════════════════════════════
+   10. PRICING
+   ═══════════════════════════════════════ */
+.pricing-section {
+  padding: var(--sp-16) 0;
+  text-align: center;
+}
+.pricing-card {
+  background: var(--white);
+  border: 1px solid var(--charcoal-faint);
+  border-radius: var(--sp-3);
+  padding: var(--sp-12) var(--sp-8);
+  max-width: 500px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+  transition: box-shadow var(--dur-normal) ease;
+}
+.pricing-card:hover {
+  box-shadow: 0 8px 40px rgba(0,0,0,0.1);
+}
+.price-old {
+  font-family: var(--mono);
+  font-size: var(--fs-xl);
+  color: var(--charcoal-muted);
+  text-decoration: line-through;
+  text-decoration-color: var(--red);
+  text-decoration-thickness: 2px;
+  margin-bottom: var(--sp-2);
+}
+.price-new {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(var(--fs-3xl), 8vw, var(--fs-4xl));
+  color: var(--green);
+  line-height: var(--lh-tight);
+  margin-bottom: var(--sp-1);
+  letter-spacing: -0.03em;
+}
+.price-per {
+  font-family: var(--mono);
+  font-size: var(--fs-sm);
+  color: var(--charcoal-muted);
+  letter-spacing: 0.04em;
+  margin-bottom: var(--sp-6);
+}
+
+.founding-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  background: var(--green-light);
+  border: 1px solid rgba(43, 94, 73, 0.2);
+  border-radius: 40px;
+  padding: var(--sp-2) var(--sp-5);
+  font-family: var(--mono);
+  font-size: var(--fs-xs);
+  color: var(--green);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  margin-bottom: var(--sp-8);
+}
+.founding-badge .dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--green);
+  animation: pulse-dot 2.5s ease-in-out infinite;
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.3; transform: scale(0.7); }
+}
+
+.price-context {
+  color: var(--charcoal-light);
+  font-size: var(--fs-sm);
+  max-width: 420px;
+  margin: 0 auto;
+  line-height: var(--lh-body);
+}
+.price-context strong { color: var(--charcoal); }
+
+/* ═══════════════════════════════════════
+   11. OUTCOME BULLETS
+   ═══════════════════════════════════════ */
+.outcomes {
+  padding: var(--sp-12) 0;
+}
+.outcomes h2 { text-align: center; margin-bottom: var(--sp-10); }
+.outcome-item {
+  display: flex;
+  gap: var(--sp-4);
+  align-items: flex-start;
+  margin-bottom: var(--sp-4);
+  padding: var(--sp-3) var(--sp-4);
+  border-radius: var(--sp-2);
+  transition: background var(--dur-fast) ease;
+}
+.outcome-item:hover { background: var(--green-light); }
+.outcome-check {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  font-size: 0.6rem;
+  font-weight: 700;
+  margin-top: 3px;
+}
+.outcome-text {
+  color: var(--charcoal-light);
+  font-size: var(--fs-base);
+  line-height: var(--lh-body);
+}
+
+/* ═══════════════════════════════════════
+   12 & 14. CTA BUTTONS
+   ═══════════════════════════════════════ */
+.cta-section {
+  padding: var(--sp-12) 0;
+  text-align: center;
+}
+
+.cta-btn {
+  display: inline-block;
+  background: var(--green);
+  color: var(--white);
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: var(--fs-base);
+  padding: var(--sp-5) var(--sp-10);
+  border-radius: var(--sp-2);
+  text-decoration: none;
+  transition: transform var(--dur-fast) var(--ease-spring),
+              box-shadow var(--dur-fast) ease,
+              background var(--dur-fast) ease;
+  box-shadow: 0 2px 12px rgba(43, 94, 73, 0.2);
+  cursor: pointer;
+  border: none;
+  line-height: 1.4;
+  position: relative;
+  overflow: hidden;
+  letter-spacing: 0.01em;
+}
+.cta-btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  transition: left var(--dur-slow) ease;
+}
+.cta-btn:hover::after { left: 100%; }
+.cta-btn:hover {
+  transform: translateY(-2px) scale(1.01);
+  background: var(--green-bright);
+  box-shadow: 0 6px 24px rgba(43, 94, 73, 0.25);
+}
+.cta-btn:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 1px 6px rgba(43, 94, 73, 0.2);
+}
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 2px 12px rgba(43, 94, 73, 0.2); }
+  50% { box-shadow: 0 4px 24px rgba(43, 94, 73, 0.3); }
+}
+.cta-btn { animation: pulse-glow 4s ease-in-out infinite; }
+.cta-btn:hover { animation: none; }
+
+.cta-sub {
+  margin-top: var(--sp-3);
+  font-size: var(--fs-sm);
+  color: var(--charcoal-muted);
+}
+
+.decline-link {
+  display: inline-block;
+  margin-top: var(--sp-4);
+  font-size: var(--fs-sm);
+  color: var(--charcoal-muted);
+  text-decoration: none;
+  font-style: italic;
+  cursor: pointer;
+  border: 1px solid var(--charcoal-edge);
+  border-radius: var(--sp-1);
+  background: transparent;
+  padding: var(--sp-2) var(--sp-4);
+  font-family: var(--sans);
+  transition: all var(--dur-fast) ease;
+}
+.decline-link:hover {
+  color: var(--charcoal-light);
+  border-color: var(--charcoal-muted);
+  background: var(--charcoal-hover);
+}
+
+/* ═══════════════════════════════════════
+   13. FAQ ACCORDION
+   ═══════════════════════════════════════ */
+.faq-section {
+  padding: var(--sp-12) 0;
+}
+.faq-section h2 { text-align: center; margin-bottom: var(--sp-10); }
+
+.faq-item {
+  border-bottom: 1px solid var(--charcoal-faint);
+}
+.faq-question {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--sp-5) 0;
+  background: none;
+  border: none;
+  color: var(--charcoal);
+  font-family: var(--sans);
+  font-size: var(--fs-base);
+  font-weight: 500;
+  cursor: pointer;
+  text-align: left;
+  gap: var(--sp-4);
+  line-height: 1.4;
+  transition: color var(--dur-fast) ease;
+}
+.faq-question:hover { color: var(--green); }
+.faq-chevron {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  transition: transform 0.35s var(--ease-spring);
+  color: var(--charcoal-muted);
+}
+.faq-item.open .faq-chevron { transform: rotate(180deg); color: var(--green); }
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height var(--dur-normal) var(--ease-smooth),
+              opacity 0.3s ease;
+  opacity: 0;
+}
+.faq-item.open .faq-answer {
+  opacity: 1;
+  max-height: 300px;
+}
+.faq-answer-inner {
+  padding: 0 0 var(--sp-5);
+  color: var(--charcoal-light);
+  font-size: var(--fs-sm);
+  line-height: var(--lh-loose);
+}
+
+/* ═══════════════════════════════════════
+   14. FINAL CTA
+   ═══════════════════════════════════════ */
+.final-cta {
+  padding: var(--sp-16) 0 var(--sp-10);
+  text-align: center;
+}
+.final-cta h2 { margin-bottom: var(--sp-5); }
+.final-cta .urgency-text {
+  color: var(--charcoal-light);
+  max-width: 540px;
+  margin: 0 auto var(--sp-8);
+  font-size: var(--fs-base);
+}
+
+/* ═══════════════════════════════════════
+   DOWNSELL POPUP
+   ═══════════════════════════════════════ */
+.downsell-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(51, 51, 52, 0.6);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  padding: var(--sp-5);
+  backdrop-filter: blur(8px);
+}
+.downsell-overlay.active { display: flex; }
+
+.downsell-card {
+  background: var(--white);
+  border: 1px solid var(--charcoal-faint);
+  border-radius: var(--sp-3);
+  padding: var(--sp-10) var(--sp-8);
+  max-width: 460px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  animation: popup-in 0.4s var(--ease-spring);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.15);
+}
+@keyframes popup-in {
+  from { opacity: 0; transform: scale(0.92) translateY(16px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+.downsell-close {
+  position: absolute;
+  top: var(--sp-3);
+  right: var(--sp-4);
+  background: none;
+  border: none;
+  color: var(--charcoal-muted);
+  font-size: 1.3rem;
+  cursor: pointer;
+  padding: var(--sp-1);
+  line-height: 1;
+  transition: color var(--dur-fast) ease, transform var(--dur-fast) ease;
+}
+.downsell-close:hover { color: var(--charcoal); transform: scale(1.15); }
+.downsell-card .wait-label {
+  font-family: var(--mono);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: var(--sp-3);
+  font-weight: 500;
+}
+.downsell-card h3 {
+  font-family: var(--serif);
+  font-size: var(--fs-xl);
+  font-weight: 400;
+  margin-bottom: var(--sp-3);
+  color: var(--charcoal);
+}
+.downsell-card .downsell-price {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: var(--fs-2xl);
+  color: var(--green);
+  margin: var(--sp-3) 0 var(--sp-1);
+}
+.downsell-card .downsell-detail {
+  font-size: var(--fs-sm);
+  color: var(--charcoal-light);
+  margin-bottom: var(--sp-5);
+}
+.downsell-card .cta-btn { font-size: var(--fs-sm); padding: var(--sp-4) var(--sp-8); }
+.downsell-card .final-decline {
+  display: block;
+  margin-top: var(--sp-4);
+  font-size: var(--fs-xs);
+  color: var(--charcoal-muted);
+  text-decoration: none;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-style: italic;
+  font-family: var(--sans);
+  transition: color var(--dur-fast) ease;
+}
+.downsell-card .final-decline:hover { color: var(--charcoal-light); }
+
+/* ═══════════════════════════════════════
+   FOOTER
+   ═══════════════════════════════════════ */
+.page-footer {
+  padding: var(--sp-6) 0 var(--sp-10);
+  text-align: center;
+  border-top: 1px solid var(--charcoal-faint);
+  position: relative;
+  z-index: 1;
+}
+.page-footer p {
+  font-size: var(--fs-xs);
+  color: var(--charcoal-muted);
+  max-width: 480px;
+  margin: 0 auto;
+  line-height: var(--lh-body);
+}
+
+/* ═══════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════ */
+@media (max-width: 768px) {
+  :root { --gutter: var(--sp-5); }
+  body { font-size: 16px; }
+  section { padding: var(--sp-12) 0; }
+  .hero-section { padding: var(--sp-12) 0 var(--sp-10); }
+  .pillar-card { padding: var(--sp-5); }
+  .pricing-card { padding: var(--sp-8) var(--sp-5); }
+  .cta-btn { font-size: var(--fs-sm); padding: var(--sp-4) var(--sp-6); }
+  .step-line { flex: 0 0 36px; }
+  .stack-table thead th,
+  .stack-table tbody td,
+  .stack-table tfoot td { padding: var(--sp-3); font-size: var(--fs-sm); }
+  .deco { display: none; }
+}
+
+@media (max-width: 480px) {
+  :root { --gutter: var(--sp-4); }
+  .step-label { font-size: 0.62rem; }
+  .step-circle { width: 32px; height: 32px; font-size: var(--fs-xs); }
+  .step-line { flex: 0 0 24px; }
+  .downsell-card { padding: var(--sp-6) var(--sp-5); }
+  .cta-btn { padding: var(--sp-4) var(--sp-5); }
+  .cta-btn .cta-full { display: none; }
+  .cta-btn .cta-short { display: inline; }
+}
+
+.cta-btn .cta-short { display: none; }
+
+/* ═══════════════════════════════════════
+   ACCESSIBILITY
+   ═══════════════════════════════════════ */
+.faq-question:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+.cta-btn:focus-visible {
+  outline: 2px solid var(--charcoal);
+  outline-offset: 4px;
+}
+.decline-link:focus-visible,
+.downsell-close:focus-visible,
+.final-decline:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .reveal.visible .stagger { animation: none; opacity: 1; }
+  .cta-btn { animation: none; }
+  .cta-btn::after { display: none; }
+  .founding-badge .dot { animation: none; }
+  .downsell-card { animation: none; }
+  .confirm-box::before { animation: none; display: none; }
+  .deco { display: none; }
+  html { scroll-behavior: auto; }
+  .pillar-card, .problem-item, .outcome-item { transition: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- FLOATING DECORATIVE SHAPES -->
+<div class="deco deco-pill" style="top:180px;right:5%;"></div>
+<div class="deco deco-circle" style="top:420px;left:3%;"></div>
+<div class="deco deco-squircle" style="top:900px;right:4%;"></div>
+<div class="deco deco-diamond" style="top:1400px;left:5%;"></div>
+<div class="deco deco-pill" style="top:2000px;right:6%;transform:rotate(-10deg);"></div>
+<div class="deco deco-circle" style="top:2600px;left:4%;"></div>
+<div class="deco deco-squircle" style="top:3200px;right:3%;"></div>
+<div class="deco deco-diamond" style="top:3800px;left:6%;"></div>
+
+<!-- 1. WARNING BANNER -->
+<div class="warning-banner" role="alert">
+  Do not close this window or click the back button. This may result in your order being double-billed.
+</div>
+
+<!-- 2. STEP PROGRESS BAR -->
+<div class="steps-bar page-wrap">
+  <div class="steps-row">
+    <div class="step done">
+      <div class="step-circle"><span>1</span></div>
+      <div class="step-label">Install Pack</div>
+    </div>
+    <div class="step-line filled"></div>
+    <div class="step active">
+      <div class="step-circle"><span>2</span></div>
+      <div class="step-label">Upgrade</div>
+    </div>
+    <div class="step-line"></div>
+    <div class="step">
+      <div class="step-circle"><span>3</span></div>
+      <div class="step-label">Complete</div>
+    </div>
+  </div>
+</div>
+
+<!-- 3. ORDER CONFIRMATION -->
+<section class="confirm-section page-wrap reveal">
+  <div class="confirm-box">
+    <h3>Order Confirmed</h3>
+    <p>Your 1 Click Client Onboarding Install Pack is on its way. Login details will arrive in the next 5 minutes.</p>
+    <p style="margin-top:8px">In the meantime, read this page carefully&mdash;it contains a one-time offer you won't see again.</p>
+  </div>
+</section>
+
+<!-- 4. HERO -->
+<section class="hero-section page-wrap reveal">
+  <div class="hero-label">Step 2 of 3 &mdash; Special One-Time Offer</div>
+  <h1>The Systems<br><span class="italic-accent">Mastermind</span></h1>
+  <p class="hero-sub">Get direct access to the team behind $1.2M/month businesses&mdash;at a fraction of the cost of a single consulting call.</p>
+</section>
+
+<hr class="divider">
+
+<!-- 5. BRIDGE COPY -->
+<section class="bridge page-wrap reveal">
+  <p>You just made a smart move. The 1 Click Client Onboarding system is going to save you hours every single week.</p>
+  <p>But here's what we've learned after installing this system for hundreds of businesses:</p>
+  <p class="key-line">The template is <span class="hl">20% of the result.</span> The other 80% comes from knowing how to adapt it, optimize it, and build on top of it as your business grows.</p>
+  <p>That's why our most successful clients don't just use our templates&mdash;they stay connected to the team that built them.</p>
+</section>
+
+<hr class="divider">
+
+<!-- 6. PROBLEM AGITATION -->
+<section class="problems page-wrap reveal">
+  <h2>Here's What Happens<br><span class="italic-accent">Without Ongoing Support</span></h2>
+  <div class="problem-item stagger">
+    <div class="problem-icon">&times;</div>
+    <p class="problem-text">You install the system, but hit a wall customizing it for your specific workflow</p>
+  </div>
+  <div class="problem-item stagger">
+    <div class="problem-icon">&times;</div>
+    <p class="problem-text">You Google a fix at midnight and waste 3 hours on a solution that doesn't work</p>
+  </div>
+  <div class="problem-item stagger">
+    <div class="problem-icon">&times;</div>
+    <p class="problem-text">Your business grows, but your systems don't grow with it&mdash;and things start breaking</p>
+  </div>
+  <div class="problem-item stagger">
+    <div class="problem-icon">&times;</div>
+    <p class="problem-text">You hire a consultant for $5,000+ who gives you theory instead of answers</p>
+  </div>
+  <div class="problem-item stagger">
+    <div class="problem-icon">&times;</div>
+    <p class="problem-text">You're the only person in your business who understands systems&mdash;and it's lonely at the top</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- 7. SOLUTION INTRO -->
+<section class="solution page-wrap reveal">
+  <h2>Introducing The Systems <span class="italic-accent">Mastermind</span></h2>
+  <p class="lead">A vetted, confidential community where business owners and systems experts get direct access to the 8 Figure Systems team&mdash;the same operators who engineer the machines behind companies generating up to $1.2 million per month.</p>
+  <p class="distinction">This is not a course. This is not a group coaching program.<br>This is a room full of operators who've already built what you're trying to build.</p>
+</section>
+
+<hr class="divider">
+
+<!-- 8. 7 PILLARS -->
+<section class="pillars reveal">
+  <div class="page-wrap">
+    <h2>Everything You're Getting</h2>
+
+    <div class="pillar-card stagger">
+      <div class="pillar-num">01</div>
+      <div class="pillar-title">A High-Signal Community</div>
+      <p class="pillar-desc">Surround yourself with business owners and systems pros building real businesses. Every conversation is focused on operations, automations, and scaling. No noise. No hobbyists. No fluff.</p>
+    </div>
+
+    <div class="pillar-card stagger">
+      <div class="pillar-num">02</div>
+      <div class="pillar-title">Direct Access to a 7-Figure Systems Team</div>
+      <p class="pillar-desc">The same team engineering systems for companies doing $1.2M/month is now in your corner. Ask questions, get architecture reviews, and tap into cross-industry expertise spanning coaching, agencies, SaaS, and local services.</p>
+    </div>
+
+    <div class="pillar-card stagger">
+      <div class="pillar-num">03</div>
+      <div class="pillar-title">Fast Feedback&mdash;Your $5,000 Consultant Replacement</div>
+      <p class="pillar-desc">Stop guessing. Get daily troubleshooting, build guidance, and expert recommendations. Instead of paying $5,000+ for a systems consultant, you get real answers from people who've already solved it.</p>
+    </div>
+
+    <div class="pillar-card stagger">
+      <div class="pillar-num">04</div>
+      <div class="pillar-title">Monthly Live Trainings</div>
+      <p class="pillar-desc">Focused sessions on the exact frameworks, tools, and principles scaling 7-figure businesses right now. Not recycled content. Just what's working.</p>
+    </div>
+
+    <div class="pillar-card stagger">
+      <div class="pillar-num">05</div>
+      <div class="pillar-title">Inner Circle&mdash;Win a $50,000 System Build</div>
+      <p class="pillar-desc">Show up and add value, and you earn access to the Inner Circle. Each month, one member receives a full system build-out worth up to $50,000&mdash;designed, built, and installed by our team.</p>
+    </div>
+
+    <div class="pillar-card stagger">
+      <div class="pillar-num">06</div>
+      <div class="pillar-title">Battle-Tested Templates &amp; Resources</div>
+      <p class="pillar-desc">Access the exact templates, SOPs, and tools proven across hundreds of 7-figure clients. As a member, you get exclusive pricing on resources that normally cost 5&ndash;10x more&mdash;including future install packs like the one you just bought.</p>
+    </div>
+
+    <div class="pillar-card stagger">
+      <div class="pillar-num">07</div>
+      <div class="pillar-title">A Growth Partner for the Long Haul</div>
+      <p class="pillar-desc">Your systems will need to evolve as you scale. We'll be here providing answers, frameworks, and support based on real experience scaling businesses generating multi-millions every year.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- 9. VALUE STACK TABLE -->
+<section class="value-stack page-wrap reveal">
+  <h2>Total Value Breakdown</h2>
+  <table class="stack-table">
+    <thead>
+      <tr>
+        <th>What You Get</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Vetted Community of Operators &amp; Systems Pros</td><td>$2,000/yr</td></tr>
+      <tr><td>Direct Access to 7-Figure Systems Team</td><td>$5,000/mo</td></tr>
+      <tr><td>Fast Feedback (Daily Expert Troubleshooting)</td><td>$5,000/mo</td></tr>
+      <tr><td>Monthly Live Trainings</td><td>$500/mo</td></tr>
+      <tr><td>Inner Circle Eligibility ($50K System Build)</td><td>Priceless</td></tr>
+      <tr><td>Battle-Tested Templates &amp; Member Pricing</td><td>$2,000/yr</td></tr>
+      <tr><td>Long-Term Growth Support</td><td>Ongoing</td></tr>
+    </tbody>
+    <tfoot>
+      <tr><td>Total Value</td><td>$10,500+/mo</td></tr>
+    </tfoot>
+  </table>
+</section>
+
+<hr class="divider">
+
+<!-- 10. PRICING -->
+<section class="pricing-section page-wrap reveal">
+  <div class="pricing-card">
+    <div class="price-old">$197/month</div>
+    <div class="price-new">$97</div>
+    <div class="price-per">per month</div>
+    <div class="founding-badge">
+      <span class="dot"></span>
+      <span id="spots-count">23</span> of 50 founding spots remaining
+    </div>
+    <p class="price-context">That's less than <strong>$3.23/day</strong> for direct access to the team behind $1.2M/month businesses.</p>
+    <p class="price-context" style="margin-top:12px">A single systems consulting call costs $500&ndash;$1,000. One broken automation can cost thousands. One wrong hire costs $15,000+.</p>
+    <p class="price-context" style="font-weight:700;color:var(--charcoal)">$97/month to have expert operators in your corner? That's not an expense&mdash;it's insurance.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- 11. OUTCOME BULLETS -->
+<section class="outcomes page-wrap reveal">
+  <h2>After Joining, You'll Be Able To</h2>
+  <div class="outcome-item stagger"><div class="outcome-check">&#10003;</div><p class="outcome-text">Get expert answers to systems questions in minutes, not months</p></div>
+  <div class="outcome-item stagger"><div class="outcome-check">&#10003;</div><p class="outcome-text">Stop wasting money on consultants who give you theory instead of solutions</p></div>
+  <div class="outcome-item stagger"><div class="outcome-check">&#10003;</div><p class="outcome-text">Adapt and optimize your install packs with guidance from the team that built them</p></div>
+  <div class="outcome-item stagger"><div class="outcome-check">&#10003;</div><p class="outcome-text">See exactly how $1.2M/month businesses structure their operations</p></div>
+  <div class="outcome-item stagger"><div class="outcome-check">&#10003;</div><p class="outcome-text">Build automations that actually scale instead of breaking every time something changes</p></div>
+  <div class="outcome-item stagger"><div class="outcome-check">&#10003;</div><p class="outcome-text">Access templates and SOPs proven across hundreds of 7-figure businesses</p></div>
+  <div class="outcome-item stagger"><div class="outcome-check">&#10003;</div><p class="outcome-text">Become eligible for a $50,000 full system build&mdash;just for being an active member</p></div>
+</section>
+
+<hr class="divider">
+
+<!-- 12. CTA + DECLINE -->
+<section class="cta-section page-wrap reveal">
+  <a href="#checkout" class="cta-btn"><span class="cta-full">Yes! Add The Systems Mastermind To My Order For Just $97/month</span><span class="cta-short">Yes! Add The Mastermind &mdash; $97/mo</span></a>
+  <p class="cta-sub">Cancel anytime. No long-term commitment. No questions asked.</p>
+  <button class="decline-link" onclick="document.getElementById('downsell').classList.add('active')">No thanks, I'll figure it out on my own.</button>
+</section>
+
+<hr class="divider">
+
+<!-- 13. FAQ ACCORDION -->
+<section class="faq-section page-wrap reveal">
+  <h2>Frequently Asked Questions</h2>
+
+  <div class="faq-item">
+    <button class="faq-question" aria-expanded="false">
+      <span>"I just bought the Install Pack&mdash;isn't that enough?"</span>
+      <svg class="faq-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><polyline points="5 8 10 13 15 8"/></svg>
+    </button>
+    <div class="faq-answer" role="region">
+      <div class="faq-answer-inner">The Install Pack gives you the system. The Mastermind gives you the team that built it. When you hit a wall customizing it, need help scaling it, or want to build more systems on top of it&mdash;that's where the Mastermind pays for itself in the first week.</div>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question" aria-expanded="false">
+      <span>"Can't I just Google this stuff?"</span>
+      <svg class="faq-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><polyline points="5 8 10 13 15 8"/></svg>
+    </button>
+    <div class="faq-answer" role="region">
+      <div class="faq-answer-inner">You can. And you'll spend weeks testing solutions that don't work. The Mastermind gives you answers from people who've already built it&mdash;in minutes, not months. The cost of trial and error is always higher than the cost of asking an expert.</div>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question" aria-expanded="false">
+      <span>"How is this different from other communities?"</span>
+      <svg class="faq-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><polyline points="5 8 10 13 15 8"/></svg>
+    </button>
+    <div class="faq-answer" role="region">
+      <div class="faq-answer-inner">Most communities are full of beginners asking beginner questions. This one is vetted. You're surrounded by operators actively building and scaling real businesses. And you're getting access to a working systems team, not influencers.</div>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question" aria-expanded="false">
+      <span>"I already have a systems person / VA."</span>
+      <svg class="faq-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><polyline points="5 8 10 13 15 8"/></svg>
+    </button>
+    <div class="faq-answer" role="region">
+      <div class="faq-answer-inner">Great. Imagine what they could do with access to a community of experts and battle-tested templates. This makes your existing team better, faster, and more confident.</div>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question" aria-expanded="false">
+      <span>"What's the Inner Circle?"</span>
+      <svg class="faq-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><polyline points="5 8 10 13 15 8"/></svg>
+    </button>
+    <div class="faq-answer" role="region">
+      <div class="faq-answer-inner">An earned tier for members who consistently show up and add value. Inner Circle members are eligible for a full system build-out&mdash;worth up to $50,000&mdash;implemented by our team at no additional cost.</div>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question" aria-expanded="false">
+      <span>"How much time do I need to commit?"</span>
+      <svg class="faq-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><polyline points="5 8 10 13 15 8"/></svg>
+    </button>
+    <div class="faq-answer" role="region">
+      <div class="faq-answer-inner">As much or as little as you want. Ask a question in 2 minutes and get an answer. Attend a live training for an hour. The value scales with your engagement.</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- 14. FINAL CTA -->
+<section class="final-cta page-wrap reveal">
+  <h2>This Offer Is Only<br><em>Available Right Now</em></h2>
+  <p class="urgency-text">Once you leave this page, you won't see this price again. The Systems Mastermind is normally $197/month. Today&mdash;because you just became a customer&mdash;you can lock in the founding member rate of <strong style="color:var(--green)">$97/month</strong> for as long as you stay.</p>
+  <a href="#checkout" class="cta-btn"><span class="cta-full">Yes! Add The Systems Mastermind For $97/month</span><span class="cta-short">Yes! Add The Mastermind &mdash; $97/mo</span></a>
+  <p class="cta-sub">Cancel anytime. Your Install Pack order is already confirmed regardless of your choice here.</p>
+  <button class="decline-link" id="final-decline" onclick="document.getElementById('downsell').classList.add('active')">No thanks, I'll pass on the founding member rate.</button>
+</section>
+
+<!-- FOOTER -->
+<footer class="page-footer page-wrap">
+  <p>Your Install Pack order is confirmed and processing. This upgrade is optional and does not affect your current order. &copy; 2026 8 Figure Systems. All rights reserved.</p>
+</footer>
+
+<!-- DOWNSELL POPUP -->
+<div class="downsell-overlay" id="downsell" role="dialog" aria-modal="true" aria-label="Special offer">
+  <div class="downsell-card">
+    <button class="downsell-close" aria-label="Close" onclick="document.getElementById('downsell').classList.remove('active')">&times;</button>
+    <p class="wait-label">Wait&mdash;before you go</p>
+    <h3>What If You Could Try It<br>For Just $47?</h3>
+    <p class="downsell-detail">Get your first month of The Systems Mastermind at a reduced rate. Same access. Same team. Same everything.</p>
+    <div class="downsell-price">$47</div>
+    <p class="downsell-detail" style="margin-top:4px">first month, then $97/mo</p>
+    <a href="#checkout-downsell" class="cta-btn">Yes! Give Me Access For $47</a>
+    <button class="final-decline" onclick="document.getElementById('downsell').classList.remove('active')">No thanks, I don't need systems support right now.</button>
+  </div>
+</div>
+
+<!-- JAVASCRIPT -->
+<script>
+// FAQ Accordion
+document.querySelectorAll('.faq-question').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(el => {
+      el.classList.remove('open');
+      el.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+    });
+    if (!isOpen) {
+      item.classList.add('open');
+      btn.setAttribute('aria-expanded', 'true');
+    }
+  });
+});
+
+// Scroll-triggered reveal + decorative shapes
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// Decorative shapes — fade in as user scrolls near them
+const decoObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    } else {
+      entry.target.classList.remove('visible');
+    }
+  });
+}, { threshold: 0, rootMargin: '100px 0px 100px 0px' });
+document.querySelectorAll('.deco').forEach(el => decoObserver.observe(el));
+
+// Downsell popup
+const downsell = document.getElementById('downsell');
+downsell.addEventListener('click', (e) => {
+  if (e.target === e.currentTarget) e.currentTarget.classList.remove('active');
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') downsell.classList.remove('active');
+});
+
+// Founding spots — subtle live decrement
+let spotsEl = document.getElementById('spots-count');
+if (spotsEl) {
+  let spots = parseInt(spotsEl.textContent);
+  const delay = 50000 + Math.random() * 40000;
+  setTimeout(() => {
+    if (spots > 18) {
+      spots--;
+      spotsEl.textContent = spots;
+      spotsEl.style.transition = 'color 0.4s ease';
+      spotsEl.style.color = 'var(--gold)';
+      setTimeout(() => { spotsEl.style.color = ''; }, 2000);
+    }
+  }, delay);
+}
+</script>
+</body>
+</html>
