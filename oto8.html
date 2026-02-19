@@ -326,6 +326,19 @@ em { font-family: var(--sans); font-style: italic; }
   cursor: default;
 }
 .pillar-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.3); border-color: var(--orange); }
+.pillar-featured {
+  grid-column: 1 / -1;
+  border-left: 4px solid var(--orange);
+  border-color: var(--orange);
+  background: linear-gradient(135deg, var(--navy-card) 0%, rgba(255,152,0,0.04) 100%);
+  box-shadow: 0 0 32px rgba(255,152,0,0.06);
+  padding: var(--sp-6);
+}
+.pillar-featured .pillar-title { font-size: var(--fs-lg); }
+.pillar-featured .pillar-num {
+  background: var(--orange); color: var(--white);
+  display: inline-block; padding: 2px 8px; border-radius: 4px; font-weight: 700;
+}
 .pillar-num { font-family: var(--mono); font-size: var(--fs-xs); color: var(--orange); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: var(--sp-1); }
 .pillar-title { font-family: var(--sans); font-weight: 700; font-size: var(--fs-md); color: var(--white); margin-bottom: var(--sp-2); letter-spacing: -0.01em; }
 .pillar-desc { color: var(--white-80); font-size: var(--fs-sm); line-height: var(--lh-body); margin: 0; }
@@ -827,13 +840,11 @@ em { font-family: var(--sans); font-style: italic; }
   <div class="pillars reveal">
     <h2>What You're Getting</h2>
     <div class="pillars-grid">
-      <div class="pillar-card stagger"><div class="pillar-num">01</div><div class="pillar-title">A High-Signal Community</div><p class="pillar-desc">Business owners and systems pros. Every conversation focused on operations, automations, and scaling. No noise. No hobbyists.</p></div>
-      <div class="pillar-card stagger"><div class="pillar-num">02</div><div class="pillar-title">Direct Access to a 7-Figure Systems Team</div><p class="pillar-desc">Ask questions, get architecture reviews, and tap into cross-industry expertise spanning coaching, agencies, SaaS, and local services.</p></div>
-      <div class="pillar-card stagger"><div class="pillar-num">03</div><div class="pillar-title">Fast Feedback - $5K Consultant Replacement</div><p class="pillar-desc">Daily troubleshooting, build guidance, and expert recommendations. Real answers from people who've already solved it.</p></div>
-      <div class="pillar-card stagger"><div class="pillar-num">04</div><div class="pillar-title">Monthly Live Trainings</div><p class="pillar-desc">Focused sessions on frameworks, tools, and principles scaling 7-figure businesses right now.</p></div>
-      <div class="pillar-card stagger"><div class="pillar-num">05</div><div class="pillar-title">Inner Circle</div><p class="pillar-desc">An earned tier for members who show up and contribute. Get priority access, direct team support, and exclusive build opportunities.</p></div>
-      <div class="pillar-card stagger"><div class="pillar-num">06</div><div class="pillar-title">Battle-Tested Templates &amp; Resources</div><p class="pillar-desc">Exclusive pricing on resources proven across hundreds of 7-figure clients - including future install packs.</p></div>
-      <div class="pillar-card stagger"><div class="pillar-num">07</div><div class="pillar-title">A Growth Partner for the Long Haul</div><p class="pillar-desc">Answers, frameworks, and support based on real experience scaling multi-million dollar businesses.</p></div>
+      <div class="pillar-card pillar-featured stagger"><div class="pillar-num">01</div><div class="pillar-title">Fast Feedback - Skip the $5K Consultant</div><p class="pillar-desc">Your own private 1-on-1 channel with Katie and her team. Ask anything about your setup - systems, automations, workflows - and get expert feedback back fast. No booking calls. No waiting weeks. The kind of access consultants charge $5,000 for, included in your membership.</p></div>
+      <div class="pillar-card stagger"><div class="pillar-num">02</div><div class="pillar-title">Your Systems Team on Speed Dial</div><p class="pillar-desc">Architecture reviews. Troubleshooting. Real operator insight from the people running $1.2M/month businesses. When you're stuck, you don't Google it - you ask the people who've already solved it.</p></div>
+      <div class="pillar-card stagger"><div class="pillar-num">03</div><div class="pillar-title">Monthly Live Trainings with KD</div><p class="pillar-desc">Live calls every month where you bring the problem and leave with the solution. Real-time feedback on your ClickUp setup, your automations, your workflows. Not theory - what's actually working right now in 7-figure businesses.</p></div>
+      <div class="pillar-card stagger"><div class="pillar-num">04</div><div class="pillar-title">A Room Where Nobody's Faking It</div><p class="pillar-desc">No motivational fluff. No beginners asking beginner questions. Every member is a business owner or systems pro actively building and making money. This is where one conversation replaces a month of trial and error.</p></div>
+      <div class="pillar-card stagger"><div class="pillar-num">05</div><div class="pillar-title">40% Off Every Future Release</div><p class="pillar-desc">Every template, install pack, and resource we release - you get it at 40% off, automatically. One discounted purchase covers your membership. Everything after that is pure upside.</p></div>
     </div>
   </div>
 </div>
@@ -858,7 +869,7 @@ em { font-family: var(--sans); font-style: italic; }
     <div class="outcome-item stagger"><div class="outcome-check">&#10003;</div><p class="outcome-text">See exactly how $1.2M/month businesses structure operations</p></div>
     <div class="outcome-item stagger"><div class="outcome-check">&#10003;</div><p class="outcome-text">Build automations that actually scale</p></div>
     <div class="outcome-item stagger"><div class="outcome-check">&#10003;</div><p class="outcome-text">Access templates proven across hundreds of 7-figure businesses</p></div>
-    <div class="outcome-item stagger"><div class="outcome-check">&#10003;</div><p class="outcome-text">Become eligible for exclusive Inner Circle build opportunities</p></div>
+    <div class="outcome-item stagger"><div class="outcome-check">&#10003;</div><p class="outcome-text">Get exclusive member pricing on all future templates and install packs</p></div>
   </div>
 </div>
 
@@ -871,12 +882,11 @@ em { font-family: var(--sans); font-style: italic; }
   <div>
     <div class="sidebar-stack">
       <div class="sidebar-stack-header">What You Get</div>
-      <div class="sidebar-stack-row"><span class="label">Vetted Community</span><span class="value">$2,000/yr</span></div>
+      <div class="sidebar-stack-row"><span class="label">Fast Feedback (Private Channel)</span><span class="value">$5,000/mo</span></div>
       <div class="sidebar-stack-row"><span class="label">7-Figure Team Access</span><span class="value">$5,000/mo</span></div>
-      <div class="sidebar-stack-row"><span class="label">Fast Feedback</span><span class="value">$5,000/mo</span></div>
-      <div class="sidebar-stack-row"><span class="label">Live Trainings</span><span class="value">$500/mo</span></div>
-      <div class="sidebar-stack-row"><span class="label">Templates &amp; Pricing</span><span class="value">$2,000/yr</span></div>
-      <div class="sidebar-stack-row"><span class="label">Growth Support</span><span class="value">Ongoing</span></div>
+      <div class="sidebar-stack-row"><span class="label">Live Trainings with KD</span><span class="value">$500/mo</span></div>
+      <div class="sidebar-stack-row"><span class="label">Operators-Only Community</span><span class="value">$2,000/yr</span></div>
+      <div class="sidebar-stack-row"><span class="label">40% Product Discount</span><span class="value">Ongoing</span></div>
       <div class="sidebar-stack-total"><span class="label">Total Value</span><span class="value">$10,500+/mo</span></div>
     </div>
     <div class="sidebar-proof">
@@ -888,7 +898,7 @@ em { font-family: var(--sans); font-style: italic; }
   <div>
     <div class="sidebar-card">
       <p class="card-eyebrow">Founding Member Rate</p>
-      <p class="card-headline">Lock in <strong>50% off</strong> for life<br><span class="card-headline-sub">Regular price: <span class="plan-price-old">$397/mo</span></span></p>
+      <p class="card-headline">Lock in <strong>50% off</strong> for life<br><span class="card-headline-sub">Regular price: <span style="color:var(--white-55)">$397/mo</span></span></p>
       <div class="plan-options" data-group="main">
         <div class="plan-row" data-plan="monthly" onclick="selectPlan(this)">
           <div class="plan-radio"></div>
@@ -896,7 +906,7 @@ em { font-family: var(--sans); font-style: italic; }
             <div class="plan-label">Monthly</div>
           </div>
           <div class="plan-price-wrap">
-            <div class="plan-price">$197/mo</div>
+            <div class="plan-price"><span class="plan-price-old">$397</span> $197/mo</div>
           </div>
         </div>
         <div class="plan-row selected" data-plan="yearly" onclick="selectPlan(this)">
@@ -934,7 +944,7 @@ em { font-family: var(--sans); font-style: italic; }
     <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>"Can't I just Google this stuff?"</span><svg class="faq-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><polyline points="5 8 10 13 15 8"/></svg></button><div class="faq-answer" role="region"><div class="faq-answer-inner">You can. And you'll spend weeks testing solutions that don't work. The Mastermind gives you answers in minutes, not months. Trial and error always costs more than asking an expert.</div></div></div>
     <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>"How is this different from other communities?"</span><svg class="faq-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><polyline points="5 8 10 13 15 8"/></svg></button><div class="faq-answer" role="region"><div class="faq-answer-inner">Most communities are full of beginners. This one is vetted. You're surrounded by operators actively scaling real businesses, with access to a working systems team - not influencers.</div></div></div>
     <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>"I already have a systems person / VA."</span><svg class="faq-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><polyline points="5 8 10 13 15 8"/></svg></button><div class="faq-answer" role="region"><div class="faq-answer-inner">Great. Imagine what they could do with access to a community of experts and battle-tested templates. This makes your existing team better and faster.</div></div></div>
-    <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>"What's the Inner Circle?"</span><svg class="faq-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><polyline points="5 8 10 13 15 8"/></svg></button><div class="faq-answer" role="region"><div class="faq-answer-inner">An earned tier for members who show up and add value. Inner Circle members get priority access, direct team support, and exclusive build opportunities.</div></div></div>
+    <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>"Can't I just use AI to do all of this?"</span><svg class="faq-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><polyline points="5 8 10 13 15 8"/></svg></button><div class="faq-answer" role="region"><div class="faq-answer-inner">AI is great at generating ideas and boilerplate. It can't tell you which system to build first, review your specific ClickUp setup, or warn you about the mistake you're about to make. The Mastermind gives you operators who've already built what you're building - they know what works because they've tested it with real businesses, not training data.</div></div></div>
     <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>"How much time do I need?"</span><svg class="faq-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><polyline points="5 8 10 13 15 8"/></svg></button><div class="faq-answer" role="region"><div class="faq-answer-inner">As much or as little as you want. Ask a question in 2 minutes and get an answer. Attend a live training for an hour. The value scales with your engagement.</div></div></div>
     <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>"Can I cancel anytime?"</span><svg class="faq-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><polyline points="5 8 10 13 15 8"/></svg></button><div class="faq-answer" role="region"><div class="faq-answer-inner">Yes. Cancel with one click, no questions asked. Your access continues until the end of your billing period.</div></div></div>
     <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>"Is there a money-back guarantee?"</span><svg class="faq-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><polyline points="5 8 10 13 15 8"/></svg></button><div class="faq-answer" role="region"><div class="faq-answer-inner">Yes - 30-day money-back guarantee. If you don't find value in the first 30 days, we'll refund you in full.</div></div></div>
@@ -957,8 +967,7 @@ em { font-family: var(--sans); font-style: italic; }
       <div class="plan-row" data-plan="monthly" onclick="selectPlan(this)">
         <div class="plan-radio"></div>
         <div class="plan-info">
-          <div class="plan-label">Monthly</div>
-          <div class="plan-savings">Save 30%</div>
+          <div class="plan-label">Monthly <span class="plan-savings" style="margin-top:0">Save 30%</span></div>
         </div>
         <div class="plan-price-wrap">
           <div class="plan-price"><span class="plan-price-old">$197</span> $137/mo</div>
@@ -968,8 +977,7 @@ em { font-family: var(--sans); font-style: italic; }
       <div class="plan-row selected" data-plan="yearly" onclick="selectPlan(this)">
         <div class="plan-radio"></div>
         <div class="plan-info">
-          <div class="plan-label">Pay Upfront <span class="plan-badge">Best Value</span></div>
-          <div class="plan-savings">Save $1,217 vs monthly</div>
+          <div class="plan-label">Pay Upfront <span class="plan-badge">Best Value</span> <span class="plan-savings" style="margin-top:0">Save $1,217</span></div>
         </div>
         <div class="plan-price-wrap">
           <div class="plan-price"><span class="plan-price-old">$197</span> $97/mo</div>
