@@ -1169,9 +1169,29 @@ em { font-style: italic; }
     <p class="wait-label">Wait &mdash; before you go</p>
     <h3>What If You Could Start<br>At a Lower Rate?</h3>
     <p class="downsell-detail">Same access. Same team. Same community &mdash; just a friendlier entry point.</p>
-    <p class="downsell-price"><span style="text-decoration:line-through;color:var(--white-30);font-size:var(--fs-lg);">$197</span> $97/mo</p>
-    <p class="downsell-detail" style="margin-bottom:var(--sp-2);">$1,147 billed yearly &middot; Save $1,217</p>
-    <a href="#checkout-downsell-yearly" class="cta-btn">Yes! Lock In $97/mo For Life</a>
+    <div class="plan-options" data-group="downsell" style="margin-top:var(--sp-4);text-align:left;">
+      <div class="plan-row" data-plan="monthly" onclick="selectPlan(this)">
+        <div class="plan-radio"></div>
+        <div class="plan-info">
+          <div class="plan-label">Monthly</div>
+        </div>
+        <div class="plan-price-wrap">
+          <div class="plan-price"><span class="plan-price-old">$197</span> $97/mo</div>
+        </div>
+      </div>
+      <div class="plan-row selected" data-plan="yearly" onclick="selectPlan(this)">
+        <div class="plan-radio"></div>
+        <div class="plan-info">
+          <div class="plan-label">Yearly <span class="plan-badge">Best Value</span></div>
+          <div class="plan-savings">2 months free vs monthly</div>
+        </div>
+        <div class="plan-price-wrap">
+          <div class="plan-price"><span class="plan-price-old">$167</span> $82/mo</div>
+          <div class="plan-price-sub">$977 billed yearly</div>
+        </div>
+      </div>
+    </div>
+    <a href="#checkout-downsell-yearly" class="cta-btn" data-cta="downsell" style="margin-top:var(--sp-4);"><span class="cta-text-yearly active">Yes! Lock In $82/mo For Life</span><span class="cta-text-monthly">Yes! Lock In $97/mo</span></a>
     <button class="final-decline" onclick="document.getElementById('downsell').classList.remove('active')">No thanks, I'll figure it out alone</button>
   </div>
 </div>
@@ -1243,7 +1263,8 @@ if (timerEl) {
 
 // Plan selector
 const ctaLinks = {
-  main: { monthly: '#checkout-monthly', yearly: '#checkout-yearly' }
+  main: { monthly: '#checkout-monthly', yearly: '#checkout-yearly' },
+  downsell: { monthly: '#checkout-downsell-monthly', yearly: '#checkout-downsell-yearly' }
 };
 
 function selectPlan(row) {
