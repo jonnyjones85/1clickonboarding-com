@@ -366,15 +366,16 @@ em { font-style: italic; }
 }
 .perk-list {
   grid-column: 1 / -1;
-  display: flex; flex-wrap: wrap;
+  display: flex; flex-wrap: nowrap;
+  justify-content: center;
   gap: var(--sp-2);
   margin-top: var(--sp-2);
 }
 .perk-item {
   display: inline-flex; align-items: center; gap: var(--sp-2);
-  font-size: var(--fs-xs); color: var(--white-80);
+  font-size: .75rem; color: var(--white-80);
   background: var(--white-03); border: 1px solid var(--white-06);
-  border-radius: 20px; padding: var(--sp-1) var(--sp-3);
+  border-radius: 20px; padding: var(--sp-1) var(--sp-2);
   white-space: nowrap;
 }
 .perk-check {
@@ -865,6 +866,7 @@ em { font-style: italic; }
   .katie-photo { margin-top: 0; }
   .sidebar-stack-row { font-size: var(--fs-sm); }
   .value-comparison { flex-direction: column; gap: var(--sp-1); text-align: center; }
+  .perk-list { flex-wrap: wrap; justify-content: center; }
 }
 
 @media (max-width: 480px) {
